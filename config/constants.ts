@@ -1,10 +1,12 @@
+import icons from '@/icons';
+
 const ENVIRONMENT = {
     development: process.env.NEXT_PUBLIC_ENVIRONMENT === 'development',
     production: process.env.NEXT_PUBLIC_ENVIRONMENT === 'production',
 };
 
 const API = {
-    baseURL: 'https://jsonplaceholder.typicode.com/',
+    baseURL: 'https://st1.novel-ag.com/api/',
     error: {
         aborted: {
             code: 'ECONNABORTED',
@@ -17,21 +19,78 @@ const API = {
 };
 
 const CLIENT_ROUTES = {
+    activities: '/activities',
+    dashboard: '/dashboard',
     home: '/',
     login: '/auth/login',
+    notofications: '/notifications',
+    profile: '/profile',
+    settings: '/settings',
+    wallet: '/wallet',
 };
 
+const APP_MENU = [
+    {
+        icon: icons.dashboardIcon(),
+        link: CLIENT_ROUTES.dashboard,
+        name: 'Dashboard',
+    },
+    {
+        icon: icons.userIcon(),
+        link: CLIENT_ROUTES.profile,
+        name: 'Profile',
+    },
+    {
+        icon: icons.activitiesIcon(),
+        link: CLIENT_ROUTES.activities,
+        name: 'Activities',
+    },
+    {
+        icon: icons.walletIcon(),
+        link: CLIENT_ROUTES.wallet,
+        name: 'Wallet',
+    },
+];
+
+const COMING_SOON_APP_MENU = [
+    {
+        name: 'Loans',
+    },
+    {
+        name: 'Training',
+    },
+    {
+        name: 'Investment',
+    },
+];
+
+const USER_ACTIONS_APP_MENU = [
+    {
+        icon: icons.settingsIcon(),
+        link: CLIENT_ROUTES.settings,
+        name: 'Settings',
+    },
+    {
+        icon: icons.notificationIcon(),
+        link: CLIENT_ROUTES.notofications,
+        name: 'Notifications',
+    },
+];
+
 const COOKIES = {
-    key: 'y2k-user',
+    key: 'novel-ag-user',
     maxAge: 21600, // 6 hours
     path: CLIENT_ROUTES.home,
 };
 
 const constants = {
     API,
+    APP_MENU,
     CLIENT_ROUTES,
+    COMING_SOON_APP_MENU,
     COOKIES,
     ENVIRONMENT,
+    USER_ACTIONS_APP_MENU,
 };
 
 export default constants;

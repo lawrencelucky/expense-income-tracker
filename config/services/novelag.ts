@@ -10,12 +10,12 @@ const {
     CLIENT_ROUTES,
 } = constants;
 
-const y2k = axios.create({
+const novelag = axios.create({
     baseURL,
     timeout,
 });
 
-y2k.interceptors.request.use(
+novelag.interceptors.request.use(
     (config) => {
         const x = config;
         const cookies = parseCookies();
@@ -36,7 +36,7 @@ y2k.interceptors.request.use(
     },
 );
 
-y2k.interceptors.response.use(
+novelag.interceptors.response.use(
     (response) => {
         return response;
     },
@@ -54,4 +54,4 @@ y2k.interceptors.response.use(
     },
 );
 
-export default y2k;
+export default novelag;

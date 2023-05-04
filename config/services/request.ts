@@ -1,5 +1,5 @@
 import constants from '@config/constants';
-import y2k from './y2k';
+import novelag from './novelag';
 import logger from '@logger';
 import helpers from '@/common/utils/helper';
 import { AxiosRequestConfig } from 'axios';
@@ -32,7 +32,7 @@ const get = async <T>({ route, config }: { route: string; config?: AxiosRequestC
         ...config,
     };
     try {
-        const response = await y2k.get(route, options);
+        const response = await novelag.get(route, options);
         return response.data as T;
     } catch (error: any) {
         networkError(error?.code);
@@ -43,7 +43,7 @@ const get = async <T>({ route, config }: { route: string; config?: AxiosRequestC
 
 const post = async <T, X>({ route, payload }: { route: string; token?: string; payload: X }): Promise<T> => {
     try {
-        const response = await y2k.post(route, payload);
+        const response = await novelag.post(route, payload);
         return response.data as T;
     } catch (error: any) {
         networkError(error?.code);
@@ -54,7 +54,7 @@ const post = async <T, X>({ route, payload }: { route: string; token?: string; p
 
 const put = async <T, X>({ route, payload }: { route: string; token?: string; payload?: X }): Promise<T> => {
     try {
-        const response = await y2k.put(route, payload);
+        const response = await novelag.put(route, payload);
         return response.data as T;
     } catch (error: any) {
         networkError(error?.code);
@@ -68,7 +68,7 @@ const postFormData = async <T, X>({ route, payload }: { route: string; payload: 
         'Content-Type': 'multipart/form-data',
     };
     try {
-        const response = await y2k.put(route, payload, { headers });
+        const response = await novelag.put(route, payload, { headers });
         return response.data as T;
     } catch (error: any) {
         networkError(error?.code);
@@ -79,7 +79,7 @@ const postFormData = async <T, X>({ route, payload }: { route: string; payload: 
 
 const destroy = async <T>({ route }: { route: string; token?: string }): Promise<T> => {
     try {
-        const response = await y2k.delete(route);
+        const response = await novelag.delete(route);
         return response.data as T;
     } catch (error: any) {
         networkError(error?.code);

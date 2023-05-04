@@ -1,8 +1,7 @@
 const PAGE_HEAD = {
-    APP_NAME: 'Your2K',
-    PAGE_DESC:
-        'Y2K makes it a reality! Join our raffle draws and stand a chance to win mind blowing prizes including unique homes that can make you a proud homeowner.',
-    PAGE_KEYWORDS: ['Y2K, y2k, Your2K'],
+    APP_NAME: 'NovelAG',
+    PAGE_DESC: 'We are transforming farming experiences for all farmers',
+    PAGE_KEYWORDS: ['NovelAG', 'Farm', 'Farmers'],
 };
 
 export default PAGE_HEAD;

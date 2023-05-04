@@ -1,6 +1,6 @@
-import { notification } from 'antd';
-import { INotification } from '../types/interfaces';
+import { toast, Flip } from 'react-toastify';
 import jwtDecode, { JwtPayload } from 'jwt-decode';
+import { INotification } from '../types/interfaces';
 
 interface IProps {
     number: any;
@@ -24,24 +24,33 @@ const query = `*[_type == "post"] | order(_createdAt desc) [0...100]{
    body
  }`;
 
-const openNotification = ({ type, message, description }: INotification): void => {
-    notification[type]({
-        className: 'y2k-notification',
-        description,
-        duration: 5,
-        message,
+const openNotification = ({ type, message }: INotification): void => {
+    toast[type](message, {
+        autoClose: 5000,
+        className: 'text-sm',
+        closeOnClick: true,
+        draggable: true,
+        hideProgressBar: false,
+        pauseOnHover: true,
+        position: 'top-right',
+        progress: undefined,
+        theme: 'light',
+        transition: Flip,
     });
 };
+
 const isTokenExpired = (token: string): boolean => {
     const decodedToken: JwtPayload = jwtDecode(token);
     return !decodedToken.exp || decodedToken.exp * 1000 < Date.now();
 };
+
 const handleCopy = (value: string): void => {
     if (typeof navigator !== 'undefined') {
         navigator.clipboard.writeText(value);
         openNotification({ message: 'Copied to Clipboard', type: 'info' });
     }
 };
+
 const formatNumber = ({ number, isCurrency = false, currency = 'USD', notation = 'standard' }: IProps): string => {
     const locale = 'en-Gb';
     const numberToFormat = number;

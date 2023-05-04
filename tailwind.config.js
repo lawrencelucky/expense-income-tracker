@@ -5,12 +5,7 @@ module.exports = {
     theme: {
         extend: {
             boxShadow: {},
-            colors: {
-                y2kblack: '#000000',
-                y2kred: {
-                    10: '#E94444',
-                },
-            },
+            colors: {},
             fontFamily: {
                 primary: ['Inter', 'sans-serif'],
             },
