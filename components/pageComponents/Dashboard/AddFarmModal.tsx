@@ -14,7 +14,7 @@ interface IProps {
 
 const AddFarmModal: React.FC<IProps> = ({ openAddFarmModal, setOpenAddFarmModal }) => {
     const [selectedStatus, setSelectedStatus] = useState<{ label: string; id: string }[]>([]);
-    const [statusOptions, setStatusOptions] = useState(['']);
+    const [statusOptions, setStatusOptions] = useState([]);
 
     useEffect(() => {
         if (statusOptions) {

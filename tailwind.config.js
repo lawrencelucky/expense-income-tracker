@@ -6,6 +6,9 @@ module.exports = {
         extend: {
             boxShadow: {},
             colors: {
+                novelblack: {
+                    10: '#26272B',
+                },
                 novelgray: {
                     10: '#EBECF2',
                     20: '#E7E5E4',
