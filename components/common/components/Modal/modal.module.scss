@@ -1,0 +1,71 @@
+.novel-modal.ant-modal {
+    .ant-modal-content {
+        border-radius: 20px;
+        padding: 0px;
+
+        @media (max-width: 768px) {
+            padding: 0;
+            border-radius: 5px;
+        }
+
+        .ant-modal-header {
+            margin-bottom: 0;
+            border-radius: 20px;
+
+            .ant-modal-title {
+                border-bottom: 1px solid #ebecf2;
+                padding: 24px;
+                font-size: 20px;
+            }
+        }
+
+        .ant-modal-body {
+            padding: 24px;
+        }
+
+        .ant-modal-close {
+            top: 0;
+            right: 0;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            width: auto;
+            height: auto;
+            border-radius: 0;
+            border-left: 1px solid #ebecf2;
+            padding: 20px;
+
+            &:hover {
+                background: none;
+            }
+        }
+
+        .ant-modal-footer {
+            padding: 24px;
+            border-top: 1px solid #ebecf2;
+
+            .ant-btn-default {
+                font-weight: 700;
+                font-size: 14px;
+
+                &:hover {
+                    border-color: #ebecf2;
+                    color: #344054;
+                }
+            }
+
+            .ant-btn-primary {
+                background-color: #16b364;
+                font-weight: 700;
+            }
+        }
+    }
+}
+
+.ant-modal-mask {
+    z-index: 1001;
+}
+
+.ant-modal-wrap {
+    z-index: 1002;
+}

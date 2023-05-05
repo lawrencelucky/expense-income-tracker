@@ -5,9 +5,12 @@ import React from 'react';
 interface IProps {
     title: string;
     setVisible: React.Dispatch<React.SetStateAction<boolean>>;
+    hasButton?: boolean;
+    btnText?: string;
+    handleClick?: () => void;
 }
 
-const Header: React.FC<IProps> = ({ title, setVisible }) => {
+const Header: React.FC<IProps> = ({ title, setVisible, hasButton, btnText, handleClick }) => {
     return (
         <div className="flex justify-between items-center">
             <div className="flex flex-1 items-center space-x-16">
@@ -24,9 +27,14 @@ const Header: React.FC<IProps> = ({ title, setVisible }) => {
                     className="py-2 w-2/4 shadow-10 border border-[#FAFAF9] hidden lg:flex"
                 />
             </div>
-            <button className="bg-[#16B364] px-[14px] h-9 flex items-center text-white rounded-lg shadow-20">
-                Add Farm <span className="ml-2">{icons.addIcon()}</span>
-            </button>
+            {hasButton && (
+                <button
+                    onClick={handleClick}
+                    className="bg-novelgreen-10 px-[14px] h-9 flex items-center text-white rounded-lg shadow-20"
+                >
+                    {btnText} <span className="ml-2">{icons.addIcon()}</span>
+                </button>
+            )}
         </div>
     );
 };
