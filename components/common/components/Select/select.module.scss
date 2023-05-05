@@ -1,0 +1,66 @@
+.ant-select.novel-select {
+    border: 1px solid #e7e5e4;
+    background-color: transparent;
+    border-radius: 8px;
+    margin: 0;
+    padding: 8px 0px;
+
+    .ant-select-selector {
+        box-shadow: none;
+        background-color: transparent;
+        border: none;
+        color: #3f3f46;
+        border-radius: 8px;
+
+        .ant-select-selection-item-content {
+            background-color: transparent;
+        }
+
+        .ant-select-selection-item {
+            color: #3f3f46;
+            background-color: transparent;
+            border: 0;
+            margin-inline-end: 0px;
+            padding-inline-end: 0px;
+
+            .ant-select-selection-item-remove {
+                display: none;
+            }
+        }
+
+        .ant-select-selection-search-input {
+            height: 46px;
+        }
+    }
+}
+
+.ant-select-item.ant-select-item-option {
+    margin: 4px 5px;
+    color: #3f3f46;
+}
+
+.ant-select-dropdown .ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
+    background: transparent;
+}
+
+.ant-select-dropdown
+    .ant-select-item-option-selected:not(.ant-select-item-option-disabled)
+    .ant-select-item-option-state {
+    display: none;
+}
+
+.ant-select-dropdown .ant-select-item-option-active:not(.ant-select-item-option-disabled) {
+    background: transparent;
+}
+
+.ant-select:not(.ant-select-disabled):not(.ant-select-customize-input):not(.ant-pagination-size-changer):hover
+    .ant-select-selector {
+    border: none;
+}
+
+.ant-select-focused.ant-select:not(.ant-select-disabled):not(.ant-select-customize-input):not(
+        .ant-pagination-size-changer
+    )
+    .ant-select-selector {
+    box-shadow: none;
+}

@@ -1,0 +1,52 @@
+.novel-input.ant-input {
+    margin: 8px 0 10px 0;
+    padding: 12px 12px;
+    background-color: transparent !important;
+    border-radius: 8px;
+    color: #1e293b !important;
+    border: 1px solid #e7e5e4;
+}
+.novel-input.ant-input::placeholder {
+    color: #a0a0ab !important;
+    opacity: 0.7;
+}
+
+.ant-form-item.novel-label {
+    .ant-row.ant-form-item-row {
+        .ant-col.ant-form-item-label > label {
+            color: #475569 !important;
+            margin-bottom: 10px;
+        }
+    }
+}
+.novel-input.ant-input:focus,
+.ant-input-focused {
+    border-color: #e2e8f0;
+    border-right-width: 1px;
+    outline: 0;
+}
+
+.ant-form-item.novel-label {
+    .ant-row.ant-form-item-row {
+        .ant-col.ant-form-item-label > label {
+            color: #35977f !important;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+    }
+}
+
+.novel-input.ant-input[disabled] {
+    background-color: #f1f5f9 !important;
+    color: #1e293b !important;
+
+    &::placeholder {
+        color: #1e293b !important;
+        opacity: 0.5;
+    }
+}
+
+.ant-input-affix-wrapper:focus,
+.ant-input-affix-wrapper-focused {
+    box-shadow: none;
+}

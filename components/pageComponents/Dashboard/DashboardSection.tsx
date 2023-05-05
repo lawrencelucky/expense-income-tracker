@@ -1,12 +1,20 @@
 import React from 'react';
 import Cards from './Cards';
 import Table from './Table';
+import AddFarmModal from './AddFarmModal';
 
-const DashboardSection = () => {
+interface IProps {
+    openAddFarmModal: boolean;
+    setOpenAddFarmModal: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const DashboardSection: React.FC<IProps> = ({ openAddFarmModal, setOpenAddFarmModal }) => {
     return (
         <div className="space-y-10 mb-20">
             <Cards />
             <Table />
+
+            <AddFarmModal openAddFarmModal={openAddFarmModal} setOpenAddFarmModal={setOpenAddFarmModal} />
         </div>
     );
 };

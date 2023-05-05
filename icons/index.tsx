@@ -193,19 +193,120 @@ const rightIconBig = () => (
     </svg>
 );
 
+const closeIcon = () => (
+    <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+            d="M23 13L13 23M13 13L23 23"
+            stroke="#667085"
+            strokeWidth="1.66667"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+        />
+    </svg>
+);
+
+const locationIcon = () => (
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+            d="M8.00001 1.33398C5.42268 1.33398 3.33334 3.42332 3.33334 6.00065C3.33334 8.64465 6.26934 12.5473 7.48401 14.048C7.75068 14.3773 8.24934 14.3773 8.51601 14.048C9.73068 12.5473 12.6667 8.64465 12.6667 6.00065C12.6667 3.42332 10.5773 1.33398 8.00001 1.33398ZM8.00001 7.66732C7.07934 7.66732 6.33334 6.92132 6.33334 6.00065C6.33334 5.07998 7.07934 4.33398 8.00001 4.33398C8.92068 4.33398 9.66668 5.07998 9.66668 6.00065C9.66668 6.92132 8.92068 7.66732 8.00001 7.66732Z"
+            fill="#16B364"
+        />
+    </svg>
+);
+
+const selectIcon = () => (
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+            fillRule="evenodd"
+            clipRule="evenodd"
+            d="M11.8047 5.52784C11.5444 5.26749 11.1223 5.26749 10.8619 5.52784L8 8.38977L5.13807 5.52784C4.87772 5.26749 4.45561 5.26749 4.19526 5.52784C3.93491 5.78819 3.93491 6.2103 4.19526 6.47065L8 10.2754L11.8047 6.47065C12.0651 6.2103 12.0651 5.78819 11.8047 5.52784Z"
+            fill="black"
+        />
+    </svg>
+);
+
+const checkmarkIcon = () => (
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="9" cy="9" r="9" fill="#16B364" />
+        <mask
+            id="mask0_1418_51425"
+            // style="mask-type:alpha"
+            maskUnits="userSpaceOnUse"
+            x="2"
+            y="2"
+            width="14"
+            height="14"
+        >
+            <rect x="2" y="2" width="14" height="14" fill="#D9D9D9" />
+        </mask>
+        <g mask="url(#mask0_1418_51425)">
+            <path
+                d="M7.57083 12.297L4.45898 9.18516L5.0827 8.56146L7.57083 11.0496L12.9173 5.70312L13.541 6.32683L7.57083 12.297Z"
+                fill="white"
+            />
+        </g>
+    </svg>
+);
+
+const addIconGray = () => (
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+            d="M7.33341 12.666C7.33341 13.0342 7.63189 13.3327 8.00008 13.3327C8.36827 13.3327 8.66675 13.0342 8.66675 12.666V8.66602H12.6667C13.0349 8.66602 13.3334 8.36754 13.3334 7.99935C13.3334 7.63116 13.0349 7.33268 12.6667 7.33268H8.66675V3.33268C8.66675 2.96449 8.36827 2.66602 8.00008 2.66602C7.63189 2.66602 7.33341 2.96449 7.33341 3.33268V7.33268H3.33341C2.96522 7.33268 2.66675 7.63116 2.66675 7.99935C2.66675 8.36754 2.96522 8.66602 3.33341 8.66602H7.33341V12.666Z"
+            fill="#A0A0AB"
+        />
+    </svg>
+);
+
+const grayArrowDown = () => (
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+            fillRule="evenodd"
+            clipRule="evenodd"
+            d="M11.8047 5.52784C11.5444 5.26749 11.1223 5.26749 10.8619 5.52784L8 8.38977L5.13807 5.52784C4.87772 5.26749 4.45561 5.26749 4.19526 5.52784C3.93491 5.78819 3.93491 6.2103 4.19526 6.47065L8 10.2754L11.8047 6.47065C12.0651 6.2103 12.0651 5.78819 11.8047 5.52784Z"
+            fill="#A0A0AB"
+        />
+    </svg>
+);
+
+const infoIcon = () => (
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g clipPath="url(#clip0_1418_51864)">
+            <path
+                d="M5.30234 5.24935C5.43948 4.85949 5.71018 4.53074 6.06648 4.32134C6.42278 4.11194 6.84169 4.0354 7.24902 4.10526C7.65635 4.17513 8.02581 4.3869 8.29197 4.70307C8.55812 5.01924 8.70379 5.4194 8.70317 5.83268C8.70317 6.99935 6.95317 7.58268 6.95317 7.58268M6.99984 9.91602H7.00567M12.8332 6.99935C12.8332 10.221 10.2215 12.8327 6.99984 12.8327C3.77818 12.8327 1.1665 10.221 1.1665 6.99935C1.1665 3.77769 3.77818 1.16602 6.99984 1.16602C10.2215 1.16602 12.8332 3.77769 12.8332 6.99935Z"
+                stroke="#667085"
+                strokeWidth="1.33333"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+            />
+        </g>
+        <defs>
+            <clipPath id="clip0_1418_51864">
+                <rect width="14" height="14" fill="white" />
+            </clipPath>
+        </defs>
+    </svg>
+);
+
 const icons = {
     activitiesIcon,
     addIcon,
+    addIconGray,
     arrowDown,
+    checkmarkIcon,
+    closeIcon,
     dashboardIcon,
+    grayArrowDown,
     hamburgerIcon,
     helpIcon,
+    infoIcon,
     leftIcon,
+    locationIcon,
     notificationIcon,
     progressIcon,
     rightIcon,
     rightIconBig,
     searchIcon,
+    selectIcon,
     settingsIcon,
     shareIcon,
     userIcon,

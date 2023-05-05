@@ -83,6 +83,16 @@ const COOKIES = {
     path: CLIENT_ROUTES.home,
 };
 
+const SCREEN_SIZES = {
+    laptop: 1440,
+    large: 1024,
+    medium: 768,
+    small: 640,
+    xlarge: 1280,
+    xxlarge: 1526,
+    xxxlarge: 1600,
+};
+
 const constants = {
     API,
     APP_MENU,
@@ -90,6 +100,7 @@ const constants = {
     COMING_SOON_APP_MENU,
     COOKIES,
     ENVIRONMENT,
+    SCREEN_SIZES,
     USER_ACTIONS_APP_MENU,
 };
 

@@ -68,12 +68,19 @@ const thousandSeparator = function (x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 };
 
+const replaceItemInArray = <T>(arr: T[], index: number, newItem: T): T[] => [
+    ...arr.slice(0, index),
+    newItem,
+    ...arr.slice(index + 1),
+];
+
 const helpers = {
     formatNumber,
     handleCopy,
     isTokenExpired,
     openNotification,
     query,
+    replaceItemInArray,
     thousandSeparator,
 };
 
