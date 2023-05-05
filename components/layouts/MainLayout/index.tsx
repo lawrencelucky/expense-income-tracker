@@ -6,11 +6,14 @@ import Menu from './Menu';
 interface IProps {
     children: React.ReactNode;
     title: string;
+    hasButton?: boolean;
+    btnText?: string;
+    handleClick?: () => void;
 }
 
 const { Header: AntdHeader, Content, Sider } = Layout;
 
-const MainLayout: React.FC<IProps> = ({ children, title }) => {
+const MainLayout: React.FC<IProps> = ({ children, title, hasButton, btnText, handleClick }) => {
     const [visible, setVisible] = useState(false);
     return (
         <Layout>
@@ -32,7 +35,13 @@ const MainLayout: React.FC<IProps> = ({ children, title }) => {
                         </Sider>
                         <Layout>
                             <AntdHeader className="bg-[#FBFBFB] sticky top-0 z-0 w-full border-b border-[#EBECF2] py-4 px-[20px] lg:px-[38px] h-auto">
-                                <Header setVisible={setVisible} title={title} />
+                                <Header
+                                    hasButton={hasButton}
+                                    btnText={btnText}
+                                    handleClick={handleClick}
+                                    setVisible={setVisible}
+                                    title={title}
+                                />
                             </AntdHeader>
                             <Content>
                                 <div className="overflow-y-auto bg-[#FBFBFB] h-screen px-[20px] lg:px-[38px] py-[30px] lg:py-[56px]">
