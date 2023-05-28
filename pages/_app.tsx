@@ -4,6 +4,7 @@ import 'styles/globals.css';
 import '../styles/nprogress.css';
 import '../styles/override.scss';
 import Router from 'next/router';
+import 'react-toastify/dist/ReactToastify.css';
 import NProgress from 'nprogress';
 import type { AppProps } from 'next/app';
 import { ToastContainer } from 'react-toastify';

@@ -15,6 +15,11 @@ const API = {
         },
         expiredToken: 'Access denied. Token Expired',
     },
+    routes: {
+        auth: {
+            login: 'auth/farmer/login',
+        },
+    },
     timeout: 6000,
 };
 
@@ -24,6 +29,7 @@ const CLIENT_ROUTES = {
     home: '/',
     login: '/auth/login',
     notofications: '/notifications',
+    otp: '/auth/otp',
     profile: '/profile',
     settings: '/settings',
     wallet: '/wallet',

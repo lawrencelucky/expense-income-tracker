@@ -4,7 +4,10 @@ module.exports = {
     plugins: [],
     theme: {
         extend: {
-            boxShadow: {},
+            boxShadow: {
+                'focus-border':
+                    '0px 0px 0px 4px rgba(22, 179, 100, 0.09), 0px 0.639628px 1.27926px rgba(16, 24, 40, 0.05)',
+            },
             colors: {
                 novelgray: {
                     10: '#EBECF2',
