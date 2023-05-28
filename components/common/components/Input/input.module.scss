@@ -1,6 +1,6 @@
 .novel-input.ant-input {
-    margin: 8px 0 10px 0;
-    padding: 12px 12px;
+    margin: 8px 0 0 0;
+    padding: 8px 12px;
     background-color: transparent !important;
     border-radius: 8px;
     color: #1e293b !important;
@@ -21,15 +21,16 @@
 }
 .novel-input.ant-input:focus,
 .ant-input-focused {
-    border-color: #e2e8f0;
+    border-color: #16b364;
     border-right-width: 1px;
     outline: 0;
+    box-shadow: 0px 0px 8px rgba(22, 179, 100, 0.5);
 }
 
 .ant-form-item.novel-label {
     .ant-row.ant-form-item-row {
         .ant-col.ant-form-item-label > label {
-            color: #35977f !important;
+            color: #16b364 !important;
             margin-bottom: 10px;
             font-weight: 600;
         }
