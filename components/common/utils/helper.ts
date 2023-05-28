@@ -74,9 +74,49 @@ const replaceItemInArray = <T>(arr: T[], index: number, newItem: T): T[] => [
     ...arr.slice(index + 1),
 ];
 
+function hashPhoneNumber(phoneNumber: string): string {
+    const countryCodeRegex = /^\+(\d{1,3})/;
+    const areaCodeRegex = /^(\d{2})(\d+)/;
+
+    // Check if the phone number starts with a country code
+    const countryCodeMatch = phoneNumber.match(countryCodeRegex);
+    let countryCode = '';
+    if (countryCodeMatch) {
+        countryCode = countryCodeMatch[1];
+    }
+
+    // Remove any non-digit characters from the phone number
+    const digitsOnly = phoneNumber.replace(/\D/g, '');
+
+    // Check if the phone number contains an area code
+    const areaCodeMatch = digitsOnly.match(areaCodeRegex);
+    let areaCode = '';
+    let remainingDigits = digitsOnly;
+    if (areaCodeMatch) {
+        areaCode = areaCodeMatch[1];
+        remainingDigits = areaCodeMatch[2];
+    }
+
+    // Mask the middle digits
+    const maskedDigits = remainingDigits.slice(0, -6) + '******' + remainingDigits.slice(-3);
+
+    // Format the hashed phone number
+    let hashedPhoneNumber = '';
+    if (countryCode) {
+        hashedPhoneNumber += `+${countryCode}`;
+    }
+    if (areaCode) {
+        hashedPhoneNumber += `${areaCode}`;
+    }
+    hashedPhoneNumber += `${maskedDigits}`;
+
+    return hashedPhoneNumber;
+}
+
 const helpers = {
     formatNumber,
     handleCopy,
+    hashPhoneNumber,
     isTokenExpired,
     openNotification,
     query,

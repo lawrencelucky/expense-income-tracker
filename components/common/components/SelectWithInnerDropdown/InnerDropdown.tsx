@@ -65,7 +65,9 @@ const InnerDropdown: React.FC<IProps> = ({ option, setSelected, selected }) => {
                     {items.map((item, idx) => (
                         <div
                             key={idx}
-                            onClick={() => handleSelect(item)}
+                            onClick={() => {
+                                handleSelect(item);
+                            }}
                             className={`${
                                 selected.find((sctd) => sctd.id.includes(`${option}-${item}`)) ? 'bg-novelgreen-20' : ''
                             } p-2`}
