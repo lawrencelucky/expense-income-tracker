@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Drawer, Layout } from 'antd';
 import Header from './Header';
 import Menu from './Menu';
+import useAuth from '@/hooks/guards/useAuth';
 
 interface IProps {
     children: React.ReactNode;
@@ -14,6 +15,8 @@ interface IProps {
 const { Header: AntdHeader, Content, Sider } = Layout;
 
 const MainLayout: React.FC<IProps> = ({ children, title, hasButton, btnText, handleClick }) => {
+    useAuth();
+
     const [visible, setVisible] = useState(false);
     return (
         <Layout>

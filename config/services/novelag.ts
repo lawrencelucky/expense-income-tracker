@@ -26,7 +26,7 @@ novelag.interceptors.request.use(
         }
         if (token && helpers.isTokenExpired(token)) {
             nookies.destroy(null, COOKIES.key, { path: CLIENT_ROUTES.home });
-            window.location.pathname = CLIENT_ROUTES.login;
+            window.location.pathname = CLIENT_ROUTES.auth.login;
         }
         return x;
     },
@@ -48,7 +48,7 @@ novelag.interceptors.response.use(
                     'Access denied. No token provided.'.toLocaleLowerCase())
         ) {
             nookies.destroy(null, COOKIES.key, { path: CLIENT_ROUTES.home });
-            window.location.pathname = CLIENT_ROUTES.login;
+            window.location.pathname = CLIENT_ROUTES.auth.login;
         }
         return Promise.reject(error);
     },

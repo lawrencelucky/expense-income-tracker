@@ -6,7 +6,7 @@ const ENVIRONMENT = {
 };
 
 const API = {
-    baseURL: 'https://st1.novel-ag.com/api/',
+    baseURL: 'https://st1.novel-ag.com/api',
     error: {
         aborted: {
             code: 'ECONNABORTED',
@@ -18,6 +18,15 @@ const API = {
     routes: {
         auth: {
             login: 'auth/farmer/login',
+            register: '/auth/farmer/register',
+        },
+        states: {
+            getLocalGovernments: '/local-governments/%state_id%?sort_field=id&sort_type=asc',
+            getStates: '/states?sort_field=id&sort_type=asc',
+            getWards: '/wards/%local_government_id%?sort_field=id&sort_type=asc',
+        },
+        user: {
+            getDetails: '',
         },
     },
     timeout: 6000,
@@ -25,9 +34,13 @@ const API = {
 
 const CLIENT_ROUTES = {
     activities: '/activities',
+    auth: {
+        login: '/auth/login',
+        register: '/auth/register',
+        verifyRegistration: '/auth/verify-registration',
+    },
     dashboard: '/dashboard',
     home: '/',
-    login: '/auth/login',
     notofications: '/notifications',
     otp: '/auth/otp',
     profile: '/profile',

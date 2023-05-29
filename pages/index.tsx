@@ -1,18 +1,17 @@
-import React from 'react';
-import Head from 'next/head';
-import Image from 'next/image';
-import { Inter } from 'next/font/google';
-import styles from '@/styles/Home.module.css';
-import { Typography } from 'antd';
+import React, { useEffect } from 'react';
 import PageHead from '@/components/common/components/PageHead';
-
-const inter = Inter({ subsets: ['latin'] });
+import { useRouter } from 'next/router';
+import constants from '@/config/constants';
 
 export default function Home() {
+    const router = useRouter();
+
+    useEffect(() => {
+        router.replace(constants.CLIENT_ROUTES.dashboard);
+    }, [router]);
     return (
         <>
             <PageHead title="Home" />
-            <Typography.Title>Hello Dashboard</Typography.Title>
         </>
     );
 }
