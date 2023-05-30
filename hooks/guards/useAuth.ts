@@ -18,7 +18,7 @@ const useAuth = (redirectUrl = '/auth/login') => {
             clearTimeout(timeout);
             timeout = setTimeout(() => {
                 destroyCookie(null, COOKIES.key); // Update the cookie key to match your configuration
-                router.push('/auth/login');
+                router.replace('/auth/login');
             }, 1800000); // 30 minutes
         };
 
@@ -56,9 +56,8 @@ const useAuth = (redirectUrl = '/auth/login') => {
     useEffect(() => {
         const cookies = parseCookies();
         const token = cookies[COOKIES.key];
-        console.log(token);
         if (!token) {
-            router.push('/auth/login');
+            router.replace('/auth/login');
         }
     }, [router, redirectUrl, data]);
 

@@ -28,10 +28,17 @@ const login = (payload: Payload): Promise<ILogin> => request.post({ payload, rou
 const register = (payload: Payload): Promise<IPostRegister> => request.post({ payload, route: routes.auth.register });
 
 const enterPin = (payload: Payload): Promise<IsetUpPin> => request.post({ payload, route: routes.auth.pin });
+const verifyRegistration = (payload: Payload): Promise<ApiResponse> =>
+    request.post({ payload, route: routes.auth.verifyRegistration });
+
+const setPin = (payload: Payload): Promise<ApiResponse> => request.post({ payload, route: routes.auth.setPin });
+
 const auth = {
     enterPin,
     login,
     register,
+    setPin,
+    verifyRegistration,
 };
 
 export default auth;

@@ -22,11 +22,7 @@ novelag.interceptors.request.use(
         const token = cookies[COOKIES.key];
 
         if (x.headers && token) {
-            x.headers['x-auth-token'] = encodeURIComponent(token);
-        }
-        if (token && helpers.isTokenExpired(token)) {
-            nookies.destroy(null, COOKIES.key, { path: CLIENT_ROUTES.home });
-            window.location.pathname = CLIENT_ROUTES.auth.login;
+            x.headers.Authorization = `Bearer ${token}`;
         }
         return x;
     },

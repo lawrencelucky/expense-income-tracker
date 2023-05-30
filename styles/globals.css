@@ -36,7 +36,7 @@
 
 @layer components {
     .novel-btn {
-        @apply w-full bg-novelgreen-10 h-9 text-novelwhite font-semibold hover:bg-novelgreen-10 hover:!text-novelwhite hover:!border-novelgreen-20;
+        @apply w-full bg-novelgreen-10 h-12 text-novelwhite font-semibold hover:bg-novelgreen-10 hover:!text-novelwhite hover:!border-novelgreen-20;
     }
 }
 
