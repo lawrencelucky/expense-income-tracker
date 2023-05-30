@@ -18,6 +18,8 @@ const API = {
     routes: {
         auth: {
             register: '/auth/farmer/register',
+            setPin: '/auth/farmer/set-pin',
+            verifyRegistration: '/auth/farmer/verify-otp',
         },
         states: {
             getLocalGovernments: '/local-governments/%state_id%?sort_field=id&sort_type=asc',
@@ -36,6 +38,7 @@ const CLIENT_ROUTES = {
     auth: {
         login: '/auth/login',
         register: '/auth/register',
+        setPin: '/auth/setup-pin',
         verifyRegistration: '/auth/verify-registration',
     },
     dashboard: '/dashboard',

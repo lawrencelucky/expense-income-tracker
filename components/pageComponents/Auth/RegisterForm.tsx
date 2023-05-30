@@ -14,6 +14,7 @@ import logger from '@/logger.config';
 import useGetStates from '@/hooks/states/useGetStates';
 import useGetLocalGovernment from '@/hooks/states/useGetLocalGovernment';
 import useGetWard from '@/hooks/states/useGetWards';
+import nookies from 'nookies';
 
 const RegisterForm = () => {
     const router = useRouter();
@@ -77,23 +78,27 @@ const RegisterForm = () => {
                 ward_id,
             };
 
-            console.log(payload);
+            try {
+                const response = await auth.register(payload);
+                if (!response.success) {
+                    return helpers.openNotification({ message: response.message, type: 'error' });
+                }
+                helpers.openNotification({ message: response.message, type: 'success' });
 
-            // try {
-            //     const response = await auth.register(payload);
-            //     if (!response.success) {
-            //         return helpers.openNotification({ message: response.message, type: 'error' });
-            //     }
-            //     helpers.openNotification({ message: response.message, type: 'success' });
-            //     return await router.replace({
-            //         pathname: constants.CLIENT_ROUTES.auth.verifyRegistration,
-            //         query: { otp: response.data.phone },
-            //     });
-            // } catch (error) {
-            //     return logger(error);
-            // } finally {
-            //     setSubmitting(false);
-            // }
+                nookies.set(null, constants.COOKIES.key, response.token, {
+                    maxAge: constants.COOKIES.maxAge,
+                    path: constants.COOKIES.path,
+                });
+
+                return await router.replace({
+                    pathname: constants.CLIENT_ROUTES.auth.verifyRegistration,
+                    query: { otp: response.data.phone },
+                });
+            } catch (error) {
+                return logger(error);
+            } finally {
+                setSubmitting(false);
+            }
         },
     });
 

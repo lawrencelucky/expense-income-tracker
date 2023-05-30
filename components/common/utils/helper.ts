@@ -74,7 +74,7 @@ const replaceItemInArray = <T>(arr: T[], index: number, newItem: T): T[] => [
     ...arr.slice(index + 1),
 ];
 
-function hashPhoneNumber(phoneNumber: string): string {
+function hashPhoneNumber(phoneNumber: any): string {
     const countryCodeRegex = /^\+(\d{1,3})/;
     const areaCodeRegex = /^(\d{2})(\d+)/;
 
