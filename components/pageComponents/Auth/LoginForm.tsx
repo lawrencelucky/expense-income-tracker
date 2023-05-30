@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Form, Typography } from 'antd';
-// import SigninButton from './SigninButton';
 import Image from 'next/image';
+import schema from './validation';
 import { useFormik } from 'formik';
 import auth from '@/services/auth';
 import helpers from '@/common/utils/helper';
@@ -10,6 +10,8 @@ import { useRouter } from 'next/router';
 import logger from '@logger';
 import Input from '@/components/common/components/Input';
 import Button from '@/components/common/components/Button';
+import Link from 'next/link';
+import nookies from 'nookies';
 
 const { COOKIES, CLIENT_ROUTES } = constants;
 
@@ -28,35 +30,39 @@ const LoginInputForm = () => {
     // };
     const formik = useFormik({
         initialValues: {
-            loginInputData: '',
+            login: '',
         },
-        onSubmit: async ({ loginInputData }) => {
+        onSubmit: async ({ login }) => {
             try {
-                setLoading(true);
+                // setLoading(true);
                 const payload = {
-                    loginInputData,
+                    login,
                 };
                 const response = await auth.login(payload);
                 if (!response.success) {
-                    setLoading(false);
+                    // setLoading(false);
                     return helpers.openNotification({ message: response.data[0], type: 'error' });
-                } else {
-                    setLoading(false);
-                    helpers.openNotification({ message: response.data, type: 'success' });
                 }
+                nookies.set(null, COOKIES.key, response.token, {
+                    maxAge: COOKIES.maxAge,
+                    path: COOKIES.path,
+                });
+                helpers.openNotification({ message: response.data, type: 'success' });
+
                 return await router.push({
                     pathname: CLIENT_ROUTES.otp,
-                    query: { loginInputData },
+                    query: { login },
                 });
             } catch (error) {
                 return logger(error);
             }
         },
+        // validationSchema: schema.loginSchema,
     });
     const { handleChange, values, handleSubmit, isSubmitting, errors, touched } = formik;
-    useEffect(() => {
-        console.log('Touched formik', handleChange);
-    }, [handleChange]);
+    // useEffect(() => {
+    //     console.log('Touched formik', handleChange);
+    // }, [handleChange]);
     return (
         <div className="bg-novelwhite py-8 w-[368px] border-novelgray-60 shadow-10 rounded-3xl">
             <div className="flex flex-col items-center">
@@ -73,12 +79,12 @@ const LoginInputForm = () => {
                         <label className="block font-medium">Phone No. or email</label>
                         <Input
                             type="text"
-                            name={'loginInputData'}
-                            value={values.loginInputData}
+                            name={'login'}
+                            value={values.login}
                             onChange={handleChange}
-                            help={touched.loginInputData && errors.loginInputData}
+                            help={touched.login && errors.login}
                             placeholder="Enter your phone no. or email"
-                            validateStatus={(touched.loginInputData && errors.loginInputData && 'error') || ''}
+                            validateStatus={(touched.login && errors.login && 'error') || ''}
                         />
                         {/* <input
                             id="loginInputData"
@@ -100,7 +106,10 @@ const LoginInputForm = () => {
                         />
                     </div>
                     <span className="flex justify-center mt-[14px] mb-[14px] text-[#A0A0AB]">
-                        Don’t have an account? <span className="text-[#26272B]"> Sign up</span>
+                        Don’t have an account?{' '}
+                        <Link href={constants.CLIENT_ROUTES.auth.register} className="!text-novelgray-40">
+                            <span className="text-[#26272B]"> Sign up</span>
+                        </Link>
                     </span>
                 </Form>
             </div>

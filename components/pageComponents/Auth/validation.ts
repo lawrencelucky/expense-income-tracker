@@ -21,7 +21,7 @@ const otpSchema = yup.object({
 
 const loginSchema = yup.object({
     email: yup.string().email().required('Please enter a valid email address').label('Email address'),
-    password: yup.string().label('Enter password').required('Please enter your password to continue'),
+    phoneNumber: yup.number().required('Please enter a Phone no.').label('Phone no.'),
 });
 
 const schema = {

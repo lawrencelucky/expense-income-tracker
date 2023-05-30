@@ -1,14 +1,14 @@
 import PageHead from '@/components/common/components/PageHead';
 import AuthLayout from '@/components/layouts/AuthLayout';
-import SetupPinForm from '@/components/pageComponents/Auth/SetupPinForm';
+import OtpPinForm from '@/components/pageComponents/Auth/OtpPinForm';
 import React from 'react';
 
 const OtpLogin = () => {
     return (
         <>
-            <PageHead title="Setup Pin" />
+            <PageHead title="Pin Page" />
             <AuthLayout>
-                <SetupPinForm />
+                <OtpPinForm />
             </AuthLayout>
         </>
     );

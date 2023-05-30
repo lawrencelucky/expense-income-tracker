@@ -26,7 +26,7 @@ const networkError = (errorCode: string): void => {
 };
 
 const get = async <T>({ route, config }: { route: string; config?: AxiosRequestConfig }): Promise<T> => {
-    const headers = { ...(token && { 'x-auth-token': encodeURIComponent(token) }) };
+    const headers = { ...(token && { Authorization: `Bearer ${token}` }) };
     const options: AxiosRequestConfig = {
         headers,
         ...config,

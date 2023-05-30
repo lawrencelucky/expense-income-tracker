@@ -18,6 +18,7 @@ const API = {
     routes: {
         auth: {
             login: 'auth/farmer/login',
+            pin: 'auth/farmer/verify-pin-code',
             register: '/auth/farmer/register',
         },
         states: {
