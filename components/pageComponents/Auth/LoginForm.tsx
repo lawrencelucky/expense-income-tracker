@@ -32,7 +32,7 @@ const LoginInputForm = () => {
         initialValues: {
             login: '',
         },
-        onSubmit: async ({ login }) => {
+        onSubmit: async ({ login }, { setSubmitting }) => {
             try {
                 // setLoading(true);
                 const payload = {
@@ -55,6 +55,8 @@ const LoginInputForm = () => {
                 });
             } catch (error) {
                 return logger(error);
+            } finally {
+                setSubmitting(false);
             }
         },
         // validationSchema: schema.loginSchema,
@@ -86,19 +88,11 @@ const LoginInputForm = () => {
                             placeholder="Enter your phone no. or email"
                             validateStatus={(touched.login && errors.login && 'error') || ''}
                         />
-                        {/* <input
-                            id="loginInputData"
-                            name="loginInputData"
-                            type="text"
-                            className="border-[1px] rounded-[8px] mt-[6px] border-[#E7E5E4] p-[4px] focus:outline-none focus:border-[#16B364] focus:shadow-focus-border"
-                            onChange={handleChange}
-                            value={values.loginInputData}
-                        />{' '} */}
                     </div>
                     <hr className="" />
                     <div className="mt-[24px] mb-[14px] px-6">
                         <Button
-                            name="Sign up"
+                            name="Sign in"
                             loading={isSubmitting}
                             disabled={isSubmitting}
                             className="novel-btn"

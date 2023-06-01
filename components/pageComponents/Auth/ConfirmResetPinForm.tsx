@@ -1,59 +1,57 @@
 import Button from '@/components/common/components/Button';
 import OTPInput from '@/components/common/components/OTPInput';
 import helpers from '@/components/common/utils/helper';
+import constants from '@/config/constants';
 import auth from '@/config/services/auth';
 import { Form, Typography } from 'antd';
 import { useFormik } from 'formik';
 import Image from 'next/image';
 import React from 'react';
-import nookies from 'nookies';
-import constants from '@config/constants';
 import { useRouter } from 'next/router';
 import logger from '@/logger.config';
-import Link from 'next/link';
 
-const { COOKIES, CLIENT_ROUTES } = constants;
-
-const OtpPinForm = () => {
+const ConfirmResetPinForm = () => {
     const router = useRouter();
+
     const formik = useFormik({
         enableReinitialize: true,
         initialValues: {
             pin: '',
         },
-        onSubmit: async ({ pin }) => {
+        onSubmit: async ({ pin }, { setSubmitting }) => {
+            const payload = {
+                confirm_pin: router.query.pin,
+                pin,
+            };
+
             try {
-                const payload = {
-                    pin,
-                };
-                const response = await auth.enterPin(payload);
+                const response = await auth.confirmResetPin(payload);
                 if (!response.success) {
-                    return helpers.openNotification({ message: response.data[0], type: 'error' });
+                    return helpers.openNotification({ message: response.message, type: 'error' });
                 }
-                nookies.set(null, COOKIES.key, response.data, {
-                    maxAge: COOKIES.maxAge,
-                    path: COOKIES.path,
-                });
-                helpers.openNotification({ message: response.data, type: 'success' });
-                return await router.push({
-                    pathname: CLIENT_ROUTES.dashboard,
+                helpers.openNotification({ message: response.message, type: 'success' });
+                return await router.replace({
+                    pathname: constants.CLIENT_ROUTES.auth.login,
                 });
             } catch (error) {
                 return logger(error);
+            } finally {
+                setSubmitting(false);
             }
         },
     });
 
     const { touched, errors, setFieldValue, isSubmitting, handleSubmit } = formik;
+
     return (
         <div className="bg-novelwhite py-8 px-4 w-[368px] border-novelgray-60 shadow-10 rounded-3xl">
             <div className="flex flex-col items-center">
                 <div className="relative w-12 h-12 mb-5">
                     <Image src="/svgs/logo.svg" alt="novel logo" fill />
                 </div>
-                <Typography.Text className="font-bold text-lg block mb-1">Enter your pin</Typography.Text>
+                <Typography.Text className="font-bold text-lg block mb-1">Confirm pin</Typography.Text>
                 <Typography.Text className="text-novelblack-20 block mb-6">
-                    Enter your pin to access your dashboard
+                    Re-Enter your new pin to access your dashbaord
                 </Typography.Text>
             </div>
 
@@ -71,22 +69,14 @@ const OtpPinForm = () => {
                         setFieldValue('pin', pin);
                     }}
                 />
-                <div className="mt-[32px] mb-[24px]">
-                    <Typography.Text className="text-novelgray-30 block text-center">
-                        Forgot pin?{' '}
-                        <Link href={constants.CLIENT_ROUTES.auth.reset} className="!text-novelgray-40 cursor-pointer">
-                            Click to reset.
-                        </Link>
-                    </Typography.Text>
-                </div>
-                <hr className="" />
-                <div className="mt-[24px]">
+
+                <div className="mt-10">
                     <Button
                         name="Continue"
                         loading={isSubmitting}
                         disabled={isSubmitting}
-                        className="novel-btn"
                         onClick={() => handleSubmit()}
+                        className="novel-btn"
                     />
                 </div>
             </Form>
@@ -94,4 +84,4 @@ const OtpPinForm = () => {
     );
 };
 
-export default OtpPinForm;
+export default ConfirmResetPinForm;
