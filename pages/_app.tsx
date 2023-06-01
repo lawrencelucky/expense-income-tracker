@@ -1,4 +1,5 @@
 import React from 'react';
+import 'antd/dist/reset.css';
 import 'styles/output.scss';
 import 'styles/globals.css';
 import '../styles/nprogress.css';
