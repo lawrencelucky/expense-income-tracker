@@ -31,7 +31,7 @@ module.exports = {
                 },
             },
             fontFamily: {
-                primary: ['Satoshi', 'sans-serif'],
+                primary: ['satoshi', 'sans-serif'],
             },
         },
     },

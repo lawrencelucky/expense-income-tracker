@@ -5,7 +5,7 @@ interface IProps {
 }
 
 const AuthLayout: React.FC<IProps> = ({ children }) => {
-    return <div className="min-h-screen grid place-items-center bg-novelgray-50">{children}</div>;
+    return <div className="min-h-screen grid place-items-center py-[7.4rem] bg-novelgray-50">{children}</div>;
 };
 
 export default AuthLayout;

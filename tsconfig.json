@@ -30,7 +30,8 @@
             "@logger": ["logger.config"],
             "@/context/*": ["config/context/*"],
             "@/constants/*": ["constants/*"],
-            "@/styles/*": ["styles/*"]
+            "@/styles/*": ["styles/*"],
+            "@lottie/*": ["lottie/*"]
         }
     },
     "include": [

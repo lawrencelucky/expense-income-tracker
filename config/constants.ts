@@ -20,6 +20,7 @@ const API = {
             login: 'auth/farmer/login',
             pin: 'auth/farmer/verify-pin-code',
             register: '/auth/farmer/register',
+            resentOtp: '/auth/farmer/resend-otp',
             resetPin: 'auth/farmer/forgot-pin',
             setPin: '/auth/farmer/set-pin',
             setUpResetPin: '/auth/farmer/reset-pin',
