@@ -1,6 +1,6 @@
 export interface INotification {
     type: 'success' | 'error' | 'info';
-    message: string;
+    message: any;
     description?: string;
 }
 
