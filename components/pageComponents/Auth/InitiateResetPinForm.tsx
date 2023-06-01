@@ -10,6 +10,7 @@ import helpers from '@/components/common/utils/helper';
 import constants from '@/config/constants';
 import logger from '@/logger.config';
 import nookies from 'nookies';
+import schema from './validation';
 
 const { COOKIES, CLIENT_ROUTES } = constants;
 
@@ -46,6 +47,7 @@ const InitiateResetPinForm = () => {
                 setSubmitting(false);
             }
         },
+        validationSchema: schema.initiatePhone,
     });
 
     const { touched, errors, isSubmitting, handleSubmit, values, handleChange } = formik;

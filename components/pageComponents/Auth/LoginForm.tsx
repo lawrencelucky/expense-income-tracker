@@ -49,6 +49,7 @@ const LoginInputForm = () => {
                 setSubmitting(false);
             }
         },
+        validationSchema: schema.loginSchema,
     });
     const { handleChange, values, handleSubmit, isSubmitting, errors, touched } = formik;
 

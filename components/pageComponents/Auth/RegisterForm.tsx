@@ -101,7 +101,7 @@ const RegisterForm = () => {
                 setSubmitting(false);
             }
         },
-        validationSchema: schema.registerSchema,
+        // validationSchema: schema.registerSchema,
     });
 
     const { touched, errors, setFieldValue, isSubmitting, handleSubmit, values, handleChange } = formik;
