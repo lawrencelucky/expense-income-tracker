@@ -17,9 +17,15 @@ const API = {
     },
     routes: {
         auth: {
+            login: 'auth/farmer/login',
+            pin: 'auth/farmer/verify-pin-code',
             register: '/auth/farmer/register',
+            resentOtp: '/auth/farmer/resend-otp',
+            resetPin: 'auth/farmer/forgot-pin',
             setPin: '/auth/farmer/set-pin',
+            setUpResetPin: '/auth/farmer/reset-pin',
             verifyRegistration: '/auth/farmer/verify-otp',
+            verifyResetOtp: '/auth/farmer/verify-forgot-pin-otp',
         },
         states: {
             getLocalGovernments: '/local-governments/%state_id%?sort_field=id&sort_type=asc',
@@ -36,14 +42,19 @@ const API = {
 const CLIENT_ROUTES = {
     activities: '/activities',
     auth: {
+        confirmResetPin: '/auth/confirm-reset-pin',
         login: '/auth/login',
         register: '/auth/register',
+        reset: '/auth/initiate-reset-pin',
         setPin: '/auth/setup-pin',
+        setUpResetPin: '/auth/setup-reset-pin',
         verifyRegistration: '/auth/verify-registration',
+        verifyResetOtp: '/auth/verify-reset-otp',
     },
     dashboard: '/dashboard',
     home: '/',
     notofications: '/notifications',
+    otp: '/auth/otp',
     profile: '/profile',
     settings: '/settings',
     wallet: '/wallet',

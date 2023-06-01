@@ -1,10 +1,11 @@
 .novel-input.ant-input {
-    margin: 8px 0 0 0;
+    margin: 0px;
     padding: 8px 12px;
     background-color: transparent !important;
     border-radius: 8px;
     color: #1e293b !important;
     border: 1px solid #e7e5e4;
+    font-family: 'satoshi';
 }
 .novel-input.ant-input::placeholder {
     color: #a0a0ab !important;
@@ -28,6 +29,7 @@
 }
 
 .ant-form-item.novel-label {
+    margin-bottom: 0;
     .ant-row.ant-form-item-row {
         .ant-col.ant-form-item-label > label {
             color: #16b364 !important;

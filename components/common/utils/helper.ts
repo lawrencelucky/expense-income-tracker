@@ -112,11 +112,14 @@ function hashPhoneNumber(phoneNumber: any): string {
 
     return hashedPhoneNumber;
 }
+const hideDigits = (cc, num = 5, mask = '*') =>
+    `${cc}`.replace(new RegExp(`(?<=.{${Math.floor((`${cc}`.length - num) / 2)}}).{${num}}`), mask.repeat(num));
 
 const helpers = {
     formatNumber,
     handleCopy,
     hashPhoneNumber,
+    hideDigits,
     isTokenExpired,
     openNotification,
     query,
