@@ -42,12 +42,15 @@ const verifyResetOtp = (payload: Payload): Promise<IsetUp> =>
 const confirmResetPin = (payload: Payload): Promise<ApiResponse> =>
     request.put({ payload, route: routes.auth.setUpResetPin });
 
+const resendOtp = (): Promise<ApiResponse> => request.get({ route: routes.auth.resentOtp });
+
 const auth = {
     confirmResetPin,
     enterPin,
     forgotPin,
     login,
     register,
+    resendOtp,
     setPin,
     verifyRegistration,
     verifyResetOtp,
