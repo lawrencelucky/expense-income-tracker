@@ -20,28 +20,18 @@ const LoginInputForm = () => {
     const [loading, setLoading] = useState<boolean>(false);
     const [formState, setFormState] = useState<boolean>(false);
 
-    // const handleClick = () => {
-    //     setLoading(true);
-
-    //     // Simulate an asynchronous action
-    //     setTimeout(() => {
-    //         setLoading(false);
-    //     }, 2000);
-    // };
     const formik = useFormik({
         initialValues: {
             login: '',
         },
         onSubmit: async ({ login }, { setSubmitting }) => {
             try {
-                // setLoading(true);
                 const payload = {
                     login,
                 };
                 const response = await auth.login(payload);
                 if (!response.success) {
-                    // setLoading(false);
-                    return helpers.openNotification({ message: response.data[0], type: 'error' });
+                    return helpers.openNotification({ message: response.message, type: 'error' });
                 }
                 nookies.set(null, COOKIES.key, response.token, {
                     maxAge: COOKIES.maxAge,
@@ -59,16 +49,13 @@ const LoginInputForm = () => {
                 setSubmitting(false);
             }
         },
-        // validationSchema: schema.loginSchema,
     });
     const { handleChange, values, handleSubmit, isSubmitting, errors, touched } = formik;
-    // useEffect(() => {
-    //     console.log('Touched formik', handleChange);
-    // }, [handleChange]);
+
     return (
         <div className="bg-novelwhite py-8 w-[368px] border-novelgray-60 shadow-10 rounded-3xl">
             <div className="flex flex-col items-center">
-                <div className="relative w-12 h-12 mb-5">
+                <div className="relative w-12 h-12 mb-5 boxShadow-10">
                     <Image src="/svgs/logo.svg" alt="novel logo" fill />
                 </div>
 
