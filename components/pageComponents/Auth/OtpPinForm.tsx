@@ -28,7 +28,7 @@ const OtpPinForm = () => {
                 };
                 const response = await auth.enterPin(payload);
                 if (!response.success) {
-                    return helpers.openNotification({ message: response.data[0], type: 'error' });
+                    return helpers.openNotification({ message: response.message, type: 'error' });
                 }
                 nookies.set(null, COOKIES.key, response.data, {
                     maxAge: COOKIES.maxAge,
