@@ -53,10 +53,13 @@ const CLIENT_ROUTES = {
     },
     dashboard: '/dashboard',
     home: '/',
+    investment: '/investment',
+    loans: '/loans',
     notofications: '/notifications',
     otp: '/auth/otp',
     profile: '/profile',
     settings: '/settings',
+    training: '/training',
     wallet: '/wallet',
 };
 
@@ -80,6 +83,21 @@ const APP_MENU = [
         icon: icons.walletIcon(),
         link: CLIENT_ROUTES.wallet,
         name: 'Wallet',
+    },
+    {
+        icon: icons.loanIcon(),
+        link: CLIENT_ROUTES.loans,
+        name: 'Loans',
+    },
+    {
+        icon: icons.trainingIcon(),
+        link: CLIENT_ROUTES.training,
+        name: 'Training',
+    },
+    {
+        icon: icons.investmentIcon(),
+        link: CLIENT_ROUTES.investment,
+        name: 'Investment',
     },
 ];
 
