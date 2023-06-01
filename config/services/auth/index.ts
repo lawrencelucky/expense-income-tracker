@@ -28,6 +28,7 @@ const login = (payload: Payload): Promise<ILogin> => request.post({ payload, rou
 const register = (payload: Payload): Promise<IPostRegister> => request.post({ payload, route: routes.auth.register });
 
 const enterPin = (payload: Payload): Promise<IsetUp> => request.post({ payload, route: routes.auth.pin });
+
 const verifyRegistration = (payload: Payload): Promise<ApiResponse> =>
     request.post({ payload, route: routes.auth.verifyRegistration });
 
@@ -40,6 +41,7 @@ const verifyResetOtp = (payload: Payload): Promise<IsetUp> =>
 
 const confirmResetPin = (payload: Payload): Promise<ApiResponse> =>
     request.put({ payload, route: routes.auth.setUpResetPin });
+
 const auth = {
     confirmResetPin,
     enterPin,
