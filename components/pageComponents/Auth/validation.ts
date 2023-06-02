@@ -13,15 +13,45 @@ const otpSchema = yup.object({
     otp: yup.string().length(6).required().label('OTP').trim(),
 });
 
+const resetOtp = yup.object({
+    pin: yup.string().length(4).required().label('OTP').trim(),
+});
+const validateEmail = (email: string | undefined) => {
+    return yup.string().email().isValidSync(email);
+};
+
+const validatePhone = (phone: number | undefined) => {
+    return yup
+        .number()
+        .integer()
+        .positive()
+        .test((phone) => {
+            return phone && phone.toString().length == 10 && phone.toString().length <= 14 ? true : false;
+        })
+        .isValidSync(phone);
+};
 const loginSchema = yup.object({
-    email: yup.string().email().required('Please enter a valid email address').label('Email address'),
-    phoneNumber: yup.number().required('Please enter a Phone no.').label('Phone no.'),
+    login: yup
+        .string()
+        .required('Please enter a valid email address or Phone no.')
+        .test('email_or_phone', 'Email / Phone is invalid', (value) => {
+            return validateEmail(value) || validatePhone(parseInt(value ?? '0'));
+        }),
+});
+
+const initiatePhone = yup.object({
+    phone: yup
+        .string()
+        .matches(/^\d{11}$/, 'Invalid phone number')
+        .required('Phone number is required'),
 });
 
 const schema = {
+    initiatePhone,
     loginSchema,
     otpSchema,
     registerSchema,
+    resetOtp,
 };
 
 export default schema;

@@ -9,6 +9,7 @@ import auth from '@/config/services/auth';
 import helpers from '@/components/common/utils/helper';
 import constants from '@/config/constants';
 import logger from '@/logger.config';
+import schema from './validation';
 
 const VerifyResetOtpForm = () => {
     const router = useRouter();
@@ -38,6 +39,7 @@ const VerifyResetOtpForm = () => {
                 setSubmitting(false);
             }
         },
+        validationSchema: schema.resetOtp,
     });
 
     const { touched, errors, isSubmitting, handleSubmit, values, handleChange } = formik;

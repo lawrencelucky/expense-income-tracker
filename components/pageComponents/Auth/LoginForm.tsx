@@ -49,6 +49,7 @@ const LoginInputForm = () => {
                 setSubmitting(false);
             }
         },
+        validationSchema: schema.loginSchema,
     });
     const { handleChange, values, handleSubmit, isSubmitting, errors, touched } = formik;
 
@@ -89,7 +90,7 @@ const LoginInputForm = () => {
                     <span className="flex justify-center mt-[14px] mb-[14px] text-[#A0A0AB]">
                         Don’t have an account?{' '}
                         <Link href={constants.CLIENT_ROUTES.auth.register} className="!text-novelgray-40">
-                            <span className="text-[#26272B]"> Sign up</span>
+                            <span className="text-[#26272B] mx-1"> Sign up</span>
                         </Link>
                     </span>
                 </Form>
