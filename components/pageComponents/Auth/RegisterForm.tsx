@@ -82,7 +82,7 @@ const RegisterForm = () => {
             try {
                 const response = await auth.register(payload);
                 if (!response.success) {
-                    return helpers.openNotification({ message: response.message, type: 'error' });
+                    return helpers.openNotification({ message: response.data[0], type: 'error' });
                 }
                 helpers.openNotification({ message: response.message, type: 'success' });
 

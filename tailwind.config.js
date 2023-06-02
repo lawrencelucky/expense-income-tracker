@@ -26,6 +26,9 @@ module.exports = {
                     10: '#16B364',
                     20: '#EDFCF2',
                 },
+                novelred: {
+                    10: '#BC1B06',
+                },
                 novelwhite: {
                     DEFAULT: '#FFFFFF',
                 },

@@ -46,12 +46,22 @@ const initiatePhone = yup.object({
         .required('Phone number is required'),
 });
 
+const setupPinSchema = yup.object({
+    confirm_pin: yup
+        .string()
+        .oneOf([yup.ref('pin')], 'Pin does not match')
+        .label('Pin')
+        .required('Confirm your pin to continue'),
+    pin: yup.string().label('Pin').required('Enter your pin').max(4),
+});
+
 const schema = {
     initiatePhone,
     loginSchema,
     otpSchema,
     registerSchema,
     resetOtp,
+    setupPinSchema,
 };
 
 export default schema;
