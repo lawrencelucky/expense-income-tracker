@@ -39,7 +39,7 @@ const VerifyResetOtpForm = () => {
                 setSubmitting(false);
             }
         },
-        validationSchema: schema.resetOtp,
+        // validationSchema: schema.resetOtp,
     });
 
     const { touched, errors, isSubmitting, handleSubmit, values, handleChange } = formik;
