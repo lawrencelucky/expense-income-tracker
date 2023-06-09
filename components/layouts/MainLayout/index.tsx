@@ -15,7 +15,7 @@ interface IProps {
 const { Header: AntdHeader, Content, Sider } = Layout;
 
 const MainLayout: React.FC<IProps> = ({ children, title, hasButton, btnText, handleClick }) => {
-    useAuth();
+    // useAuth();
 
     const [visible, setVisible] = useState(false);
     return (
@@ -33,11 +33,11 @@ const MainLayout: React.FC<IProps> = ({ children, title, hasButton, btnText, han
             <main className="font-primary antialiased min-w-full bg-white">
                 <section className="w-full overflow-hidden bg-white">
                     <div className="lg:flex lg:h-screen">
-                        <Sider width={230} className="!bg-white hidden lg:block border-r border-[#EBECF2]">
+                        <Sider width={230} className="!bg-[#FAFAF9] hidden lg:block border-r border-[#F5F5F4]">
                             <Menu />
                         </Sider>
                         <Layout>
-                            <AntdHeader className="bg-[#FBFBFB] sticky top-0 z-0 w-full border-b border-[#EBECF2] py-4 px-[20px] lg:px-[38px] h-auto">
+                            <AntdHeader className="bg-[#ffffff] sticky top-0 z-0 w-full border-b border-[#F5F5F4] py-4 px-[20px] lg:px-[38px] h-auto">
                                 <Header
                                     hasButton={hasButton}
                                     btnText={btnText}
@@ -47,7 +47,7 @@ const MainLayout: React.FC<IProps> = ({ children, title, hasButton, btnText, han
                                 />
                             </AntdHeader>
                             <Content>
-                                <div className="overflow-y-auto bg-[#FBFBFB] h-screen px-[20px] lg:px-[38px] py-[30px] lg:py-[56px]">
+                                <div className="overflow-y-auto bg-[#ffffff] h-screen px-[20px] lg:px-[38px] py-[30px] lg:py-[56px]">
                                     {children}
                                 </div>
                             </Content>
