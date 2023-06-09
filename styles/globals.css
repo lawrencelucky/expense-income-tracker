@@ -39,7 +39,7 @@
         @apply !font-primary;
     }
     .novel-btn {
-        @apply w-full bg-novelgreen-10 h-10 text-novelwhite font-semibold hover:bg-novelgreen-10 hover:!text-novelwhite hover:!border-novelgreen-20;
+        @apply w-full bg-novelgreen-10 h-10 shadow-40 text-novelwhite font-semibold hover:bg-novelgreen-10 hover:!text-novelwhite hover:!border-novelgreen-20;
     }
 }
 

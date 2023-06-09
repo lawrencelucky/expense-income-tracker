@@ -49,7 +49,7 @@ const ProfileDropdown = () => {
 
     return (
         <Dropdown overlay={menu} trigger={['click']}>
-            <Avatar size={40} src="/svgs/userAvatar.svg" />
+            <Avatar size={40} src="/svgs/userAvatar.svg" className="cursor-pointer" />
         </Dropdown>
     );
 };

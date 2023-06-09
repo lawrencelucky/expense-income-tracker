@@ -1,13 +1,13 @@
 import React from 'react';
-import { Typography } from 'antd';
 import MainLayout from '@/components/layouts/MainLayout';
 import PageHead from '@/components/common/components/PageHead';
+import WalletSection from '@/components/pageComponents/Wallet/WalletSection';
 
 const WalletPage = () => {
     return (
         <MainLayout title="Wallet">
             <PageHead title="Wallet" />
-            <Typography.Text>Wallet</Typography.Text>
+            <WalletSection />
         </MainLayout>
     );
 };
