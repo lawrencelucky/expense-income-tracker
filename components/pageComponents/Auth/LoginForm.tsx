@@ -66,7 +66,7 @@ const LoginInputForm = () => {
             <div>
                 <Form>
                     <div className="flex flex-col mt-[32px] mb-[24px] px-[30px]">
-                        <label className="block font-medium">Phone No. or email</label>
+                        <label className="block font-medium mb-[6px]">Phone No. or email</label>
                         <Input
                             type="text"
                             name={'login'}
@@ -89,8 +89,14 @@ const LoginInputForm = () => {
                     </div>
                     <span className="flex justify-center mt-[14px] mb-[14px] text-[#A0A0AB]">
                         Don’t have an account?{' '}
-                        <Link href={constants.CLIENT_ROUTES.auth.register} className="!text-novelgray-40">
-                            <span className="text-[#26272B] mx-1"> Sign up</span>
+                        <Link
+                            href={constants.CLIENT_ROUTES.auth.register}
+                            className="!text-novelgray-40 hover:!text-novelgreen-10 transition ease-in duration-300"
+                        >
+                            <span className="text-[#26272B] mx-1 hover:!text-novelgreen-10 transition ease-in duration-300">
+                                {' '}
+                                Sign up
+                            </span>
                         </Link>
                     </span>
                 </Form>

@@ -60,7 +60,7 @@ const VerifyRegistrationForm = () => {
 
     const { touched, errors, isSubmitting, handleSubmit, values, handleChange } = formik;
 
-    const antIcon = <LoadingOutlined style={{ color: '#16B364', fontSize: 16 }} spin rev={undefined} />;
+    const antIcon = <LoadingOutlined style={{ color: '#16B364', fontSize: 16 }} spin />;
 
     return (
         <div className="bg-novelwhite py-8 w-[368px] border-novelgray-60 shadow-10 rounded-3xl">
