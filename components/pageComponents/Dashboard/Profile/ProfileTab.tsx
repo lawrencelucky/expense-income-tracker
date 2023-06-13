@@ -30,7 +30,7 @@ const TabComponent: React.FC = () => {
 
     const renderContent = () => {
         if (activeTab === 'farms') {
-            return <EmptyStateProfileFarm />; // Replace with your Farms content
+            return <Table />; // Replace with your Farms content
         }
         if (activeTab === 'warehouse') {
             return <EmptyStateProfileWare />; // Replace with your Warehouse content

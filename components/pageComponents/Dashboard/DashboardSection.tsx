@@ -12,10 +12,10 @@ interface IProps {
 const DashboardSection: React.FC<IProps> = ({ openAddFarmModal, setOpenAddFarmModal }) => {
     return (
         <div className="space-y-10 mb-20">
-            {/* <Cards />
-            <Table /> */}
+            <Cards />
+            <Table />
 
-            <EmptyState />
+            {/* <EmptyState /> */}
 
             {/* <AddFarmModal openAddFarmModal={openAddFarmModal} setOpenAddFarmModal={setOpenAddFarmModal} /> */}
         </div>
