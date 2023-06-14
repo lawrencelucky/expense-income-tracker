@@ -49,7 +49,7 @@ const WalletChart = () => {
             enabled: false,
         },
         fill: {
-            colors: ['#EFFAF6'],
+            colors: ['#D8F7C7'],
         },
         grid: {
             padding: {

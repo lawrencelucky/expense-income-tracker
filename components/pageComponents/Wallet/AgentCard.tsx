@@ -9,7 +9,7 @@ const AgentCard = () => {
                 <div className="bg-white shadow-50 border border-novelgray-60 w-[54px] h-[54px] rounded-full flex items-center justify-center">
                     <span className="text-novelgreen-40 text-lg font-bold">GR</span>
                 </div>
-                <div className="bg-novelyellow-20 border border-novelyellow-30 px-2 py-0 rounded-full">
+                <div className="bg-novelyellow-20 border border-novelyellow-30 px-2 rounded-full">
                     <span className="text-novelyellow-40 font-bold text-xs">Agent</span>
                 </div>
             </div>

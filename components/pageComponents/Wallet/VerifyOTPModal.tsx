@@ -1,6 +1,6 @@
 import Input from '@/components/common/components/Input';
 import Modal from '@/components/common/components/Modal';
-import { Button, Form, Typography } from 'antd';
+import { Form, Typography } from 'antd';
 import Image from 'next/image';
 import React from 'react';
 
@@ -20,8 +20,9 @@ const VerifyOTPModal: React.FC<IProps> = ({ open, onClose }) => {
 
                     <Typography.Text className="text-lg font-bold block mb-[6px]">Enter the code</Typography.Text>
 
-                    <Typography.Text className="text-novelblack-20 font-light block mb-6">
-                        We&apos;ve sent an OTP to <span className="font-semibold">070*****838</span>
+                    <Typography.Text className="text-novelblack-20 font-light block text-center mb-6">
+                        We've sent an OTP code to
+                        <span className="font-semibold">090*****321</span> to confirm transaction.
                     </Typography.Text>
                 </div>
 
@@ -30,7 +31,7 @@ const VerifyOTPModal: React.FC<IProps> = ({ open, onClose }) => {
 
                     <div className="flex flex-col">
                         <Typography.Text className="text-novelgray-30 block mt-6 text-center">
-                            Didn&apos;t get the code?{' '}
+                            Didn't get the code?{' '}
                             <span
                                 // onClick={resendOtp}
                                 className="text-novelblack-10 cursor-pointer hover:text-novelgreen-10 transition ease-in duration-300"

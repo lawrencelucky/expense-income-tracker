@@ -16,8 +16,8 @@ const Menu = () => {
                     <div className="relative w-[112px] h-[28px]">
                         <Image src="/svgs/dashboardLogo.svg" alt="logo" fill />
                     </div>
-                    <div className="rounded-full bg-novelblue-20 w-[50px] h-[18px] border border-novelblue-10">
-                        <Typography.Text className="text-center block text-[10px] text-novelblue-30 p-[2px]">
+                    <div className="rounded-full bg-novelblue-20 border border-novelblue-10">
+                        <Typography.Text className="text-center block text-[10px] text-novelblue-30 px-2">
                             Farmer
                         </Typography.Text>
                     </div>
@@ -29,10 +29,11 @@ const Menu = () => {
                         selectedKeys={[`/${pathnameArray[1]}`]}
                         defaultOpenKeys={[...pathnameArray]}
                         mode="inline"
+                        className="novel-app-menu"
                     >
                         {constants.APP_MENU.map(({ icon, link, name }) => (
                             <AntdMenu.Item
-                                icon={<div className="text-base fill-current">{icon}</div>}
+                                icon={<div className="icon text-base fill-current">{icon}</div>}
                                 key={link}
                                 className="text-[14px] text-novelgray-70 font-medium bg-transparent !rounded-none !px-5"
                             >
@@ -50,10 +51,11 @@ const Menu = () => {
                         selectedKeys={[`/${pathnameArray[1]}`]}
                         defaultOpenKeys={[...pathnameArray]}
                         mode="inline"
+                        className="novel-app-menu"
                     >
                         {constants.USER_ACTIONS_APP_MENU.map(({ icon, link, name }) => (
                             <AntdMenu.Item
-                                icon={<div className="text-base fill-current">{icon}</div>}
+                                icon={<div className="icon text-base fill-current">{icon}</div>}
                                 key={link}
                                 className="text-[14px] text-novelgray-70 font-medium bg-transparent !rounded-none !px-5"
                             >

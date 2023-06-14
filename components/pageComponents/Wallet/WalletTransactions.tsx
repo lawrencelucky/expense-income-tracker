@@ -5,6 +5,7 @@ import icons from '@/icons';
 import Button from '@/components/common/components/Button';
 import Image from 'next/image';
 import WithdrawSavedAccountModal from './WithdrawSavedAccountModal';
+import WithdrawModal from './WithdrawModal';
 
 interface DataType {
     bank: string;
@@ -176,7 +177,7 @@ const WalletTransactionTable = () => {
                     </Typography.Text>
                 </div>
             )}
-            <WithdrawSavedAccountModal open={openWithdrawModal} onClose={() => setOpenWithdrawModal(false)} />
+            <WithdrawModal open={openWithdrawModal} onClose={() => setOpenWithdrawModal(false)} />
         </div>
     );
 };
