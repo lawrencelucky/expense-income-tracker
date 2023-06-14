@@ -3,24 +3,12 @@ import { Avatar, Button, Card, Typography, Modal } from 'antd';
 import './profile.module.scss';
 import icons from '@/icons';
 import AssignAgentDropdown from './AssignAgentDropdown';
-import EditProfileModal from './EditProfileForm';
+import EditProfileFormModal from './EditProfileFormModal';
 
 const ProfileCard: React.FC = () => {
     const [infoState, setInfoState] = useState<boolean>(false);
     const [cardHeight, setCardHeight] = useState<string>('218px');
-    const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-
-    const showModal = () => {
-        setIsModalOpen(true);
-    };
-
-    const handleOk = () => {
-        setIsModalOpen(false);
-    };
-
-    const handleCancel = () => {
-        setIsModalOpen(false);
-    };
+    const [openEditProfileModal, setOpenEditProfileModal] = useState(false);
 
     const toggleInformation = () => {
         setInfoState(!infoState);
@@ -29,14 +17,16 @@ const ProfileCard: React.FC = () => {
 
     return (
         <>
-            {/* <EditProfileModal isOpen={isModalOpen} onOk={handleOk} onCancel={handleCancel} /> */}
             <Card className="gradient-card !rounded-lg h-[218px]" style={{ height: cardHeight }}>
                 <div className="flex justify-between">
                     <div className="flex flex-col">
                         <Avatar size={54} src="/svgs/userAvatar.svg" />
                     </div>
                     <div>
-                        <Button className="flex" onClick={showModal}>
+                        <Button
+                            className="flex hover:!border-novelgreen-10 hover:!text-novelgreen-10"
+                            onClick={() => setOpenEditProfileModal(true)}
+                        >
                             <span className="mt-1 mr-2">{icons.editIcon()}</span>Edit Profile
                         </Button>
                     </div>
@@ -58,7 +48,7 @@ const ProfileCard: React.FC = () => {
                     </div>
                     {infoState && (
                         <div>
-                            <ul className="pl-[25px] py-[25px]">
+                            <ul className="pl-[25px] my-[24px]">
                                 <li className="">0900000000</li>
                                 <li className="">Farmer’s LGA & ward appears here</li>
                             </ul>
@@ -67,6 +57,7 @@ const ProfileCard: React.FC = () => {
                     )}
                 </div>
             </Card>
+            <EditProfileFormModal open={openEditProfileModal} onClose={() => setOpenEditProfileModal(false)} />
         </>
     );
 };

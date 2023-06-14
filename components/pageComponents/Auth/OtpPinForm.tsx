@@ -30,7 +30,7 @@ const OtpPinForm = () => {
                 if (!response.success) {
                     return helpers.openNotification({ message: response.message, type: 'error' });
                 }
-                nookies.set(null, COOKIES.key, response.data, {
+                nookies.set(null, COOKIES.key, response.token, {
                     maxAge: COOKIES.maxAge,
                     path: COOKIES.path,
                 });

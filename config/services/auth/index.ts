@@ -20,6 +20,7 @@ interface IPostRegister extends ApiResponse {
     token: string;
 }
 interface IsetUp extends ApiResponse {
+    token: string;
     data: any;
 }
 

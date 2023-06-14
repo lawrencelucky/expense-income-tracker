@@ -26,7 +26,7 @@ const useUser = (): IUserContext => {
         return response;
     };
 
-    const { data, mutate } = useSWR([routes.user.getDetails], fetcher, { refreshInterval: 360000 });
+    const { data, mutate } = useSWR([routes.user.profile], fetcher, { refreshInterval: 360000 });
 
     return {
         data,
