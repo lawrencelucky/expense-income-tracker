@@ -33,7 +33,7 @@ const API = {
             getWards: '/wards/%local_government_id%?sort_field=id&sort_type=asc',
         },
         user: {
-            getDetails: '',
+            profile: '/farmer/me',
         },
     },
     timeout: 6000,

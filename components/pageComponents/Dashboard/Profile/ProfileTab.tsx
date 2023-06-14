@@ -13,7 +13,9 @@ interface TabProps {
 const Tab: React.FC<TabProps> = ({ label, active, onClick }) => {
     return (
         <div
-            className={`flex justify-center items-center h-[32px] p-4 mb-3 ${active ? 'bg-white rounded-full' : ''}`}
+            className={`flex justify-center items-center h-[32px] p-2 mb-[12px] ${
+                active ? 'bg-white rounded-full' : ''
+            }`}
             onClick={onClick}
         >
             <Typography.Text className={active ? 'text-[#26272B]' : 'text-[#A0A0AB]'}>{label}</Typography.Text>
@@ -40,7 +42,7 @@ const TabComponent: React.FC = () => {
 
     return (
         <div className="rounded-lg border-1">
-            <div className="rounded-full border-1 bg-[#F5F5F4] w-[200px] p-3 h-[55px] flex justify-center">
+            <div className="rounded-full border-1 bg-[#F5F5F4] w-[170px] py-2 h-[50px] flex justify-center">
                 <Tab label="Farms" active={activeTab === 'farms'} onClick={() => handleTabChange('farms')} />
                 <Tab
                     label="Warehouse"
