@@ -30,8 +30,8 @@ const ProfileCard: React.FC = () => {
     return (
         <>
             {/* <EditProfileModal isOpen={isModalOpen} onOk={handleOk} onCancel={handleCancel} /> */}
-            <Card className="gradient-card !rounded-lg h-[218px]">
-                <div className="flex justify-between" style={{ height: cardHeight }}>
+            <Card className="gradient-card !rounded-lg h-[218px]" style={{ height: cardHeight }}>
+                <div className="flex justify-between">
                     <div className="flex flex-col">
                         <Avatar size={54} src="/svgs/userAvatar.svg" />
                     </div>
