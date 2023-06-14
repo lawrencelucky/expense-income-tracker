@@ -3,11 +3,13 @@ import icons from '@/icons';
 import { Dropdown, Menu, Typography } from 'antd';
 import AddBankModal from './AddBankModal';
 import WithdrawModal from './WithdrawModal';
+import DeleteModal from './DeleteModal';
 
 const WalletDetails = () => {
     const [hasBank, setHasBank] = useState(false);
     const [openAddBankModal, setOpenAddBankModal] = useState(false);
     const [openWithdrawModal, setOpenWithdrawModal] = useState(false);
+    const [openDeleteModal, setOpenDeleteModal] = useState(false);
 
     const balanceMenu = (
         <Menu className="w-[207px] shadow-60 left-[-170px] !p-3 !rounded-[14px] space-y-1">
@@ -28,7 +30,7 @@ const WalletDetails = () => {
     );
 
     const bankMenu = (
-        <Menu className="w-[259px] shadow-60 left-[-170px] !p-3 !rounded-[14px] space-y-3">
+        <Menu className="w-[259px] shadow-60 left-[-220px] !p-3 !rounded-[14px] space-y-3">
             <Menu.Item className="!p-0" onClick={() => setOpenAddBankModal(true)}>
                 <div className="flex justify-center items-center space-x-2 border border-novelgray-20 py-1.5 rounded-lg">
                     <span>{icons.plusIcon()}</span>
@@ -36,7 +38,7 @@ const WalletDetails = () => {
                 </div>
             </Menu.Item>
 
-            <Menu.Item className="!rounded-xl !py-2 !px-3 ">
+            <Menu.Item className="!p-0 hover:!bg-transparent">
                 {hasBank ? (
                     <div className="flex justify-center items-center space-x-2">
                         <span>{icons.bankIcon()}</span>
@@ -45,14 +47,16 @@ const WalletDetails = () => {
                         </Typography.Text>
                     </div>
                 ) : (
-                    <div className="flex items-center justify-between">
-                        <div className="flex items-center space-x-2">
+                    <div className="flex items-center justify-between ">
+                        <div className="flex items-center space-x-2 cursor-pointer hover:bg-novelgray-60 px-3 py-2 rounded-lg">
                             <span>{icons.greenBankIcon()}</span>
                             <Typography.Text className="text-xs">
                                 Garba Felix - <span className="font-bold">3023 ***</span>
                             </Typography.Text>
                         </div>
-                        <span>{icons.deleteIcon()}</span>
+                        <span className="cursor-pointer" onClick={() => setOpenDeleteModal(true)}>
+                            {icons.deleteIcon()}
+                        </span>
                     </div>
                 )}
             </Menu.Item>
@@ -97,6 +101,7 @@ const WalletDetails = () => {
 
             <AddBankModal open={openAddBankModal} onClose={() => setOpenAddBankModal(false)} />
             <WithdrawModal open={openWithdrawModal} onClose={() => setOpenWithdrawModal(false)} />
+            <DeleteModal open={openDeleteModal} onClose={() => setOpenDeleteModal(false)} />
         </div>
     );
 };

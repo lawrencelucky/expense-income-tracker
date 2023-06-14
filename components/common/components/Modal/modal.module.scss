@@ -40,7 +40,7 @@
         }
 
         .ant-modal-footer {
-            padding: 24px;
+            padding: 24px 24px 24px 0;
             border-top: 1px solid #ebecf2;
 
             .ant-btn-default {
@@ -63,62 +63,24 @@
 
 .no-border.ant-modal {
     .ant-modal-content {
-        border-radius: 20px;
-        padding: 0px;
-
-        @media (max-width: 768px) {
-            padding: 0;
-            border-radius: 5px;
-        }
-
         .ant-modal-header {
-            margin-bottom: 0;
-            border-radius: 20px;
-
             .ant-modal-title {
                 border-bottom: none;
-                padding: 20px;
-                font-size: 20px;
-            }
-        }
-
-        .ant-modal-body {
-            padding: 24px;
-        }
-
-        .ant-modal-close {
-            top: 0;
-            right: 0;
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            width: auto;
-            height: auto;
-            border-radius: 0;
-            border-left: none;
-            padding: 20px;
-
-            &:hover {
-                background: none;
             }
         }
 
         .ant-modal-footer {
             padding: 0 24px 24px 0;
             border-top: none;
+        }
+    }
+}
 
-            .ant-btn-default {
-                font-weight: 700;
-                font-size: 14px;
-
-                &:hover {
-                    color: #344054;
-                }
-            }
-
+.danger-modal.ant-modal {
+    .ant-modal-content {
+        .ant-modal-footer {
             .ant-btn-primary {
-                background-color: #16b364;
-                font-weight: 700;
+                background-color: #d92d20;
             }
         }
     }

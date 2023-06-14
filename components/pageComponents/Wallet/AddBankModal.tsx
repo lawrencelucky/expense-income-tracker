@@ -80,10 +80,6 @@ const AddBankModal: React.FC<IProps> = ({ open, onClose }) => {
                         <Typography.Text className="text-base">Phone Number</Typography.Text>
                         <Input type="text" placeholder="090 300 0000" className="w-[320px]" />
                     </div>
-                    <div className="flex justify-between items-center">
-                        <Typography.Text className="text-base">Date of Birth</Typography.Text>
-                        <Input type="date" placeholder="" className="w-[320px]" />
-                    </div>
                 </Form>
             )}
 
