@@ -10,8 +10,7 @@ import NProgress from 'nprogress';
 import type { AppProps } from 'next/app';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Lottie from 'lottie-react';
-import Loader from '@lottie/loader.json';
+import Image from 'next/image';
 
 Router.events.on('routeChangeStart', () => NProgress.start());
 Router.events.on('routeChangeComplete', () => NProgress.done());
@@ -21,7 +20,7 @@ export default function App({ Component, pageProps }: AppProps) {
     const [loading, setLoading] = React.useState(true);
 
     React.useEffect(() => {
-        setTimeout(() => setLoading(false), 5000);
+        setTimeout(() => setLoading(false), 3000);
     }, []);
 
     return (
@@ -33,8 +32,8 @@ export default function App({ Component, pageProps }: AppProps) {
                 </>
             ) : (
                 <div className="w-full min-h-screen grid place-items-center">
-                    <div className="w-[350px]">
-                        <Lottie animationData={Loader} loop={true} />
+                    <div className="w-[150px] h-[150px] relative">
+                        <Image src="/gif/novel-loader.gif" alt="loader" fill />
                     </div>
                 </div>
             )}
