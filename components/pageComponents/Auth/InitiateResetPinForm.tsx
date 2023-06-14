@@ -53,7 +53,7 @@ const InitiateResetPinForm = () => {
     const { touched, errors, isSubmitting, handleSubmit, values, handleChange } = formik;
 
     return (
-        <div className="bg-novelwhite py-8 w-[368px] border-novelgray-60 shadow-10 rounded-3xl">
+        <div className="bg-novelwhite py-8 w-[368px] border-novelgray-60 shadow-10 rounded-3xl loginInput">
             <div className="flex flex-col items-center">
                 <div className="relative w-12 h-12 mb-5">
                     <Image src="/svgs/logo.svg" alt="novel logo" fill />

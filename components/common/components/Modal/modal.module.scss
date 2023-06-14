@@ -40,7 +40,7 @@
         }
 
         .ant-modal-footer {
-            padding: 0 24px 24px 0;
+            padding: 24px 24px 24px 0;
             border-top: 1px solid #ebecf2;
 
             .ant-btn-default {
@@ -70,6 +70,7 @@
         }
 
         .ant-modal-footer {
+            padding: 0 24px 24px 0;
             border-top: none;
         }
     }
