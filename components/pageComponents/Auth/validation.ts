@@ -33,7 +33,7 @@ const validatePhone = (phone: number | undefined) => {
 const loginSchema = yup.object({
     login: yup
         .string()
-        .required('Please enter a valid email address or Phone no.')
+        .required('Please enter a valid email address or phone no.')
         .test('email_or_phone', 'Email / Phone is invalid', (value) => {
             return validateEmail(value) || validatePhone(parseInt(value ?? '0'));
         }),

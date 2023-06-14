@@ -50,7 +50,8 @@
         "sourceType": "module",
         "project": "./tsconfig.json",
         "ecmaFeatures": {
-            "jsx": true
+            "jsx": true,
+            "tsx": true
         }
     },
     "settings": {

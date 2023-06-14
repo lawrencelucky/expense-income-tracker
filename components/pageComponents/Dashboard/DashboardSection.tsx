@@ -17,7 +17,7 @@ const DashboardSection: React.FC<IProps> = ({ openAddFarmModal, setOpenAddFarmMo
 
             <EmptyState />
 
-            <AddFarmModal openAddFarmModal={openAddFarmModal} setOpenAddFarmModal={setOpenAddFarmModal} />
+            {/* <AddFarmModal openAddFarmModal={openAddFarmModal} setOpenAddFarmModal={setOpenAddFarmModal} /> */}
         </div>
     );
 };
