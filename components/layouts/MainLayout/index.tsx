@@ -15,7 +15,7 @@ interface IProps {
 const { Header: AntdHeader, Content, Sider } = Layout;
 
 const MainLayout: React.FC<IProps> = ({ children, title, hasButton, btnText, handleClick }) => {
-    // useAuth();
+    useAuth();
 
     const [visible, setVisible] = useState(false);
     return (
