@@ -13,11 +13,11 @@ import user from '@/config/services/user';
 import helpers from '@/components/common/utils/helper';
 
 interface IProps {
-    open: boolean;
-    onClose: () => void;
+    openEdit: boolean;
+    onCloseEdit: () => void;
 }
 
-const EditProfileFormModal: React.FC<IProps> = ({ open, onClose }) => {
+const EditProfileFormModal: React.FC<IProps> = ({ openEdit, onCloseEdit }) => {
     const [selectedState, setSelectedState] = useState<any>('');
     const [selectedLGA, setSelectedLGA] = useState<any>('');
     const { data: statesData } = useGetStates();
@@ -94,13 +94,19 @@ const EditProfileFormModal: React.FC<IProps> = ({ open, onClose }) => {
     const { touched, errors, setFieldValue, isSubmitting, handleSubmit, values, handleChange } = formik;
 
     return (
-        <Modal open={open} onCancel={onClose} title="Edit Profile" className="!w-[564px]" onOk={() => handleSubmit()}>
+        <Modal
+            open={openEdit}
+            onCancel={onCloseEdit}
+            title="Edit Profile"
+            className="!w-[564px]"
+            onOk={() => handleSubmit()}
+        >
             <div className="flex flex-col">
                 <Typography.Text>
-                    <span>Profile Photo</span>
+                    <span className="font-bold text-base">Profile Photo</span>
                 </Typography.Text>
                 <Typography.Text>
-                    <span>Change display picture</span>
+                    <span className="font-normal text-sm">Change display picture</span>
                 </Typography.Text>
                 <div className="flex py-5">
                     <div className="mr-4">
