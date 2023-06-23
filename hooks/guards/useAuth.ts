@@ -3,13 +3,11 @@ import { destroyCookie } from 'nookies';
 import { useRouter } from 'next/router';
 import { parseCookies } from 'nookies';
 import constants from '@config/constants';
-import useUser from '../useUser';
 
 const { COOKIES } = constants;
 
-const useAuth = (redirectUrl = '/auth/login') => {
+const useAuth = () => {
     const router = useRouter();
-    const { data } = useUser();
 
     useEffect(() => {
         let timeout: NodeJS.Timeout;
@@ -58,8 +56,10 @@ const useAuth = (redirectUrl = '/auth/login') => {
         const token = cookies[COOKIES.key];
         if (!token) {
             router.replace('/auth/login');
+            return;
         }
-    }, [router, redirectUrl, data]);
+        router.replace('/dashboard');
+    }, []);
 
     return;
 };
