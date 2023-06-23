@@ -16,8 +16,8 @@ const Menu = () => {
                     <div className="relative w-[112px] h-[28px]">
                         <Image src="/svgs/dashboardLogo.svg" alt="logo" fill />
                     </div>
-                    <div className="rounded-full bg-novelblue-20 w-[50px] h-[18px] border border-novelblue-10">
-                        <Typography.Text className="text-center block text-[10px] text-novelblue-30 p-[2px]">
+                    <div className="rounded-full bg-novelblue-20 border border-novelblue-10">
+                        <Typography.Text className="text-center block text-[10px] text-novelblue-30 px-2">
                             Farmer
                         </Typography.Text>
                     </div>

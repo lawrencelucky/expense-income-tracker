@@ -18,16 +18,16 @@ const EmptyState = () => {
                         </div>
                     </div>
                     <div className="mt-[27px] flex flex-col">
-                        <div className="flex justify-center">
+                        <div className="flex justify-center mb-[12px]">
                             <Typography.Text>
-                                <span className="font-medium text-[14px] text-[#26272B]">
+                                <span className="font-bold text-[16px] text-[#26272B]">
                                     First, let’s assign you to an Agent
                                 </span>
                             </Typography.Text>
                         </div>
                         <div className="flex justify-center">
                             <Typography.Text>
-                                <span className="font-normal text-[12px] text-[#3F3F46]">
+                                <span className="font-normal text-[14px] text-[#3F3F46]">
                                     Check back in the next 24hours, we are assigning you an agent
                                 </span>
                             </Typography.Text>
