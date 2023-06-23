@@ -3,22 +3,51 @@ import Link from 'next/link';
 import icons from '@/icons';
 import { destroyCookie } from 'nookies';
 import { useRouter } from 'next/router';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import constants from '@/config/constants';
 import './dashboard.module.scss';
+import { create } from 'zustand';
+import user from '@/config/services/user';
 
 const { Text } = Typography;
 const { COOKIES, CLIENT_ROUTES } = constants;
+interface UserData {
+    data?: any;
+}
+
+interface Store {
+    userData: UserData | null;
+    setUserData: (data: UserData | null) => void;
+}
+
+const useStore = create<Store>((set) => ({
+    setUserData: (data) => set(() => ({ userData: data })),
+
+    userData: null,
+}));
 
 const ProfileDropdown = () => {
     const router = useRouter();
     const [loading, setLoading] = useState(false);
+    const { userData, setUserData } = useStore();
 
     const handleLogout = () => {
         setLoading(true);
         destroyCookie(null, COOKIES.key, { path: COOKIES.path });
         router.replace(CLIENT_ROUTES.auth.login);
     };
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response: UserData = await user.getDetails();
+                setUserData(response);
+            } catch (error) {
+                console.log(error);
+            }
+        };
+
+        fetchData();
+    }, []);
 
     const menu = (
         <Menu className="w-[270px] profile-dropdown">
@@ -27,10 +56,14 @@ const ProfileDropdown = () => {
                     <Avatar size={40} src="/svgs/userAvatar.svg" />
                     <div className="flex flex-col">
                         <Text>
-                            <span className="ml-[10px] font-bold text-[12px]">Acme Do</span>
+                            <span className="ml-[10px] font-bold text-[12px]">
+                                {userData?.data?.last_name} {userData?.data?.first_name}
+                            </span>
                         </Text>
                         <Text>
-                            <span className="ml-[10px] text-[#A0A0AB] font-medium text-[12px]">acme@novelag.com</span>
+                            <span className="ml-[10px] text-[#A0A0AB] font-medium text-[12px]">
+                                {userData?.data?.email}
+                            </span>
                         </Text>
                     </div>
                 </div>

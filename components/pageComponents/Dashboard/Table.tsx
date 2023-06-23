@@ -147,7 +147,6 @@ const Table = () => {
             key: 'action',
             render: () => (
                 <div className="space-x-4 flex">
-                    <p>Edit</p>
                     <p>View</p>
                 </div>
             ),
@@ -157,7 +156,7 @@ const Table = () => {
     ];
 
     return (
-        <div>
+        <div className="mt-[64px]">
             <Typography.Text className="text-lg block mb-5">Farms</Typography.Text>
             <div className="rounded-2xl overflow-hidden no-scrollbar">
                 <AntdTable

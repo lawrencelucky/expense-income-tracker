@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ProfileCard from './ProfileCard';
-import { Typography } from 'antd';
 import ProfileTabComponent from './ProfileTab';
+
 const ProfileSection: React.FC = () => {
     const [activeTab, setActiveTab] = useState<string>('farms');
 
