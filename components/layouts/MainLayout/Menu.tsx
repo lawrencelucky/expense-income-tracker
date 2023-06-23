@@ -29,10 +29,11 @@ const Menu = () => {
                         selectedKeys={[`/${pathnameArray[1]}`]}
                         defaultOpenKeys={[...pathnameArray]}
                         mode="inline"
+                        className="novel-app-menu"
                     >
                         {constants.APP_MENU.map(({ icon, link, name }) => (
                             <AntdMenu.Item
-                                icon={<div className="text-base fill-current">{icon}</div>}
+                                icon={<div className="icon text-base fill-current">{icon}</div>}
                                 key={link}
                                 className="text-[14px] text-novelgray-70 font-medium bg-transparent !rounded-none !px-5"
                             >
@@ -50,10 +51,11 @@ const Menu = () => {
                         selectedKeys={[`/${pathnameArray[1]}`]}
                         defaultOpenKeys={[...pathnameArray]}
                         mode="inline"
+                        className="novel-app-menu"
                     >
                         {constants.USER_ACTIONS_APP_MENU.map(({ icon, link, name }) => (
                             <AntdMenu.Item
-                                icon={<div className="text-base fill-current">{icon}</div>}
+                                icon={<div className="icon text-base fill-current">{icon}</div>}
                                 key={link}
                                 className="text-[14px] text-novelgray-70 font-medium bg-transparent !rounded-none !px-5"
                             >

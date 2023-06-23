@@ -53,9 +53,15 @@ const ProfileDropdown = () => {
     );
 
     return (
-        <Dropdown overlay={menu} trigger={['click']}>
-            <Avatar size={40} src="/svgs/userAvatar.svg" className="cursor-pointer" />
-        </Dropdown>
+        <div className="space-x-7 flex items-center">
+            <div className="flex items-center space-x-1">
+                <span>{icons.helpFillIcon()}</span>
+                <Typography.Text>Get Help</Typography.Text>
+            </div>
+            <Dropdown overlay={menu} trigger={['click']}>
+                <Avatar size={32} src="/svgs/userAvatar.svg" className="cursor-pointer" />
+            </Dropdown>
+        </div>
     );
 };
 
