@@ -58,8 +58,7 @@ const useAuth = () => {
             router.replace('/auth/login');
             return;
         }
-        router.replace('/dashboard');
-    }, []);
+    }, [router]);
 
     return;
 };
