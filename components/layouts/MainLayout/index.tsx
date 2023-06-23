@@ -18,6 +18,7 @@ const MainLayout: React.FC<IProps> = ({ children, title, hasButton, btnText, han
     useAuth();
 
     const [visible, setVisible] = useState(false);
+
     return (
         <Layout>
             <Drawer
