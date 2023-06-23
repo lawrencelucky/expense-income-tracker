@@ -5,41 +5,34 @@ import icons from '@/icons';
 
 const AssignAgentDropdown = () => {
     const agentMenu = (
-        <Menu className="rounded-lg shadow w-[270px]">
+        <Menu className="border border-novelgray-60 rounded-[18px] shadow-20 w-[258px] h-[180px] p-3 space-y-3">
             <div className="mx-[12px]">
-                <div className="flex justify-between">
-                    <div className="rounded-full shadow p-[20px] my-[10px]">
-                        <Typography.Text>
-                            <span className="text-[#3CCB7F]">GR</span>
-                        </Typography.Text>
+                <div className="flex items-start justify-between mb-[8px]">
+                    <div className="bg-white shadow-50 border border-novelgray-60 w-[54px] h-[54px] rounded-full flex items-center justify-center mt-[12px]">
+                        <span className="text-novelgreen-40 text-lg font-bold">GR</span>
                     </div>
-                    <div className="rounded-full bg-[#FAE2A8] w-[50px] h-[20px] text-center mt-[12px]">
-                        <Typography.Text>
-                            <span className="text-[10px] text-[#79350F] p-[2px] ">Agent</span>
-                        </Typography.Text>
+                    <div className="bg-novelyellow-20 border border-novelyellow-30 px-2 py-0 rounded-full mt-[12px]">
+                        <span className="text-novelyellow-40 font-bold text-xs">Agent</span>
                     </div>
                 </div>
-                <div className="bg-[#FAFAF9] p-[10px] rounded-lg mb-[12px]">
-                    <div className="flex flex-col mx-[4px]">
-                        <div className="">
-                            <Typography.Text>
-                                <span className="text-[#3F3F46] font-bold text-[16px]">Gabar Rufus</span>
-                            </Typography.Text>
-                        </div>
-                        <div className="flex justify-between mt-[12px]">
-                            <div className="flex rounded-lg bg-white p-[8px]">
-                                <span className="mt-1 mr-1">{icons.callIcon()}</span>
-                                <Typography.Text>
-                                    <span className="text-[#3F3F46]">Call Agent</span>
-                                </Typography.Text>
+                <div className="bg-novelgray-50 rounded-xl p-3">
+                    <Typography.Text className="text-base font-bold text-novelgray-40 mb-3 block">
+                        Gabar Rufus
+                    </Typography.Text>
+                    <div className="space-x-2 flex">
+                        <a href={`tel:0900000000`}>
+                            <div className="flex-1 bg-white shadow-50 rounded-lg py-2 flex justify-center items-center space-x-2 cursor-pointer px-1">
+                                <span>{icons.phoneIcon()}</span>
+                                <Typography.Text className="text-novelgray-40 text-sm">Call Agent</Typography.Text>
                             </div>
-                            <div className="flex rounded-lg bg-white p-[8px]">
-                                <span className="mt-1 mr-1">{icons.emailIcon()}</span>
-                                <Typography.Text>
-                                    <span className="text-[#3F3F46]">Send email</span>
-                                </Typography.Text>
+                        </a>
+
+                        <a href={`mailto:gargba@novelg.com`}>
+                            <div className="flex-1 bg-white shadow-50 rounded-lg py-2 flex justify-center items-center space-x-2 cursor-pointer px-[1px]">
+                                <span>{icons.mailIcon()}</span>
+                                <Typography.Text className="text-novelgray-40 text-sm">Send email</Typography.Text>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -47,7 +40,7 @@ const AssignAgentDropdown = () => {
     );
 
     return (
-        <Dropdown overlay={agentMenu}>
+        <Dropdown overlay={agentMenu} trigger={['click']}>
             <Button className="rounded-full flex bg-[#e9f9f1] w-[150px] h-[44px] border-0">
                 <div className="mt-2 flex justify-center items-center">
                     <Image src="/svgs/assignedAgentChatBubble.svg" alt="icon" width={14} height={12} className="mr-2" />
