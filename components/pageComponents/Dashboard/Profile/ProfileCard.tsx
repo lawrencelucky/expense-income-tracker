@@ -1,13 +1,31 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Avatar, Button, Card, Typography, Modal } from 'antd';
 import './profile.module.scss';
 import icons from '@/icons';
 import AssignAgentDropdown from './AssignAgentDropdown';
 import EditProfileFormModal from './EditProfileFormModal';
 import ProfileSettingsFormModal from './profileSettingsFormModal';
+import { create } from 'zustand';
+import user from '@/config/services/user';
+
+interface UserData {
+    data?: any;
+}
+
+interface Store {
+    userData: UserData | null;
+    setUserData: (data: UserData | null) => void;
+}
+
+const useStore = create<Store>((set) => ({
+    setUserData: (data) => set(() => ({ userData: data })),
+
+    userData: null,
+}));
 
 const ProfileCard: React.FC = () => {
     const [infoState, setInfoState] = useState<boolean>(false);
+    const { userData, setUserData } = useStore();
     const [cardHeight, setCardHeight] = useState<string>('218px');
     const [openEditProfileModal, setOpenEditProfileModal] = useState(false);
     const [openProfileSettingsModal, setOpenProfileSettingsModal] = useState(false);
@@ -16,6 +34,18 @@ const ProfileCard: React.FC = () => {
         setCardHeight(infoState ? '218px' : 'auto');
     };
 
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response: UserData = await user.getDetails();
+                setUserData(response);
+            } catch (error) {
+                console.log(error);
+            }
+        };
+
+        fetchData();
+    }, []);
     return (
         <>
             <Card className="gradient-card !rounded-lg h-[218px]" style={{ height: cardHeight }}>
@@ -40,10 +70,12 @@ const ProfileCard: React.FC = () => {
                 </div>
                 <div className="flex flex-col mt-[14px]">
                     <Typography.Text>
-                        <span className="font-bold text-[16px] text-[#26272B] ">Garba Felix</span>
+                        <span className="font-bold text-[16px] text-[#26272B] ">
+                            {userData?.data?.last_name} {userData?.data?.first_name}
+                        </span>
                     </Typography.Text>
                     <Typography.Text>
-                        <span className="text-[#3F3F46] font-normal text-[14px]">gargba@novelg.com</span>
+                        <span className="text-[#3F3F46] font-normal text-[14px]">{userData?.data?.email}</span>
                     </Typography.Text>
                     <div className="flex mt-[18px] cursor-pointer" onClick={toggleInformation}>
                         <span className="mt-2 mr-2">{icons.carretDownIcon()}</span>
@@ -58,7 +90,7 @@ const ProfileCard: React.FC = () => {
                             <ul className="pl-[5px] mt-[24px] mb-[10px]">
                                 <li>
                                     <span className="mr-2">&#183;</span>
-                                    <span className="font-medium text-[12px]">0900000000</span>
+                                    <span className="font-medium text-[12px]">{userData?.data?.phone}</span>
                                 </li>
                                 <li>
                                     <span className="mr-2">&#183;</span>

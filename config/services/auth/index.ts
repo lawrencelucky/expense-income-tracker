@@ -41,7 +41,7 @@ const verifyResetOtp = (payload: Payload): Promise<IsetUp> =>
     request.post({ payload, route: routes.auth.verifyResetOtp });
 
 const confirmResetPin = (payload: Payload): Promise<ApiResponse> =>
-    request.put({ payload, route: routes.auth.setUpResetPin });
+    request.post({ payload, route: routes.auth.setUpResetPin });
 
 const resendOtp = (): Promise<ApiResponse> => request.get({ route: routes.auth.resentOtp });
 
