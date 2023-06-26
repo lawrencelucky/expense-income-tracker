@@ -147,7 +147,7 @@ const Table = () => {
             key: 'action',
             render: () => (
                 <div className="space-x-4 flex">
-                    <p>View</p>
+                    <span className="cursor-pointer">{icons.eyeIcon()}</span>
                 </div>
             ),
             title: 'Action',
