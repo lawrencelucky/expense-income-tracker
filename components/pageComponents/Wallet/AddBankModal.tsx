@@ -24,7 +24,7 @@ const AddBankModal: React.FC<IProps> = ({ open, onClose }) => {
     };
 
     return (
-        <Modal open={open} onCancel={onClose} className="no-border !w-[622px]" okText="Save" closable={false}>
+        <Modal open={open} onClose={onClose} className="no-border !w-[622px]" okText="Save" closable={false}>
             <div className="flex items-center justify-between mb-6">
                 <Typography.Text className="font-bold text-base">Setup Wallet</Typography.Text>
                 <div className="bg-novelgreen-20 py-[5px] px-[10px] rounded-[100px] space-x-1 flex items-center">

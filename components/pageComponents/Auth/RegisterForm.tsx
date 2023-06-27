@@ -107,7 +107,7 @@ const RegisterForm = () => {
     const { touched, errors, setFieldValue, isSubmitting, handleSubmit, values, handleChange } = formik;
 
     return (
-        <div className="bg-novelwhite py-8 w-[368px] border-novelgray-60 shadow-10 rounded-3xl loginInput">
+        <div className="bg-novelwhite py-8 w-full h-screen sm:h-full px-4 sm:w-[368px] border-novelgray-60 shadow-10 rounded-3xl loginInput">
             <div className="px-4">
                 <div className="flex flex-col items-center">
                     <div className="relative w-12 h-12 mb-5">

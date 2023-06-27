@@ -3,6 +3,7 @@ import { ApexOptions } from 'apexcharts';
 import dynamic from 'next/dynamic';
 import { Typography } from 'antd';
 import icons from '@/icons';
+import { useWindowSize } from '@/hooks/useWindowSize';
 const ApexChart = dynamic(() => import('react-apexcharts'), { ssr: false });
 
 interface DataPoint {
@@ -26,6 +27,7 @@ const generateAreaChartData = (length: number): DataPoint[] => {
 };
 const WalletChart = () => {
     const chartData = generateAreaChartData(10);
+    const { width } = useWindowSize();
 
     const options: ApexOptions = {
         chart: {
@@ -36,7 +38,7 @@ const WalletChart = () => {
                 easing: 'linear',
                 enabled: true,
             },
-            height: 350,
+            height: width > 600 ? 350 : 150,
             toolbar: {
                 show: false,
             },
@@ -104,7 +106,7 @@ const WalletChart = () => {
     };
 
     return (
-        <div className="border border-novelgray-60 rounded-[14px] shadow-20">
+        <div className="border border-novelgray-60 rounded-[14px] shadow-20 w-[300px] lg:w-full">
             <div className="py-3 px-4 flex justify-between space-x-2 border-b border-novelgray-60">
                 <div>
                     <Typography.Text className="text-sm text-novelgray-40 font-medium block mb-2">
@@ -126,8 +128,6 @@ const WalletChart = () => {
                     },
                 ]}
                 type="area"
-                width="100%"
-                height={350}
             />
         </div>
     );

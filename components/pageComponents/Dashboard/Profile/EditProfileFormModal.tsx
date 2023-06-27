@@ -125,7 +125,7 @@ const EditProfileFormModal: React.FC<IProps> = ({ openEdit, onCloseEdit }) => {
     return (
         <Modal
             open={openEdit}
-            onCancel={onCloseEdit}
+            onClose={onCloseEdit}
             title="Edit Profile"
             className="!w-[564px]"
             onOk={() => handleSubmit()}

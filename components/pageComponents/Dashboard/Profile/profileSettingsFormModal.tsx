@@ -27,7 +27,7 @@ const ProfileSettingsFormModal: React.FC<IProps> = ({ openSettings, onCloseSetti
     return (
         <Modal
             open={openSettings}
-            onCancel={onCloseSettings}
+            onClose={onCloseSettings}
             className="no-border !w-[622px]"
             okText="Submit"
             closable={false}

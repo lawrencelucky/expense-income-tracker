@@ -10,7 +10,7 @@ interface IProps {
 
 const SettingsModal: React.FC<IProps> = ({ open, onClose }) => {
     return (
-        <Modal open={open} onCancel={onClose} title="Withdraw" className="!w-[622px]">
+        <Modal open={open} onClose={onClose} title="Withdraw" className="!w-[622px]">
             <Typography.Text className="text-lg font-bold block">How much would you like to withdraw?</Typography.Text>
             <Typography.Text className="text-lg font-bold text-novelgray-30 block mb-8">
                 Balance: <span className="text-novelgreen-10">₦540,000</span>

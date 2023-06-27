@@ -1,6 +1,6 @@
 import Modal from '@/components/common/components/Modal';
 import icons from '@/icons';
-import { Typography } from 'antd';
+import { Button, Typography } from 'antd';
 import React, { useState } from 'react';
 import VerifyOTPModal from './VerifyOTPModal';
 
@@ -15,20 +15,31 @@ const ConfirmModal: React.FC<IProps> = ({ open, onClose }) => {
         <>
             <Modal
                 open={open}
-                onCancel={onClose}
+                onClose={onClose}
                 title="Confirm Amount"
-                onOk={() => {
-                    setOpenVerifyOTPModal(true);
-                    onClose();
-                }}
-                okText="Yes, Proceed"
-                className="!w-[622px]"
+                className="lg:!w-[622px]"
+                height={600}
+                footer={
+                    <div className="flex items-center justify-end space-x-4">
+                        <Button
+                            onClick={() => {
+                                setOpenVerifyOTPModal(true);
+                                onClose();
+                            }}
+                            className="novel-btn md:w-fit"
+                        >
+                            Yes, Proceed
+                        </Button>
+                    </div>
+                }
             >
                 <div className="w-[74px] h-[74px] mb-8 rounded-[50%] bg-novelgreen-20 flex items-center justify-center">
                     <span>{icons.greenBankXLIcon()}</span>
                 </div>
-                <Typography.Text className="text-lg font-bold block mb-2">Garba Felix Onoja</Typography.Text>
-                <Typography.Text className="text-lg font-bold text-novelgray-30 block mb-8">
+                <Typography.Text className="text-base md:text-lg font-bold block mb-2">
+                    Garba Felix Onoja
+                </Typography.Text>
+                <Typography.Text className="text-base md:text-lg font-bold text-novelgray-30 block mb-8">
                     GUARANTY TRUST BANK • <span className="text-novelgray-40">54648872625</span>
                 </Typography.Text>
 

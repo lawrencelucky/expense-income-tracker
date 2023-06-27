@@ -54,7 +54,7 @@ const SetupPinForm = () => {
     return (
         <>
             {!showConfirmPin ? (
-                <div className="bg-novelwhite py-8 w-[368px] border-novelgray-60 shadow-10 rounded-3xl">
+                <div className="bg-novelwhite py-8 px-4 w-full h-screen sm:h-fit sm:w-[368px] flex flex-col justify-between border-novelgray-60 shadow-10 rounded-3xl loginInput">
                     <div className="px-4">
                         <div className="flex flex-col items-center">
                             <div className="relative w-12 h-12 mb-5">
