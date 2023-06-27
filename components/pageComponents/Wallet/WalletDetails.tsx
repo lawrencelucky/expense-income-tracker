@@ -88,7 +88,7 @@ const WalletDetails = () => {
                 </div>
 
                 {!hasBank ? (
-                    <div className="flex justify-between w-[220px] items-center">
+                    <div className="flex justify-between w-[220px] md:w-full items-center">
                         <Typography.Text className="text-novelgray-30 text-base font-bold">
                             No bank added
                         </Typography.Text>
