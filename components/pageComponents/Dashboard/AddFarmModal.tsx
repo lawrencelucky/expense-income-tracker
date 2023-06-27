@@ -27,7 +27,7 @@ const AddFarmModal: React.FC<IProps> = ({ openAddFarmModal, setOpenAddFarmModal 
     };
 
     return (
-        <Modal title="Add Farm" open={openAddFarmModal} onCancel={() => setOpenAddFarmModal(false)} okText="Save">
+        <Modal title="Add Farm" open={openAddFarmModal} onClose={() => setOpenAddFarmModal(false)} okText="Save">
             <div>
                 <label className="text-sm mb-2 block font-medium">Crop Cultivated</label>
                 <MultiSelect

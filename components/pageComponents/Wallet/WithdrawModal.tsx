@@ -1,6 +1,6 @@
 import Input from '@/components/common/components/Input';
 import Modal from '@/components/common/components/Modal';
-import { Typography } from 'antd';
+import { Button, Typography } from 'antd';
 import React, { useState } from 'react';
 import WithdrawSavedAccountModal from './WithdrawSavedAccountModal';
 
@@ -15,25 +15,37 @@ const WithdrawModal: React.FC<IProps> = ({ open, onClose }) => {
         <>
             <Modal
                 open={open}
-                onCancel={onClose}
+                onClose={onClose}
                 title="Withdraw"
-                okText="Next"
-                onOk={() => {
-                    setOpenWithdrawModal(true);
-                    onClose();
-                }}
-                className="!w-[622px]"
+                className="lg:!w-[622px]"
+                height={300}
+                footer={
+                    <div className="flex items-center justify-end space-x-4">
+                        <Button onClick={onClose} className="novel-white-btn w-full md:w-fit">
+                            Cancel
+                        </Button>
+                        <Button
+                            onClick={() => {
+                                setOpenWithdrawModal(true);
+                                onClose();
+                            }}
+                            className="novel-btn md:w-fit"
+                        >
+                            Next
+                        </Button>
+                    </div>
+                }
             >
                 <Typography.Text className="text-lg font-bold block">
                     How much would you like to withdraw?
                 </Typography.Text>
-                <Typography.Text className="text-lg font-bold text-novelgray-30 block mb-8">
+                <Typography.Text className="text-lg font-bold text-novelgray-30 block mb-4 lg:mb-8">
                     Balance: <span className="text-novelgreen-10">₦540,000</span>
                 </Typography.Text>
 
-                <div className="flex justify-between items-center">
-                    <Typography.Text className="text-base">Amount</Typography.Text>
-                    <Input type="text" placeholder="Enter amount" className="w-[320px]" />
+                <div className="sm:flex justify-between items-center">
+                    <Typography.Text className="text-base hidden lg:block">Amount</Typography.Text>
+                    <Input type="text" placeholder="Enter amount" className="w-full lg:w-[320px]" />
                 </div>
             </Modal>
             <WithdrawSavedAccountModal open={openWithdrawModal} onClose={() => setOpenWithdrawModal(false)} />

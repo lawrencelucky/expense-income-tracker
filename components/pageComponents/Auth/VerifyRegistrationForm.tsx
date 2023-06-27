@@ -63,7 +63,7 @@ const VerifyRegistrationForm = () => {
     const antIcon = <LoadingOutlined style={{ color: '#16B364', fontSize: 16 }} spin rev={undefined} />;
 
     return (
-        <div className="bg-novelwhite py-8 w-[368px] border-novelgray-60 shadow-10 rounded-3xl">
+        <div className="bg-novelwhite py-8 px-4 w-full h-screen sm:h-fit flex flex-col justify-between sm:w-[368px] border-novelgray-60 shadow-10 rounded-3xl loginInput">
             <div className="px-4">
                 <div className="flex flex-col items-center">
                     <div className="relative w-12 h-12 mb-5">
@@ -103,7 +103,7 @@ const VerifyRegistrationForm = () => {
                 </Form>
             </div>
 
-            <div className="mt-6 px-4 border border-t border-novelgray-60 pt-[18px]">
+            <div className="mt-6 px-4 border-t border-novelgray-60 pt-[18px]">
                 <Button
                     loading={isSubmitting}
                     disabled={isSubmitting}
