@@ -17,7 +17,7 @@ const ConfirmModal: React.FC<IProps> = ({ open, onClose }) => {
                 open={open}
                 onClose={onClose}
                 title="Confirm Amount"
-                className="lg:!w-[622px]"
+                className="md:!w-[622px]"
                 height={600}
                 footer={
                     <div className="flex items-center justify-end space-x-4">
