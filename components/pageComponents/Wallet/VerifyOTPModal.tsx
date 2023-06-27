@@ -17,7 +17,7 @@ const VerifyOTPModal: React.FC<IProps> = ({ open, onClose }) => {
             onClose={onClose}
             footer={null}
             closable={false}
-            className="no-border !w-[368px]"
+            className="no-border md:!w-[368px]"
         >
             <div className="px-4">
                 <div className="flex flex-col items-center">

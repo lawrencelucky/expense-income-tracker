@@ -18,6 +18,7 @@ const DeleteModal: React.FC<IProps> = ({ open, onClose }) => {
             onClose={onClose}
             className="no-border danger-modal"
             title={width > 600 ? '' : 'Delete Card'}
+            height={250}
             footer={
                 <div className="flex items-center justify-end space-x-4">
                     <Button onClick={onClose} className="novel-btn bg-novelred-30 md:w-fit">
@@ -26,7 +27,7 @@ const DeleteModal: React.FC<IProps> = ({ open, onClose }) => {
                 </div>
             }
         >
-            <div className="md:flex items-center space-x-4">
+            <div className="flex flex-col md:flex-row items-center space-x-4">
                 <div>
                     <span>{icons.deleteCircleIcon()}</span>
                 </div>

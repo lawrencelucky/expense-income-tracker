@@ -17,7 +17,7 @@ const WithdrawModal: React.FC<IProps> = ({ open, onClose }) => {
                 open={open}
                 onClose={onClose}
                 title="Withdraw"
-                className="lg:!w-[622px]"
+                className="md:!w-[622px]"
                 height={300}
                 footer={
                     <div className="flex items-center justify-end space-x-4">

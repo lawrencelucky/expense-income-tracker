@@ -44,7 +44,7 @@ const WithdrawSavedAccountModal: React.FC<IProps> = ({ open, onClose }) => {
                 onClose={onClose}
                 okText="Proceed"
                 title="Withdraw"
-                className="lg:!w-[622px]"
+                className="md:!w-[622px]"
                 height={480}
                 footer={
                     <div className="flex items-center justify-end space-x-4">
@@ -82,19 +82,19 @@ const WithdrawSavedAccountModal: React.FC<IProps> = ({ open, onClose }) => {
                 <Form className="space-y-4">
                     <div className="md:flex justify-between items-center">
                         <Typography.Text className="text-base hidden md:block">Receiver</Typography.Text>
-                        <Select placeholder="Receiver" className="!w-[320px]" />
+                        <Select placeholder="Receiver" className="md:!w-[320px]" />
                     </div>
                     <div className="md:flex justify-between items-center">
                         <Typography.Text className="text-base hidden md:block">Account Number</Typography.Text>
-                        <Input type="text" placeholder="Account number" className="w-[320px]" />
+                        <Input type="text" placeholder="Account number" className="md:w-[320px]" />
                     </div>
                     <div className="md:flex justify-between items-center">
                         <Typography.Text className="text-base hidden md:block">Bank Name</Typography.Text>
-                        <Select placeholder="Bank Name" className="!w-[320px]" />
+                        <Select placeholder="Bank Name" className="md:!w-[320px]" />
                     </div>
                     <div className="md:flex justify-between items-center">
                         <Typography.Text className="text-base hidden md:block">Account Name</Typography.Text>
-                        <Input type="text" placeholder="Garba Felix" className="w-[320px]" />
+                        <Input type="text" placeholder="Garba Felix" className="md:w-[320px]" />
                     </div>
                 </Form>
             </Modal>
