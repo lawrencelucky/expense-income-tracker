@@ -33,9 +33,9 @@ const useStore = create<Store>((set) => ({
 }));
 
 const EditProfileFormModal: React.FC<IProps> = ({ openEdit, onCloseEdit }) => {
-    const [selectedState, setSelectedState] = useState<any>('');
+    const [selectedState, setSelectedState] = useState<any>('1');
     const { userData, setUserData } = useStore();
-    const [selectedLGA, setSelectedLGA] = useState<any>('');
+    const [selectedLGA, setSelectedLGA] = useState<any>('1');
     const { data: statesData } = useGetStates();
     const { data: localGovtData } = useGetLocalGovernment(selectedState);
     const { data: wardData } = useGetWard(selectedLGA);
@@ -52,7 +52,7 @@ const EditProfileFormModal: React.FC<IProps> = ({ openEdit, onCloseEdit }) => {
         };
 
         fetchData();
-    }, []);
+    }, [setUserData]);
 
     const states = useMemo(
         () =>

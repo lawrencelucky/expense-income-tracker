@@ -19,8 +19,8 @@ import schema from './validation';
 
 const RegisterForm = () => {
     const router = useRouter();
-    const [selectedState, setSelectedState] = useState<any>('');
-    const [selectedLGA, setSelectedLGA] = useState<any>('');
+    const [selectedState, setSelectedState] = useState<any>('1');
+    const [selectedLGA, setSelectedLGA] = useState<any>('1');
     const { data: statesData } = useGetStates();
     const { data: localGovtData } = useGetLocalGovernment(selectedState);
     const { data: wardData } = useGetWard(selectedLGA);
