@@ -36,7 +36,7 @@ const API = {
             profile: '/farmer/me',
         },
     },
-    timeout: 6000,
+    timeout: 60000,
 };
 
 const CLIENT_ROUTES = {
