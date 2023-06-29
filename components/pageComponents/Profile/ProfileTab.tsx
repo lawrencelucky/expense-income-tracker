@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Typography } from 'antd';
 import EmptyStateProfileFarm from './EmptyStateProfileFarm';
 import EmptyStateProfileWare from './EmptyStateProfileWare';
-import Table from '../Table';
+import Table from '../Dashboard/Table';
 
 interface TabProps {
     label: string;

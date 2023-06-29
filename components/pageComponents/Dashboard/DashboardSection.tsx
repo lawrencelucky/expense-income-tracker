@@ -41,11 +41,10 @@ const DashboardSection: React.FC<IProps> = ({ openAddFarmModal, setOpenAddFarmMo
         fetchData();
     }, [setUserData]);
 
-    // console.log(userData?.data?.farms.length, 'LENGTH');
     return (
         // REMEMBER TO SWAP THE STATES BACK ACCORDING TO THE LOGIC EDET
         <div className="space-y-10 mb-20">
-            {userData?.data.user.farms.length === 0 ? (
+            {userData?.data?.user?.farms?.length === 0 ? (
                 <div>
                     <Cards />
                     <Table />{' '}
