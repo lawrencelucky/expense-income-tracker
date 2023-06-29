@@ -47,7 +47,7 @@ const ProfileDropdown = () => {
         };
 
         fetchData();
-    }, []);
+    }, [setUserData]);
 
     const menu = (
         <Menu className="w-[270px] profile-dropdown">
@@ -57,12 +57,12 @@ const ProfileDropdown = () => {
                     <div className="flex flex-col">
                         <Text>
                             <span className="ml-[10px] font-bold text-[12px]">
-                                {userData?.data?.last_name} {userData?.data?.first_name}
+                                {userData?.data?.user?.first_name} {userData?.data?.user?.last_name}
                             </span>
                         </Text>
                         <Text>
                             <span className="ml-[10px] text-[#A0A0AB] font-medium text-[12px]">
-                                {userData?.data?.email}
+                                {userData?.data?.user?.email}
                             </span>
                         </Text>
                     </div>
