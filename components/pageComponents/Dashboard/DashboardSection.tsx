@@ -27,6 +27,7 @@ const useStore = create<Store>((set) => ({
 
 const DashboardSection: React.FC<IProps> = ({ openAddFarmModal, setOpenAddFarmModal }) => {
     const { userData, setUserData } = useStore();
+
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -38,12 +39,13 @@ const DashboardSection: React.FC<IProps> = ({ openAddFarmModal, setOpenAddFarmMo
         };
 
         fetchData();
-    }, []);
-    console.log(userData?.data?.farms.length, 'LENGTH');
+    }, [setUserData]);
+
+    // console.log(userData?.data?.farms.length, 'LENGTH');
     return (
         // REMEMBER TO SWAP THE STATES BACK ACCORDING TO THE LOGIC EDET
         <div className="space-y-10 mb-20">
-            {userData?.data?.farms.length === 0 ? (
+            {userData?.data.user.farms.length === 0 ? (
                 <div>
                     <Cards />
                     <Table />{' '}
