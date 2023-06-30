@@ -1,5 +1,5 @@
 import React from 'react';
-import { Typography, Table as AntdTable, Space } from 'antd';
+import { Typography, Table as AntdTable, Space, Button } from 'antd';
 import { ColumnsType } from 'antd/lib/table';
 import icons from '@/icons';
 
@@ -146,9 +146,9 @@ const FarmTable = () => {
             dataIndex: 'action',
             key: 'action',
             render: () => (
-                <div className="space-x-4 flex">
-                    <span className="cursor-pointer">{icons.eyeIcon()}</span>
-                </div>
+                <Button className="border-novelgray-30 text-xs font-bold text-novelgray-30 flex items-center hover:!border-novelgreen-10 hover:!text-novelgreen-10">
+                    View <span className="ml-2">{icons.eyeIcon()}</span>
+                </Button>
             ),
             title: 'Action',
             width: 150,
@@ -156,7 +156,7 @@ const FarmTable = () => {
     ];
 
     return (
-        <div className="mt-[64px]">
+        <div className="mt-[64px] mb-[250px]">
             <Typography.Text className="text-lg block mb-5">Farms</Typography.Text>
             <div className="rounded-2xl overflow-hidden no-scrollbar">
                 <AntdTable
