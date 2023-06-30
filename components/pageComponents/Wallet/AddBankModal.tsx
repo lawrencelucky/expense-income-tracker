@@ -1,7 +1,7 @@
 import Input from '@/components/common/components/Input';
 import Modal from '@/components/common/components/Modal';
 import Select from '@/components/common/components/Select';
-import { Form, Progress, Typography } from 'antd';
+import { Button, Form, Progress, Typography } from 'antd';
 import React, { useState } from 'react';
 
 interface IProps {
@@ -24,7 +24,21 @@ const AddBankModal: React.FC<IProps> = ({ open, onClose }) => {
     };
 
     return (
-        <Modal open={open} onCancel={onClose} className="no-border !w-[622px]" okText="Save" closable={false}>
+        <Modal
+            open={open}
+            onClose={onClose}
+            className="no-border md:!w-[622px]"
+            closable={false}
+            height={400}
+            footer={
+                <div className="flex items-center justify-end space-x-4">
+                    <Button onClick={onClose} className="novel-white-btn w-full md:w-fit">
+                        Cancel
+                    </Button>
+                    <Button className="novel-btn md:w-fit">Save</Button>
+                </div>
+            }
+        >
             <div className="flex items-center justify-between mb-6">
                 <Typography.Text className="font-bold text-base">Setup Wallet</Typography.Text>
                 <div className="bg-novelgreen-20 py-[5px] px-[10px] rounded-[100px] space-x-1 flex items-center">
@@ -68,34 +82,34 @@ const AddBankModal: React.FC<IProps> = ({ open, onClose }) => {
 
             {userInfoActive && (
                 <Form className="space-y-4">
-                    <div className="flex justify-between items-center">
-                        <Typography.Text className="text-base">First Name</Typography.Text>
-                        <Input type="text" placeholder="Enter first name" className="w-[320px]" />
+                    <div className="md:flex justify-between items-center">
+                        <Typography.Text className="text-base hidden md:block">First Name</Typography.Text>
+                        <Input type="text" placeholder="First name" className="md:w-[320px]" />
                     </div>
-                    <div className="flex justify-between items-center">
-                        <Typography.Text className="text-base">Last Name</Typography.Text>
-                        <Input type="text" placeholder="Enter last name" className="w-[320px]" />
+                    <div className="md:flex justify-between items-center">
+                        <Typography.Text className="text-base hidden md:block">Last Name</Typography.Text>
+                        <Input type="text" placeholder="Last name" className="md:w-[320px]" />
                     </div>
-                    <div className="flex justify-between items-center">
-                        <Typography.Text className="text-base">Phone Number</Typography.Text>
-                        <Input type="text" placeholder="090 300 0000" className="w-[320px]" />
+                    <div className="md:flex justify-between items-center">
+                        <Typography.Text className="text-base hidden md:block">Phone Number</Typography.Text>
+                        <Input type="text" placeholder="090 300 0000" className="md:w-[320px]" />
                     </div>
                 </Form>
             )}
 
             {bankInfoActive && (
                 <Form className="space-y-4">
-                    <div className="flex justify-between items-center">
-                        <Typography.Text className="text-base">Bank</Typography.Text>
-                        <Select placeholder="Select Bank" className="!w-[320px]" />
+                    <div className="md:flex justify-between items-center">
+                        <Typography.Text className="text-base hidden md:block">Bank</Typography.Text>
+                        <Select placeholder="Select Bank" className="md:!w-[320px]" />
                     </div>
-                    <div className="flex justify-between items-center">
-                        <Typography.Text className="text-base">Account Number</Typography.Text>
-                        <Input type="text" placeholder="Enter last name" className="w-[320px]" />
+                    <div className="md:flex justify-between items-center">
+                        <Typography.Text className="text-base hidden md:block">Account Number</Typography.Text>
+                        <Input type="text" placeholder="Account Number" className="md:w-[320px]" />
                     </div>
-                    <div className="flex justify-between items-center">
-                        <Typography.Text className="text-base">Account Name</Typography.Text>
-                        <Input type="text" placeholder="Garba Felix" className="w-[320px]" />
+                    <div className="md:flex justify-between items-center">
+                        <Typography.Text className="text-base hidden md:block">Account Name</Typography.Text>
+                        <Input type="text" placeholder="Account Name" className="md:w-[320px]" />
                     </div>
                 </Form>
             )}

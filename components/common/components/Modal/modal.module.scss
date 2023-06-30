@@ -86,6 +86,19 @@
     }
 }
 
+.novel-modal.ant-drawer-content {
+    border-radius: 20px 20px 0px 0px;
+
+    .ant-drawer-close {
+        position: absolute;
+        right: 20px;
+    }
+
+    .ant-drawer-body {
+        padding: 24px;
+    }
+}
+
 .ant-modal-mask {
     z-index: 1001;
 }

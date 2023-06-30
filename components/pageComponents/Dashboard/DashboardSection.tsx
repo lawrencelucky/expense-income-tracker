@@ -27,6 +27,7 @@ const useStore = create<Store>((set) => ({
 
 const DashboardSection: React.FC<IProps> = ({ openAddFarmModal, setOpenAddFarmModal }) => {
     const { userData, setUserData } = useStore();
+
     useEffect(() => {
         const fetchData = async () => {
             try {

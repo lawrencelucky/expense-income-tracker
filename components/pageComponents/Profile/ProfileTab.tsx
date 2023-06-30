@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { Typography } from 'antd';
 import EmptyStateProfileFarm from './EmptyStateProfileFarm';
 import EmptyStateProfileWare from './EmptyStateProfileWare';
-import FarmTable from '../FarmTable';
-import WareHouseTable from '../WareHouseTable';
+import FarmTable from '../Dashboard/FarmTable';
+import WareHouseTable from '..//Dashboard/WareHouseTable';
 
 interface TabProps {
     label: string;

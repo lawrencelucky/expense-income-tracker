@@ -11,7 +11,14 @@ interface IProps {
 
 const VerifyOTPModal: React.FC<IProps> = ({ open, onClose }) => {
     return (
-        <Modal open={open} onCancel={onClose} footer={null} closable={false} className="no-border !w-[368px]">
+        <Modal
+            height={400}
+            open={open}
+            onClose={onClose}
+            footer={null}
+            closable={false}
+            className="no-border md:!w-[368px]"
+        >
             <div className="px-4">
                 <div className="flex flex-col items-center">
                     <div className="relative w-12 h-12 mb-5">
