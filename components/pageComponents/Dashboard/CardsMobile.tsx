@@ -4,7 +4,7 @@ import icons from '@/icons';
 
 const CardsMobile = () => {
     return (
-        <div className="overflow-auto whitespace-nowrap space-x-6 no-scrollbar">
+        <div className="overflow-auto whitespace-nowrap space-x-6 no-scrollbar md:mb-3">
             <div className="inline-block w-[280px] shadow-30 rounded-lg bg-white">
                 <div className="flex items-center justify-between border-b px-6 py-3 border-[#F5F5F4]">
                     <Typography.Text className="text-[#A0A0AB] text-sm">Balance</Typography.Text>

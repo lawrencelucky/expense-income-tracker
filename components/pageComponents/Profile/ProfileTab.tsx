@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { Typography } from 'antd';
 import EmptyStateProfileFarm from './EmptyStateProfileFarm';
 import EmptyStateProfileWare from './EmptyStateProfileWare';
-import Table from '../Dashboard/Table';
+import FarmTable from '../Dashboard/FarmTable';
+import WareHouseTable from '..//Dashboard/WareHouseTable';
 
 interface TabProps {
     label: string;
@@ -32,10 +33,10 @@ const TabComponent: React.FC = () => {
 
     const renderContent = () => {
         if (activeTab === 'farms') {
-            return <EmptyStateProfileFarm />; // Replace with your Farms content
+            return true ? <FarmTable /> : <EmptyStateProfileFarm />; // Replace with your Farms content
         }
         if (activeTab === 'warehouse') {
-            return <EmptyStateProfileWare />; // Replace with your Warehouse content
+            return true ? <WareHouseTable /> : <EmptyStateProfileWare />; // Replace with your Warehouse content
         }
         return null;
     };

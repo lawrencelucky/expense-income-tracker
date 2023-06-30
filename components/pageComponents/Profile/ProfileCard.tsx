@@ -45,8 +45,8 @@ const ProfileCard: React.FC = () => {
         };
 
         fetchData();
-    }, [setUserData]);
-
+    }, []);
+    console.log(userData, 'UserDATA');
     return (
         <>
             <Card className="gradient-card !rounded-lg h-[218px]" style={{ height: cardHeight }}>
@@ -55,12 +55,12 @@ const ProfileCard: React.FC = () => {
                         <Avatar size={54} src="/svgs/userAvatar.svg" />
                     </div>
                     <div className="flex space-x-[16px]">
-                        <Button
+                        {/* <Button
                             className="flex hover:!border-novelgreen-10 hover:!text-novelgreen-10 bg-white"
                             onClick={() => setOpenProfileSettingsModal(true)}
                         >
                             {icons.settingsProfileIcon()}
-                        </Button>
+                        </Button> */}
                         <Button
                             className="flex hover:!border-novelgreen-10 hover:!text-novelgreen-10 bg-white"
                             onClick={() => setOpenEditProfileModal(true)}
@@ -95,7 +95,10 @@ const ProfileCard: React.FC = () => {
                                 </li>
                                 <li>
                                     <span className="mr-2">&#183;</span>
-                                    <span className="font-medium text-[12px]">Farmer’s LGA & ward appears here</span>
+                                    <span className="font-medium text-[12px]">
+                                        {userData?.data?.state?.name}, {userData?.data?.local_government?.name} &{' '}
+                                        {userData?.data?.ward?.name}
+                                    </span>
                                 </li>
                             </ul>
                             <AssignAgentDropdown />

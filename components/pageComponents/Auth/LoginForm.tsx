@@ -52,7 +52,7 @@ const LoginInputForm = () => {
         validationSchema: schema.loginSchema,
     });
     const { handleChange, values, handleSubmit, isSubmitting, errors, touched } = formik;
-
+    const isFormEmpty = !values.login.trim();
     return (
         <div className="bg-novelwhite py-8 w-[368px] border-novelgray-60 shadow-10 rounded-3xl loginInput">
             <div className="flex flex-col items-center">
@@ -83,7 +83,11 @@ const LoginInputForm = () => {
                             name="Sign in"
                             loading={isSubmitting}
                             disabled={isSubmitting}
-                            className="novel-btn"
+                            className={`${
+                                isFormEmpty
+                                    ? 'bg-[#A0A0AB] text-white w-full rounded-md h-10 font-semibold hover:!bg-[#A0A0AB] hover:!text-novelwhite hover:!border-[#A0A0AB]'
+                                    : 'novel-btn'
+                            }`}
                             onClick={() => handleSubmit()}
                         />
                     </div>
