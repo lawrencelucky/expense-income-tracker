@@ -12,7 +12,7 @@ interface DataType {
     name: string;
 }
 
-const Table = () => {
+const FarmTable = () => {
     const data: DataType[] = [
         {
             crops: 'Rice, Corn...',
@@ -185,4 +185,4 @@ const Table = () => {
     );
 };
 
-export default Table;
+export default FarmTable;

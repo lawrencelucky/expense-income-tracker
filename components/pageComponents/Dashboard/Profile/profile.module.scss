@@ -2,5 +2,20 @@
   background: linear-gradient(to bottom, #e9f9f1, #ffffff);
 }
 
+.border-gradient-left {
+  border-left: 2px solid;
+  // border-image-slice: 1;
+  border-image: linear-gradient(to bottom, #bbf4bd, rgba(255, 255, 255, 0)
+  ) 1 100%;
+}
+
+.border-gradient-top {
+  border-top: 2px solid;
+  // border-image-slice: 1;
+  border-image: linear-gradient(to right, #adf0b0, rgba(255, 255, 255, 0)
+  ) 1 100%;
+}
 
 
+
+// #12B76A

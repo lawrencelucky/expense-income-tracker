@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import Cards from './Cards';
-import Table from './Table';
+import FarmTable from './FarmTable';
 import AddFarmModal from './AddFarmModal';
 import EmptyState from './EmptyState';
 import { create } from 'zustand';
@@ -40,16 +40,18 @@ const DashboardSection: React.FC<IProps> = ({ openAddFarmModal, setOpenAddFarmMo
         fetchData();
     }, []);
     console.log(userData?.data?.farms.length, 'LENGTH');
+    console.log(userData?.data, 'USER_DATA_OBJECT');
+
     return (
         // REMEMBER TO SWAP THE STATES BACK ACCORDING TO THE LOGIC EDET
         <div className="space-y-10 mb-20">
             {userData?.data?.farms.length === 0 ? (
+                <EmptyState />
+            ) : (
                 <div>
                     <Cards />
-                    <Table />{' '}
+                    <FarmTable />{' '}
                 </div>
-            ) : (
-                <EmptyState />
             )}
 
             {/* <EmptyState /> */}
