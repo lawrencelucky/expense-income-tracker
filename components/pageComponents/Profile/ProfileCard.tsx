@@ -7,6 +7,7 @@ import EditProfileFormModal from './EditProfileFormModal';
 import ProfileSettingsFormModal from './profileSettingsFormModal';
 import { create } from 'zustand';
 import user from '@/config/services/user';
+import ProfilePicture from '../Dashboard/ProfilePicture';
 
 interface UserData {
     data?: any;
@@ -47,12 +48,22 @@ const ProfileCard: React.FC = () => {
         fetchData();
     }, []);
     console.log(userData, 'UserDATA');
+    const [userObj] = useState({
+        img: userData?.data?.user?.profile_picture,
+        name: userData?.data?.user?.first_name + ' ' + userData?.data?.user?.last_name,
+    });
+    console.log(userObj.name, 'user name join');
     return (
         <>
             <Card className="gradient-card !rounded-lg h-[218px]" style={{ height: cardHeight }}>
                 <div className="flex justify-between">
                     <div className="flex flex-col">
-                        <Avatar size={54} src="/svgs/userAvatar.svg" />
+                        <ProfilePicture
+                            name={userData?.data?.user?.first_name + ' ' + userData?.data?.user?.last_name}
+                            imageUrl={userData?.data?.user?.profile_picture}
+                            size={54}
+                        />
+                        {/* <Avatar size={54} src="/svgs/userAvatar.svg" /> */}
                     </div>
                     <div className="flex space-x-[16px]">
                         {/* <Button
@@ -96,12 +107,13 @@ const ProfileCard: React.FC = () => {
                                 <li>
                                     <span className="mr-2">&#183;</span>
                                     <span className="font-medium text-[12px]">
-                                        {userData?.data?.state?.name}, {userData?.data?.local_government?.name} &{' '}
-                                        {userData?.data?.ward?.name}
+                                        {userData?.data?.user?.state?.name},{' '}
+                                        {userData?.data?.user?.local_government?.name} &{' '}
+                                        {userData?.data?.user?.ward?.name}
                                     </span>
                                 </li>
                             </ul>
-                            <AssignAgentDropdown />
+                            {userData?.data?.primary_agent && <AssignAgentDropdown user={userData} />}
                         </div>
                     )}
                 </div>
