@@ -11,12 +11,17 @@ const {
 export interface IGetUserDetails extends ApiResponse {
     data: UserAccount;
 }
+interface Upload {
+    photo: string;
+}
 
 const getDetails = (): Promise<IGetUserDetails> => request.get({ route: routes.user.profile });
 const editProfile = (payload: Payload): Promise<ApiResponse> => request.put({ payload, route: routes.user.profile });
+const uploadImage = (payload: Upload): Promise<ApiResponse> => request.post({ payload, route: routes.user.uploadImg });
 const user = {
     editProfile,
     getDetails,
+    uploadImage,
 };
 
 export default user;

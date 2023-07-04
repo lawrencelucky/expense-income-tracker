@@ -5,6 +5,7 @@ export interface INotification {
 }
 
 export interface ApiResponse {
+    [x: string]: any;
     success: boolean;
     code: number;
     message: string;

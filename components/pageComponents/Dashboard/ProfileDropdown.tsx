@@ -8,6 +8,7 @@ import constants from '@/config/constants';
 import './dashboard.module.scss';
 import { create } from 'zustand';
 import user from '@/config/services/user';
+import ProfilePicture from './ProfilePicture';
 
 const { Text } = Typography;
 const { COOKIES, CLIENT_ROUTES } = constants;
@@ -30,7 +31,10 @@ const ProfileDropdown = () => {
     const router = useRouter();
     const [loading, setLoading] = useState(false);
     const { userData, setUserData } = useStore();
-
+    // const [userObj] = useState(userData?.data?.user?.first_name + ' ' + userData?.data?.user?.last_name);
+    // const [user] = useState(userData);
+    console.log(userData?.data?.user?.first_name + ' ' + userData?.data?.user?.last_name, 'ANOTHER DROPDOWN');
+    // console.log(userObj, 'DROPDOWN DATA');
     const handleLogout = () => {
         setLoading(true);
         destroyCookie(null, COOKIES.key, { path: COOKIES.path });
@@ -47,13 +51,18 @@ const ProfileDropdown = () => {
         };
 
         fetchData();
-    }, [setUserData]);
+    }, []);
 
     const menu = (
         <Menu className="w-[270px] profile-dropdown">
             <Menu.Item key="1">
                 <div className="flex">
-                    <Avatar size={40} src="/svgs/userAvatar.svg" />
+                    <ProfilePicture
+                        name={userData?.data?.user?.first_name + ' ' + userData?.data?.user?.last_name}
+                        imageUrl={userData?.data?.user?.profile_picture}
+                        size={40}
+                    />
+                    {/* <Avatar size={40} src="/svgs/userAvatar.svg" /> */}
                     <div className="flex flex-col">
                         <Text>
                             <span className="ml-[10px] font-bold text-[12px]">
