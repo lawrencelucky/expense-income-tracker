@@ -137,6 +137,9 @@ const WithdrawModal: React.FC<IProps> = ({ open, onClose }) => {
                                     setStep3(true);
                                 } else {
                                     onClose();
+                                    setStep1(true);
+                                    setStep2(false);
+                                    setStep3(false);
                                     setOpenVerifyOTPModal(true);
                                 }
                             }}
