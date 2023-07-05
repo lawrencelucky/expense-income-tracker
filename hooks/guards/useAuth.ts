@@ -56,7 +56,6 @@ const useAuth = () => {
         const token = cookies[COOKIES.key];
         if (!token) {
             router.replace('/auth/login');
-            return;
         }
     }, [router]);
 

@@ -1,13 +1,16 @@
+import useUser from '@/hooks/useUser';
 import icons from '@/icons';
 import { Typography } from 'antd';
 import React from 'react';
 
 const AgentCard = () => {
+    const { data } = useUser();
+
     return (
         <div className="border border-novelgray-60 rounded-[18px] shadow-20 p-3 space-y-3">
             <div className="flex items-start justify-between">
                 <div className="bg-white shadow-50 border border-novelgray-60 w-[54px] h-[54px] rounded-full flex items-center justify-center">
-                    <span className="text-novelgreen-40 text-lg font-bold">GR</span>
+                    <span className="text-novelgreen-40 text-lg font-bold">LL</span>
                 </div>
                 <div className="bg-novelyellow-20 border border-novelyellow-30 px-2 rounded-full">
                     <span className="text-novelyellow-40 font-bold text-xs">Agent</span>
@@ -16,7 +19,7 @@ const AgentCard = () => {
 
             <div className="bg-novelgray-50 rounded-xl p-3">
                 <Typography.Text className="text-base font-bold text-novelgray-40 mb-3 block">
-                    Gabar Rufus
+                    {data?.data.primary_agent?.first_name} {data?.data.primary_agent?.last_name}
                 </Typography.Text>
                 <div className="space-x-2 flex">
                     <div className="flex-1 bg-white shadow-50 rounded-lg py-2 flex justify-center items-center space-x-2 cursor-pointer">

@@ -3,6 +3,7 @@ import Modal from '@/components/common/components/Modal';
 import { Button, Typography } from 'antd';
 import React, { useState } from 'react';
 import WithdrawSavedAccountModal from './WithdrawSavedAccountModal';
+import useUser from '@/hooks/useUser';
 
 interface IProps {
     open: boolean;
@@ -11,6 +12,10 @@ interface IProps {
 
 const WithdrawModal: React.FC<IProps> = ({ open, onClose }) => {
     const [openWithdrawModal, setOpenWithdrawModal] = useState(false);
+    const { data } = useUser();
+
+    const walletData = data?.data.user.wallet;
+
     return (
         <>
             <Modal
@@ -40,7 +45,7 @@ const WithdrawModal: React.FC<IProps> = ({ open, onClose }) => {
                     How much would you like to withdraw?
                 </Typography.Text>
                 <Typography.Text className="text-lg font-bold text-novelgray-30 block mb-4 lg:mb-8">
-                    Balance: <span className="text-novelgreen-10">₦540,000</span>
+                    Balance: <span className="text-novelgreen-10">₦{walletData?.balance}</span>
                 </Typography.Text>
 
                 <div className="sm:flex justify-between items-center">

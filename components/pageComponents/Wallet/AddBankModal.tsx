@@ -1,8 +1,14 @@
 import Input from '@/components/common/components/Input';
 import Modal from '@/components/common/components/Modal';
 import Select from '@/components/common/components/Select';
+import helpers from '@/components/common/utils/helper';
+import banks from '@/config/services/banks';
+import useGetBanks from '@/hooks/banks/useGetBanks';
+import useUser from '@/hooks/useUser';
+import logger from '@/logger.config';
 import { Button, Form, Progress, Typography } from 'antd';
-import React, { useState } from 'react';
+import { useFormik } from 'formik';
+import React, { useMemo, useState } from 'react';
 
 interface IProps {
     open: boolean;
@@ -12,6 +18,17 @@ interface IProps {
 const AddBankModal: React.FC<IProps> = ({ open, onClose }) => {
     const [userInfoActive, setUserInfoActive] = useState(true);
     const [bankInfoActive, setBankInfoActive] = useState(false);
+    const { data } = useGetBanks();
+    const { data: userData } = useUser();
+
+    const banksOptions = useMemo(
+        () =>
+            data?.data.banks?.map(({ name, code }) => ({
+                label: name,
+                value: code,
+            })),
+        [data],
+    );
 
     const handleBankInfo = () => {
         setUserInfoActive(false);
@@ -22,6 +39,33 @@ const AddBankModal: React.FC<IProps> = ({ open, onClose }) => {
         setUserInfoActive(true);
         setBankInfoActive(false);
     };
+
+    const formik = useFormik({
+        enableReinitialize: true,
+        initialValues: {
+            bank_code: null,
+            name: '',
+            number: '',
+        },
+        onSubmit: async ({ bank_code, name, number }, { setSubmitting }) => {
+            const payload = { bank_code, name, number };
+
+            try {
+                const response = await banks.createBankAccount(payload);
+                if (!response.success) {
+                    return helpers.openNotification({ message: response.message, type: 'error' });
+                }
+                helpers.openNotification({ message: response.message, type: 'success' });
+                onClose();
+            } catch (error) {
+                return logger(error);
+            } finally {
+                setSubmitting(false);
+            }
+        },
+    });
+
+    const { touched, errors, setFieldValue, isSubmitting, handleSubmit, values, handleChange } = formik;
 
     return (
         <Modal
@@ -35,7 +79,14 @@ const AddBankModal: React.FC<IProps> = ({ open, onClose }) => {
                     <Button onClick={onClose} className="novel-white-btn w-full md:w-fit">
                         Cancel
                     </Button>
-                    <Button className="novel-btn md:w-fit">Save</Button>
+                    <Button
+                        loading={isSubmitting}
+                        disabled={isSubmitting}
+                        onClick={() => handleSubmit()}
+                        className="novel-btn md:w-fit"
+                    >
+                        Save
+                    </Button>
                 </div>
             }
         >
@@ -84,15 +135,30 @@ const AddBankModal: React.FC<IProps> = ({ open, onClose }) => {
                 <Form className="space-y-4">
                     <div className="md:flex justify-between items-center">
                         <Typography.Text className="text-base hidden md:block">First Name</Typography.Text>
-                        <Input type="text" placeholder="First name" className="md:w-[320px]" />
+                        <Input
+                            type="text"
+                            placeholder="First name"
+                            value={userData?.data.user.first_name}
+                            className="md:w-[320px]"
+                        />
                     </div>
                     <div className="md:flex justify-between items-center">
                         <Typography.Text className="text-base hidden md:block">Last Name</Typography.Text>
-                        <Input type="text" placeholder="Last name" className="md:w-[320px]" />
+                        <Input
+                            type="text"
+                            placeholder="Last name"
+                            value={userData?.data.user.last_name}
+                            className="md:w-[320px]"
+                        />
                     </div>
                     <div className="md:flex justify-between items-center">
                         <Typography.Text className="text-base hidden md:block">Phone Number</Typography.Text>
-                        <Input type="text" placeholder="090 300 0000" className="md:w-[320px]" />
+                        <Input
+                            type="text"
+                            placeholder="090 300 0000"
+                            value={userData?.data.user.phone}
+                            className="md:w-[320px]"
+                        />
                     </div>
                 </Form>
             )}
@@ -101,15 +167,43 @@ const AddBankModal: React.FC<IProps> = ({ open, onClose }) => {
                 <Form className="space-y-4">
                     <div className="md:flex justify-between items-center">
                         <Typography.Text className="text-base hidden md:block">Bank</Typography.Text>
-                        <Select placeholder="Select Bank" className="md:!w-[320px]" />
+                        <Select
+                            placeholder="Select Bank"
+                            className="md:!w-[320px]"
+                            onChange={(val) => {
+                                setFieldValue('bank_code', val);
+                            }}
+                            options={banksOptions}
+                            help={touched.bank_code && errors.bank_code}
+                            validateStatus={(touched.bank_code && errors.bank_code && 'error') || ''}
+                            value={values.bank_code}
+                        />
                     </div>
                     <div className="md:flex justify-between items-center">
                         <Typography.Text className="text-base hidden md:block">Account Number</Typography.Text>
-                        <Input type="text" placeholder="Account Number" className="md:w-[320px]" />
+                        <Input
+                            type="text"
+                            placeholder="Account Number"
+                            name={'number'}
+                            value={values.number}
+                            onChange={handleChange}
+                            className="md:w-[320px]"
+                            help={touched.number && errors.number}
+                            validateStatus={(touched.number && errors.number && 'error') || ''}
+                        />
                     </div>
                     <div className="md:flex justify-between items-center">
                         <Typography.Text className="text-base hidden md:block">Account Name</Typography.Text>
-                        <Input type="text" placeholder="Account Name" className="md:w-[320px]" />
+                        <Input
+                            type="text"
+                            placeholder="Account Name"
+                            name={'name'}
+                            value={values.name}
+                            onChange={handleChange}
+                            className="md:w-[320px]"
+                            help={touched.name && errors.name}
+                            validateStatus={(touched.name && errors.name && 'error') || ''}
+                        />
                     </div>
                 </Form>
             )}
