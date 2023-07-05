@@ -27,6 +27,11 @@ const API = {
             verifyRegistration: '/auth/farmer/verify-otp',
             verifyResetOtp: '/auth/farmer/verify-forgot-pin-otp',
         },
+        banks: {
+            createBankAccount: '/farmer/bank-accounts/create',
+            getBankAccounts: '/farmer/bank-accounts',
+            getBanks: '/banks',
+        },
         farms: {
             getFarmsInfo: '/farmer/farms',
         },

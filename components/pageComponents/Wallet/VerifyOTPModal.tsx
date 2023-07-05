@@ -28,8 +28,8 @@ const VerifyOTPModal: React.FC<IProps> = ({ open, onClose }) => {
                     <Typography.Text className="text-lg font-bold block mb-[6px]">Enter the code</Typography.Text>
 
                     <Typography.Text className="text-novelblack-20 font-light block text-center mb-6">
-                        We've sent an OTP code to
-                        <span className="font-semibold">090*****321</span> to confirm transaction.
+                        We've sent an OTP code to <span className="font-semibold">090*****321</span> to confirm
+                        transaction.
                     </Typography.Text>
                 </div>
 

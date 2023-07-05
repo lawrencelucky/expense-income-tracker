@@ -16,6 +16,40 @@ export type UserAccount = {
     phone_verified_at: string;
     created_at: Date;
     updated_at: Date;
+    primary_agent: {
+        code: string;
+        created_at: string;
+        email: string;
+        email_verified_at: string;
+        first_name: string;
+        id: number;
+        ip: string;
+        last_name: string;
+        phone: string;
+        phone_verified_at: string;
+        profile_picture: string;
+        updated_at: string;
+        user_type_id: string;
+    };
+    user: {
+        first_name: string;
+        last_name: string;
+        phone: string;
+        wallet: {
+            balance: string;
+            created_at: Date;
+            decimal_places: number;
+            description: string;
+            holder_id: string;
+            holder_type: string;
+            id: number;
+            meta: string;
+            name: string;
+            slug: string;
+            updated_at: Date;
+            uuid: string;
+        };
+    };
 };
 
 export type States = {

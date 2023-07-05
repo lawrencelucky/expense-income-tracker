@@ -2,8 +2,8 @@ import React from 'react';
 import { ApexOptions } from 'apexcharts';
 import dynamic from 'next/dynamic';
 import { Typography } from 'antd';
-import icons from '@/icons';
 import { useWindowSize } from '@/hooks/useWindowSize';
+import Select from '@/components/common/components/Select';
 const ApexChart = dynamic(() => import('react-apexcharts'), { ssr: false });
 
 interface DataPoint {
@@ -42,7 +42,7 @@ const WalletChart = () => {
             toolbar: {
                 show: false,
             },
-            type: 'area',
+            type: 'line',
             zoom: {
                 enabled: false,
             },
@@ -112,19 +112,24 @@ const WalletChart = () => {
                     <Typography.Text className="text-sm text-novelgray-40 font-medium block mb-2">
                         Earnings
                     </Typography.Text>
-                    <Typography.Text className="text-base font-bold text-novelblack-10">₦2,345,265.00</Typography.Text>
+                    <Typography.Text className="text-base font-bold text-novelblack-10">₦0</Typography.Text>
                 </div>
-                <div className="flex items-center space-x-2 border border-novelgray-60 py-2 px-3 rounded-lg cursor-pointer">
-                    <Typography.Text className="text-novelgray-70 text-sm">Last 30 days</Typography.Text>
-                    <span>{icons.caretDown()}</span>
-                </div>
+                <Select
+                    defaultValue="30days"
+                    className="!w-[120px]"
+                    options={[
+                        { label: '7 Days', value: '7days' },
+                        { label: '30 Days', value: '30days' },
+                        { label: '90 Days', value: '90days' },
+                    ]}
+                ></Select>
             </div>
             <ApexChart
                 options={options}
                 series={[
                     {
                         data: chartData,
-                        name: 'Series 1',
+                        name: 'Amount',
                     },
                 ]}
                 type="area"

@@ -49,7 +49,7 @@ const ConfirmModal: React.FC<IProps> = ({ open, onClose }) => {
                         <Typography.Text className="text-base font-medium">₦250,000</Typography.Text>
                     </div>
                     <div className="flex items-center justify-between py-3 border-b border-novelgray-20">
-                        <Typography.Text className="text-base font-medium">Amount</Typography.Text>
+                        <Typography.Text className="text-base font-medium">Processing Fee</Typography.Text>
                         <Typography.Text className="text-base font-medium">₦250</Typography.Text>
                     </div>
                     <div className="flex items-center justify-between py-3 border-b border-novelgray-20">
