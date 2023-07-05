@@ -33,7 +33,7 @@ const ProfileDropdown = () => {
     const { userData, setUserData } = useStore();
     // const [userObj] = useState(userData?.data?.user?.first_name + ' ' + userData?.data?.user?.last_name);
     // const [user] = useState(userData);
-    console.log(userData?.data?.user?.first_name + ' ' + userData?.data?.user?.last_name, 'ANOTHER DROPDOWN');
+    // console.log(userData?.data?.user?.first_name + ' ' + userData?.data?.user?.last_name, 'ANOTHER DROPDOWN');
     // console.log(userObj, 'DROPDOWN DATA');
     const handleLogout = () => {
         setLoading(true);

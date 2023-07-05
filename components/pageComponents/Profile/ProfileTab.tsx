@@ -69,7 +69,7 @@ const TabComponent: React.FC = () => {
         }
         return null;
     };
-    console.log(farmsData?.data?.farms, 'farmsData?.data=farmsData?.data');
+    // console.log(farmsData?.data?.farms, 'farmsData?.data=farmsData?.data');
 
     return (
         <div className="rounded-lg border-1">
