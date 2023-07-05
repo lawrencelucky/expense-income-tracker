@@ -3,6 +3,7 @@ import Modal from '@/components/common/components/Modal';
 import Select from '@/components/common/components/Select';
 import helpers from '@/components/common/utils/helper';
 import banks from '@/config/services/banks';
+import useGetBankAccoutns from '@/hooks/banks/useGetBankAccounts';
 import useGetBanks from '@/hooks/banks/useGetBanks';
 import useUser from '@/hooks/useUser';
 import logger from '@/logger.config';
@@ -19,6 +20,7 @@ const AddBankModal: React.FC<IProps> = ({ open, onClose }) => {
     const [userInfoActive, setUserInfoActive] = useState(true);
     const [bankInfoActive, setBankInfoActive] = useState(false);
     const { data } = useGetBanks();
+    const { mutate } = useGetBankAccoutns();
     const { data: userData } = useUser();
 
     const banksOptions = useMemo(
@@ -47,7 +49,7 @@ const AddBankModal: React.FC<IProps> = ({ open, onClose }) => {
             name: '',
             number: '',
         },
-        onSubmit: async ({ bank_code, name, number }, { setSubmitting }) => {
+        onSubmit: async ({ bank_code, name, number }, { setSubmitting, resetForm }) => {
             const payload = { bank_code, name, number };
 
             try {
@@ -56,6 +58,10 @@ const AddBankModal: React.FC<IProps> = ({ open, onClose }) => {
                     return helpers.openNotification({ message: response.message, type: 'error' });
                 }
                 helpers.openNotification({ message: response.message, type: 'success' });
+                resetForm();
+                mutate();
+                setUserInfoActive(true);
+                setBankInfoActive(false);
                 onClose();
             } catch (error) {
                 return logger(error);
@@ -81,7 +87,7 @@ const AddBankModal: React.FC<IProps> = ({ open, onClose }) => {
                     </Button>
                     <Button
                         loading={isSubmitting}
-                        disabled={isSubmitting}
+                        disabled={isSubmitting || userInfoActive}
                         onClick={() => handleSubmit()}
                         className="novel-btn md:w-fit"
                     >
