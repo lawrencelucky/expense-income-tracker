@@ -119,7 +119,7 @@ const FarmTable: React.FC = () => {
                             width: 150,
                         },
                     ]}
-                    dataSource={farmsData?.data.farms}
+                    dataSource={farmsData?.data?.farms}
                     scroll={{ x: 'max-content', y: 'max-content' }}
                     pagination={false}
                     className="no-scrollbar"

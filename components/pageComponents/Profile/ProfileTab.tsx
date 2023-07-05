@@ -62,14 +62,14 @@ const TabComponent: React.FC = () => {
 
     const renderContent = () => {
         if (activeTab === 'farms') {
-            return farmsData?.data.farms.length !== 0 ? <FarmTable /> : <EmptyStateProfileFarm />;
+            return farmsData?.data?.farms?.length !== 0 ? <FarmTable /> : <EmptyStateProfileFarm />;
         }
         if (activeTab === 'warehouse') {
             return true ? <WareHouseTable /> : <EmptyStateProfileWare />;
         }
         return null;
     };
-    console.log(farmsData?.data.farms, 'farmsData?.data=farmsData?.data');
+    // console.log(farmsData?.data?.farms, 'farmsData?.data=farmsData?.data');
 
     return (
         <div className="rounded-lg border-1">
