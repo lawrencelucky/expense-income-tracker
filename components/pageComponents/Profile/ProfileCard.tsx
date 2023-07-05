@@ -47,12 +47,12 @@ const ProfileCard: React.FC = () => {
 
         fetchData();
     }, []);
-    console.log(userData, 'UserDATA');
+    // console.log(userData, 'UserDATA');
     const [userObj] = useState({
         img: userData?.data?.user?.profile_picture,
         name: userData?.data?.user?.first_name + ' ' + userData?.data?.user?.last_name,
     });
-    console.log(userObj.name, 'user name join');
+    // console.log(userObj.name, 'user name join');
     return (
         <>
             <Card className="gradient-card !rounded-lg h-[218px]" style={{ height: cardHeight }}>

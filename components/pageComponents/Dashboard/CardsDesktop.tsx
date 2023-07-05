@@ -55,7 +55,7 @@ const CardsDesktop = () => {
         fetchFarmData();
     }, []);
 
-    console.log(farmsData, 'farm data');
+    // console.log(farmsData, 'farm data');
     return (
         <div className="grid grid-cols-4 gap-6">
             <div className="shadow-30 rounded-lg bg-white h-[95px]">

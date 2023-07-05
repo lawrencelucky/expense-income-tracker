@@ -1,7 +1,7 @@
 import Input from '@/components/common/components/Input';
 import Select from '@/components/common/components/Select';
 import Modal from '@/components/common/components/Modal';
-import { Avatar, Form, Typography, Progress } from 'antd';
+import { Avatar, Form, Typography, Progress, Upload, message } from 'antd';
 import React, { useEffect, useMemo, useState, useRef } from 'react';
 import Image from 'next/image';
 import { useFormik } from 'formik';
@@ -14,7 +14,16 @@ import helpers from '@/components/common/utils/helper';
 import { create } from 'zustand';
 import TextAreaInput from '@/components/common/components/Input/TextAreaInput';
 import ProfilePicture from '../Dashboard/ProfilePicture';
+import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
+import constants from '@/config/constants';
 
+const {
+    API: { routes },
+} = constants;
+// trial
+// import { Upload, message, Avatar } from 'antd';
+// import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
+// trial
 interface IProps {
     openEdit: boolean;
     onCloseEdit: () => void;
@@ -33,13 +42,13 @@ const useStore = create<Store>((set) => ({
 
     userData: null,
 }));
-interface Upload {
-    photo: string;
-}
+// interface Upload {
+//     photo: string;
+// }
 
-interface FormData extends Upload {
-    photot: string;
-}
+// interface FormData extends Upload {
+//     photot: string;
+// }
 const EditProfileFormModal: React.FC<IProps> = ({ openEdit, onCloseEdit }) => {
     const [selectedState, setSelectedState] = useState<any>('1');
     const { userData, setUserData } = useStore();
@@ -51,31 +60,78 @@ const EditProfileFormModal: React.FC<IProps> = ({ openEdit, onCloseEdit }) => {
     const [identityActive, setIdentityActive] = useState(false);
     const inputRef = useRef<HTMLInputElement | null>(null);
 
-    const handleImageClick = () => {
-        if (inputRef.current) {
-            inputRef.current.click();
+    // trial
+    const [loading, setLoading] = useState(false);
+    const [imageUrl, setImageUrl] = useState('');
+    // trial
+    // const handleImageClick = () => {
+    //     if (inputRef.current) {
+    //         inputRef.current.click();
+    //     }
+    // };
+
+    // const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    //     const file = event.target.files?.[0];
+
+    //     if (file) {
+    //         try {
+    //             const formData = new FormData();
+    //             formData.append('photo', file);
+
+    //             const uploadPayload: Upload = {
+    //                 photo: formData.get('photo') as string,
+    //             };
+
+    //             const response = await user.uploadImage(uploadPayload);
+    //             // console.log('Image upload successful:', response.data);
+    //         } catch (error) {
+    //             console.error('Image upload failed:', error);
+    //         }
+    //     }
+    // };
+
+    const handleUploadChange = async (info) => {
+        if (info.file.status === 'uploading') {
+            setLoading(true);
+            return;
         }
-    };
-
-    const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
-        const file = event.target.files?.[0];
-
-        if (file) {
-            try {
-                const formData = new FormData();
-                formData.append('photo', file);
-
-                const uploadPayload: Upload = {
-                    photo: formData.get('photo') as string,
-                };
-
-                const response = await user.uploadImage(uploadPayload);
-                // console.log('Image upload successful:', response.data);
-            } catch (error) {
-                console.error('Image upload failed:', error);
+        if (info.file.status === 'done') {
+            setLoading(false);
+            // Handle response data after image upload
+            const response = info.file.response;
+            if (response && response.status === 'success') {
+                setImageUrl(response.data.imageUrl);
+                message.success('Image upload successful');
+            } else {
+                message.error('Image upload failed');
             }
         }
     };
+    const customRequest = async (options) => {
+        const { file, onProgress, onError, onSuccess } = options;
+
+        const formData = new FormData();
+        formData.append('photo', file);
+
+        try {
+            const response = await user.uploadImage({ payload: formData });
+
+            if (response && response.message === 'Profile photo has been uploaded successfully.') {
+                onSuccess(response.message);
+            } else {
+                onError('Error uploading image');
+            }
+        } catch (error) {
+            onError(error);
+        }
+    };
+
+    const uploadButton = (
+        <div>
+            {loading ? <LoadingOutlined rev={undefined} /> : <PlusOutlined rev={undefined} />}
+            <div style={{ marginTop: 8 }}>Upload</div>
+        </div>
+    );
 
     useEffect(() => {
         const fetchData = async () => {
@@ -141,7 +197,7 @@ const EditProfileFormModal: React.FC<IProps> = ({ openEdit, onCloseEdit }) => {
                 state_id,
                 ward_id,
             };
-            console.log(payload);
+            // console.log(payload);
             try {
                 const response = await user.editProfile(payload);
                 if (!response.success) {
@@ -230,14 +286,37 @@ const EditProfileFormModal: React.FC<IProps> = ({ openEdit, onCloseEdit }) => {
                         <span className="font-normal text-sm">Change display picture</span>
                     </Typography.Text>
                     <Form>
-                        <div className="flex py-5">
-                            <div className="mr-4">
+                        <div className="flex py-5 space-x-4">
+                            <Avatar size={105} src={userData?.data?.users?.profile_picture} />
+                            <Upload
+                                name="photo"
+                                customRequest={customRequest}
+                                listType="picture-card"
+                                className="profile-picture-upload"
+                                showUploadList={false}
+                                onChange={handleUploadChange}
+                            >
+                                {imageUrl ? (
+                                    <Avatar size={100} src={imageUrl} />
+                                ) : (
+                                    <div>
+                                        {loading ? (
+                                            <LoadingOutlined rev={undefined} />
+                                        ) : (
+                                            <PlusOutlined rev={undefined} />
+                                        )}
+                                        <div style={{ marginTop: 8 }}>Upload</div>
+                                    </div>
+                                )}
+                            </Upload>
+
+                            {/* <div className="mr-4">
                                 <ProfilePicture
                                     size={100}
                                     imageUrl={userData?.data?.users?.profile_picture}
                                     name={userData?.data?.users?.last_name + ' ' + userData?.data?.users?.first_name}
                                 />
-                                {/* <Avatar size={100} src={userData?.data?.users.profile_picture} /> */}
+                                <Avatar size={100} src={userData?.data?.users.profile_picture} />
                             </div>
                             <div className="cursor-pointer" onClick={handleImageClick}>
                                 <Image
@@ -252,9 +331,9 @@ const EditProfileFormModal: React.FC<IProps> = ({ openEdit, onCloseEdit }) => {
                                     style={{ display: 'none' }}
                                     ref={inputRef}
                                     onChange={handleFileChange}
-                                    // value={}
+                                    value={}
                                 />
-                            </div>
+                            </div> */}
                         </div>
 
                         <div className="space-y-[14px]">

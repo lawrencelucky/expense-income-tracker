@@ -30,7 +30,7 @@ const SetupPinForm = () => {
                 pin,
             };
 
-            console.log(payload);
+            // console.log(payload);
 
             try {
                 const response = await auth.setPin(payload);

@@ -5,7 +5,7 @@ import icons from '@/icons';
 import ProfilePicture from '../Dashboard/ProfilePicture';
 
 const AssignAgentDropdown = (user: any) => {
-    console.log(user, 'ASSIGNED AGENT');
+    // console.log(user, 'ASSIGNED AGENT');
     const [agentData] = useState(user);
     const [userObj] = useState({
         img: agentData?.user?.data?.primary_agent?.profile_picture,
