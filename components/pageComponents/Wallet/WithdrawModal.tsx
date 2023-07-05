@@ -8,6 +8,7 @@ import useGetBankAccoutns from '@/hooks/banks/useGetBankAccounts';
 import icons from '@/icons';
 import { useFormik } from 'formik';
 import logger from '@/logger.config';
+import VerifyOTPModal from './VerifyOTPModal';
 
 interface IProps {
     open: boolean;
@@ -38,6 +39,7 @@ const WithdrawModal: React.FC<IProps> = ({ open, onClose }) => {
         is_primary: '',
         updated_at: new Date(),
     });
+    const [openVerifyOTPModal, setOpenVerifyOTPModal] = useState(false);
 
     const walletData = data?.data?.user?.wallet;
 
@@ -123,7 +125,7 @@ const WithdrawModal: React.FC<IProps> = ({ open, onClose }) => {
                             }}
                             className="novel-white-btn w-full md:w-fit"
                         >
-                            {step1 ? 'Cancel' : step2 ? 'Previous' : step3 ? 'Previous' : 'Cancel'}
+                            {step1 ? 'Cancel' : step2 ? 'Back' : step3 ? 'Back' : 'Cancel'}
                         </Button>
                         <Button
                             onClick={() => {
@@ -133,11 +135,14 @@ const WithdrawModal: React.FC<IProps> = ({ open, onClose }) => {
                                 } else if (step2) {
                                     setStep2(false);
                                     setStep3(true);
+                                } else {
+                                    onClose();
+                                    setOpenVerifyOTPModal(true);
                                 }
                             }}
                             className="novel-btn md:w-fit"
                         >
-                            Next
+                            {step3 ? 'Yes, Proceed' : 'Next'}
                         </Button>
                     </div>
                 }
@@ -256,6 +261,8 @@ const WithdrawModal: React.FC<IProps> = ({ open, onClose }) => {
                     </>
                 )}
             </Modal>
+
+            <VerifyOTPModal open={openVerifyOTPModal} onClose={() => setOpenVerifyOTPModal(false)} />
         </>
     );
 };

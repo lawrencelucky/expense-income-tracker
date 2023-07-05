@@ -9,11 +9,9 @@ const AgentCard = () => {
     return (
         <div className="border border-novelgray-60 rounded-[18px] shadow-20 p-3 space-y-3">
             <div className="flex items-start justify-between">
-                <Avatar className="bg-white shadow-50 border border-novelgray-60 w-[54px] h-[54px] rounded-full flex items-center justify-center">
-                    <span className="text-novelgreen-40 text-lg font-bold">
-                        {data?.data.primary_agent?.first_name.substring(0, 1)}
-                        {data?.data.primary_agent?.last_name.substring(0, 1)}
-                    </span>
+                <Avatar className="bg-white shadow-50 border border-novelgray-60 w-[54px] h-[54px] rounded-full flex items-center justify-center text-novelgreen-40 text-lg font-bold">
+                    {data?.data.primary_agent?.first_name.substring(0, 1)}
+                    {data?.data.primary_agent?.last_name.substring(0, 1)}
                 </Avatar>
                 <div className="bg-novelyellow-20 border border-novelyellow-30 px-2 rounded-full">
                     <span className="text-novelyellow-40 font-bold text-xs">Agent</span>
