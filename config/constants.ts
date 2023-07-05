@@ -32,6 +32,9 @@ const API = {
             getBankAccounts: '/farmer/bank-accounts',
             getBanks: '/banks',
         },
+        farms: {
+            getFarmsInfo: '/farmer/farms',
+        },
         states: {
             getLocalGovernments: '/local-governments/%state_id%?sort_field=id&sort_type=asc',
             getStates: '/states?sort_field=id&sort_type=asc',
@@ -39,6 +42,7 @@ const API = {
         },
         user: {
             profile: '/farmer/me',
+            uploadImg: '/farmer/upload-photo',
         },
     },
     timeout: 60000,

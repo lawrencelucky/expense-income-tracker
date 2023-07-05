@@ -12,7 +12,7 @@ interface DataType {
     name: string;
 }
 
-const Table = () => {
+const WareHouseTable = () => {
     const data: DataType[] = [
         {
             crops: 'Rice, Corn...',
@@ -157,7 +157,7 @@ const Table = () => {
 
     return (
         <div className="mt-[64px]">
-            <Typography.Text className="text-lg block mb-5">Farms</Typography.Text>
+            <Typography.Text className="text-lg block mb-5">Warehouses</Typography.Text>
             <div className="rounded-2xl overflow-hidden no-scrollbar">
                 <AntdTable
                     columns={columns}
@@ -185,4 +185,4 @@ const Table = () => {
     );
 };
 
-export default Table;
+export default WareHouseTable;
