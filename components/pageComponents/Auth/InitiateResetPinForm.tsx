@@ -66,7 +66,7 @@ const InitiateResetPinForm = () => {
             <div>
                 <Form>
                     <div className="flex flex-col mt-[26px] mb-[24px] px-[30px]">
-                        <label className="block font-medium mb-[6px]">Phone No. or email</label>
+                        <label className="block font-medium mb-[6px]">Phone No.</label>
                         <Input
                             type="text"
                             name={'phone'}
