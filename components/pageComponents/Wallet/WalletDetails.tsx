@@ -37,7 +37,7 @@ const WalletDetails = () => {
     const walletData = data?.data.user.wallet;
 
     useEffect(() => {
-        if (bankAccounts?.data.bank_accounts.length) {
+        if (bankAccounts?.data?.bank_accounts?.length) {
             setPrimaryAccount(bankAccounts.data.bank_accounts.find((a) => a.is_primary === '1'));
         }
     }, [bankAccounts]);
@@ -107,7 +107,7 @@ const WalletDetails = () => {
 
                 <div className="flex items-center justify-between">
                     <Typography.Text className="text-base font-bold text-novelblack-10">
-                        ₦{`${showBalance ? walletData?.balance : '****'} `}
+                        ₦{`${showBalance ? walletData?.balance : '****'}`}
                     </Typography.Text>
 
                     <span onClick={() => setShowBalance(!showBalance)} className="cursor-pointer">
