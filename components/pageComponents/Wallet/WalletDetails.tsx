@@ -7,6 +7,7 @@ import DeleteModal from './DeleteModal';
 import WalletChart from './WalletChart';
 import useUser from '@/hooks/useUser';
 import useGetBankAccoutns from '@/hooks/banks/useGetBankAccounts';
+import { useWindowSize } from '@/hooks/useWindowSize';
 
 const WalletDetails = () => {
     const [openAddBankModal, setOpenAddBankModal] = useState(false);
@@ -33,6 +34,7 @@ const WalletDetails = () => {
         updated_at: Date.now(),
     });
     const [showBalance, setShowBalance] = useState(true);
+    const { width } = useWindowSize();
 
     const walletData = data?.data.user.wallet;
 
@@ -97,9 +99,11 @@ const WalletDetails = () => {
 
     return (
         <div className="flex space-x-6 overflow-x-scroll no-scrollbar ">
-            <div className="lg:hidden whitespace-nowrap inline-block">
-                <WalletChart />
-            </div>
+            {width < 1024 && (
+                <div className="lg:hidden whitespace-nowrap inline-block">
+                    <WalletChart />
+                </div>
+            )}
             <div className="hidden lg:block border border-novelgray-60 shadow-20 py-3 px-6 flex-1 rounded-xl">
                 <div className="flex justify-between items-center mb-6">
                     <Typography.Text className="text-sm text-novelgray-40 font-medium">Balance</Typography.Text>

@@ -128,7 +128,7 @@ const WalletChart = () => {
                 options={options}
                 series={[
                     {
-                        data: chartData,
+                        data: [0, 0, 0, 0, 0, 0],
                         name: 'Amount',
                     },
                 ]}

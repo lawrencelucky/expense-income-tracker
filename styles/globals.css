@@ -39,10 +39,10 @@
         @apply !font-primary;
     }
     .novel-btn {
-        @apply w-full rounded-md bg-novelgreen-10 h-10 shadow-40 text-novelwhite font-semibold disabled:!bg-novelgreen-10 disabled:!text-white hover:bg-novelgreen-10 hover:!text-novelwhite hover:!border-novelgreen-20;
+        @apply w-full rounded-md h-10 bg-novelgreen-10 shadow-40 text-novelwhite px-5 font-semibold disabled:!bg-novelgreen-10 disabled:!text-white hover:bg-novelgreen-10 hover:!text-novelwhite hover:!border-novelgreen-20;
     }
     .novel-white-btn {
-        @apply bg-white text-xs text-novelgray-70 border border-novelgray-20 rounded-[4px] py-1 px-2 font-medium;
+        @apply bg-white text-xs h-10 text-novelgray-70 border border-novelgray-20 rounded-[4px] py-1 px-4 font-medium;
     }
 }
 
