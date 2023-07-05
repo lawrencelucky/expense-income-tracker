@@ -23,15 +23,19 @@ const AgentCard = () => {
                     {data?.data.primary_agent?.first_name} {data?.data.primary_agent?.last_name}
                 </Typography.Text>
                 <div className="space-x-2 flex">
-                    <div className="flex-1 bg-white shadow-50 rounded-lg py-2 flex justify-center items-center space-x-2 cursor-pointer">
-                        <span>{icons.phoneIcon()}</span>
-                        <Typography.Text className="text-novelgray-40 text-sm">Call Agent</Typography.Text>
-                    </div>
+                    <a href={`tel:${data?.data.primary_agent.phone}`} className="w-full">
+                        <div className="flex-1 bg-white shadow-50 rounded-lg py-2 flex justify-center items-center space-x-2 cursor-pointer">
+                            <span>{icons.phoneIcon()}</span>
+                            <Typography.Text className="text-novelgray-40 text-sm">Call Agent</Typography.Text>
+                        </div>
+                    </a>
 
-                    <div className="flex-1 bg-white shadow-50 rounded-lg py-2 flex justify-center items-center space-x-2 cursor-pointer">
-                        <span>{icons.mailIcon()}</span>
-                        <Typography.Text className="text-novelgray-40 text-sm">Send email</Typography.Text>
-                    </div>
+                    <a href={`mailto:${data?.data.primary_agent.email}`} className="w-full">
+                        <div className="flex-1 bg-white shadow-50 rounded-lg py-2 flex justify-center items-center space-x-2 cursor-pointer">
+                            <span>{icons.mailIcon()}</span>
+                            <Typography.Text className="text-novelgray-40 text-sm">Send email</Typography.Text>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>

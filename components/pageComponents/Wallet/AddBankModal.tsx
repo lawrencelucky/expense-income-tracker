@@ -87,11 +87,18 @@ const AddBankModal: React.FC<IProps> = ({ open, onClose }) => {
                     </Button>
                     <Button
                         loading={isSubmitting}
-                        disabled={isSubmitting || userInfoActive}
-                        onClick={() => handleSubmit()}
+                        disabled={isSubmitting}
+                        onClick={() => {
+                            if (userInfoActive) {
+                                setBankInfoActive(true);
+                                setUserInfoActive(false);
+                            } else {
+                                handleSubmit();
+                            }
+                        }}
                         className="novel-btn md:w-fit"
                     >
-                        Save
+                        {userInfoActive ? 'Next' : 'Save'}
                     </Button>
                 </div>
             }
@@ -164,6 +171,7 @@ const AddBankModal: React.FC<IProps> = ({ open, onClose }) => {
                             placeholder="090 300 0000"
                             value={userData?.data.user.phone}
                             className="md:w-[320px]"
+                            disabled
                         />
                     </div>
                 </Form>
