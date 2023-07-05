@@ -51,6 +51,19 @@ const post = async <T, X>({ route, payload }: { route: string; token?: string; p
         return error?.response?.data;
     }
 };
+const postFormDataPost = async <T, X>({ route, payload }: { route: string; payload: X }): Promise<T> => {
+    const headers = {
+        'Content-Type': 'multipart/form-data',
+    };
+    try {
+        const response = await novelag.post(route, payload, { headers });
+        return response.data as T;
+    } catch (error: any) {
+        networkError(error?.code);
+        logger({ error });
+        return error?.response?.data;
+    }
+};
 
 const put = async <T, X>({ route, payload }: { route: string; token?: string; payload?: X }): Promise<T> => {
     try {
@@ -63,7 +76,7 @@ const put = async <T, X>({ route, payload }: { route: string; token?: string; pa
     }
 };
 
-const postFormData = async <T, X>({ route, payload }: { route: string; payload: X }): Promise<T> => {
+const postFormDataPut = async <T, X>({ route, payload }: { route: string; payload: X }): Promise<T> => {
     const headers = {
         'Content-Type': 'multipart/form-data',
     };
@@ -93,7 +106,7 @@ const requests = {
     get,
     networkError,
     post,
-    postFormData,
+    postFormDataPost,
     put,
 };
 

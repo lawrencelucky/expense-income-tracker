@@ -114,15 +114,20 @@ const EditProfileFormModal: React.FC<IProps> = ({ openEdit, onCloseEdit }) => {
         formData.append('photo', file);
 
         try {
-            const response = await user.uploadImage({ payload: formData });
+            setLoading(true);
+            const response = await user.uploadImage(formData);
 
+            console.log(formData, 'FORM_DATA_OBJ');
             if (response && response.message === 'Profile photo has been uploaded successfully.') {
-                onSuccess(response.message);
+                helpers.openNotification({ message: 'Profile photo has been uploaded successfully.', type: 'success' });
+                // onSuccess(response.message);
             } else {
-                onError('Error uploading image');
+                helpers.openNotification({ message: 'Error updating profile photo', type: 'error' });
             }
         } catch (error) {
             onError(error);
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -174,11 +179,11 @@ const EditProfileFormModal: React.FC<IProps> = ({ openEdit, onCloseEdit }) => {
     const formik = useFormik({
         enableReinitialize: true,
         initialValues: {
-            email: '',
-            first_name: '',
-            last_name: '',
+            email: userData?.data?.user?.email,
+            first_name: userData?.data?.user?.first_name,
+            last_name: userData?.data?.user?.last_name,
             local_government_id: '',
-            phone: '',
+            phone: userData?.data?.user?.phone,
             photo: '',
             state_id: '',
             ward_id: '',
@@ -214,7 +219,7 @@ const EditProfileFormModal: React.FC<IProps> = ({ openEdit, onCloseEdit }) => {
         // validationSchema: schema.registerSchema,
     });
 
-    const { touched, errors, setFieldValue, isSubmitting, handleSubmit, values, handleChange } = formik;
+    const { touched, errors, setFieldValue, isSubmitting, handleSubmit, values, handleChange, handleBlur } = formik;
     const handleIdentityActive = () => {
         setProfileActive(false);
         setIdentityActive(true);
@@ -285,32 +290,28 @@ const EditProfileFormModal: React.FC<IProps> = ({ openEdit, onCloseEdit }) => {
                     <Typography.Text>
                         <span className="font-normal text-sm">Change display picture</span>
                     </Typography.Text>
-                    <Form>
-                        <div className="flex py-5 space-x-4">
-                            <Avatar size={105} src={userData?.data?.users?.profile_picture} />
-                            <Upload
-                                name="photo"
-                                customRequest={customRequest}
-                                listType="picture-card"
-                                className="profile-picture-upload"
-                                showUploadList={false}
-                                onChange={handleUploadChange}
-                            >
-                                {imageUrl ? (
-                                    <Avatar size={100} src={imageUrl} />
-                                ) : (
-                                    <div>
-                                        {loading ? (
-                                            <LoadingOutlined rev={undefined} />
-                                        ) : (
-                                            <PlusOutlined rev={undefined} />
-                                        )}
-                                        <div style={{ marginTop: 8 }}>Upload</div>
-                                    </div>
-                                )}
-                            </Upload>
 
-                            {/* <div className="mr-4">
+                    <div className="flex py-5 space-x-4">
+                        <Avatar size={105} src={userData?.data?.users?.profile_picture} />
+                        <Upload
+                            name="photo"
+                            customRequest={customRequest}
+                            listType="picture-card"
+                            className="profile-picture-upload"
+                            showUploadList={false}
+                            onChange={handleUploadChange}
+                        >
+                            {imageUrl ? (
+                                <Avatar size={100} src={imageUrl} />
+                            ) : (
+                                <div>
+                                    {loading ? <LoadingOutlined rev={undefined} /> : <PlusOutlined rev={undefined} />}
+                                    <div style={{ marginTop: 8 }}>Upload</div>
+                                </div>
+                            )}
+                        </Upload>
+
+                        {/* <div className="mr-4">
                                 <ProfilePicture
                                     size={100}
                                     imageUrl={userData?.data?.users?.profile_picture}
@@ -334,78 +335,88 @@ const EditProfileFormModal: React.FC<IProps> = ({ openEdit, onCloseEdit }) => {
                                     value={}
                                 />
                             </div> */}
-                        </div>
-
+                    </div>
+                    <Form>
                         <div className="space-y-[14px]">
                             <Input
                                 type="text"
                                 name={'first_name'}
-                                value={values.first_name || userData?.data?.user?.first_name}
+                                value={values.first_name}
                                 onChange={handleChange}
-                                help={touched.first_name && errors.first_name}
-                                // placeholder={userData?.data?.first_name}
+                                onBlur={handleBlur}
+                                // help={touched.first_name && errors.first_name}
+                                // placeholder={userData?.data?.user?.first_name}
                                 validateStatus={(touched.first_name && errors.first_name && 'error') || ''}
                             />
                             <Input
                                 type="text"
                                 name={'last_name'}
-                                value={values.last_name || userData?.data?.user?.last_name}
+                                value={values.last_name}
                                 onChange={handleChange}
-                                help={touched.last_name && errors.last_name}
+                                // help={touched.last_name && errors.last_name}
                                 // placeholder={userData?.data?.last_name}
                                 validateStatus={(touched.last_name && errors.last_name && 'error') || ''}
                             />
                             <Input
                                 type="email"
                                 name={'email'}
-                                value={values.email || userData?.data?.user?.email}
+                                value={values.email}
                                 onChange={handleChange}
-                                help={touched.email && errors.email}
+                                // help={touched.email && errors.email}
                                 // placeholder={userData?.data?.email}
                                 validateStatus={(touched.email && errors.email && 'error') || ''}
                             />
                             <Input
                                 type="tel"
                                 name={'phone'}
-                                value={values.phone || userData?.data?.user?.phone}
+                                value={values.phone}
                                 onChange={handleChange}
-                                help={touched.phone && errors.phone}
+                                // help={touched.phone && errors.phone}
                                 // placeholder={userData?.data?.phone}
                                 validateStatus={(touched.phone && errors.phone && 'error') || ''}
                             />
 
-                            <Select
-                                onChange={(val) => {
-                                    setSelectedState(val);
-                                    setFieldValue('state_id', val);
-                                }}
-                                placeholder="Select state"
-                                help={touched.state_id && errors.state_id}
-                                validateStatus={(touched.state_id && errors.state_id && 'error') || ''}
-                                options={states}
-                                value={values.state_id || userData?.data?.user?.state?.name}
-                            />
-                            <Select
-                                onChange={(val) => {
-                                    setSelectedLGA(val);
-                                    setFieldValue('local_government_id', val);
-                                }}
-                                placeholder="Select LGA"
-                                help={touched.local_government_id && errors.local_government_id}
-                                validateStatus={
-                                    (touched.local_government_id && errors.local_government_id && 'error') || ''
-                                }
-                                options={localGovt}
-                                value={values.local_government_id || userData?.data?.user?.local_government?.name}
-                            />
-                            <Select
-                                onChange={(val) => setFieldValue('ward_id', val)}
-                                placeholder="Select ward"
-                                help={touched.ward_id && errors.ward_id}
-                                validateStatus={(touched.ward_id && errors.ward_id && 'error') || ''}
-                                options={wards}
-                                value={values.ward_id || userData?.data?.user?.ward?.name}
-                            />
+                            <div className="space-y-1">
+                                <label>Select State</label>
+                                <Select
+                                    onChange={(val) => {
+                                        setSelectedState(val);
+                                        setFieldValue('state_id', val);
+                                    }}
+                                    placeholder="Select state"
+                                    help={touched.state_id && errors.state_id}
+                                    validateStatus={(touched.state_id && errors.state_id && 'error') || ''}
+                                    options={states}
+                                    value={values.state_id}
+                                />
+                            </div>
+                            <div className="space-y-1">
+                                <label>Select LGA</label>
+                                <Select
+                                    onChange={(val) => {
+                                        setSelectedLGA(val);
+                                        setFieldValue('local_government_id', val);
+                                    }}
+                                    placeholder="Select LGA"
+                                    help={touched.local_government_id && errors.local_government_id}
+                                    validateStatus={
+                                        (touched.local_government_id && errors.local_government_id && 'error') || ''
+                                    }
+                                    options={localGovt}
+                                    value={values.local_government_id}
+                                />
+                            </div>
+                            <div className="space-y-1">
+                                <label>Select ward</label>
+                                <Select
+                                    onChange={(val) => setFieldValue('ward_id', val)}
+                                    placeholder="Select ward"
+                                    help={touched.ward_id && errors.ward_id}
+                                    validateStatus={(touched.ward_id && errors.ward_id && 'error') || ''}
+                                    options={wards}
+                                    value={values.ward_id}
+                                />
+                            </div>
                         </div>
                     </Form>
                 </div>
