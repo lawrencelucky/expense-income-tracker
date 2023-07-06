@@ -16,7 +16,24 @@ interface IGetFarmsDetails extends ApiResponse {
     data?: any;
 }
 
-const getFarmDetails = (): Promise<IGetFarmsDetails> => request.get({ route: routes.farms.getFarmsInfo });
+type PaginationPayload = {
+    page: number;
+    limit: number;
+    period?: string;
+    search?: string;
+    sort?: string;
+};
+
+const getFarmDetails = ({ limit, page }: PaginationPayload): Promise<IGetFarmsDetails> =>
+    request.get({
+        config: {
+            params: {
+                limit,
+                page,
+            },
+        },
+        route: routes.farms.getFarmsInfo,
+    });
 // const editProfile = (payload: Payload): Promise<ApiResponse> =>
 //     request.put({ payload, route: routes.farms.getFarmsInfo });
 const farms = {

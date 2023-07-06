@@ -234,23 +234,49 @@ const EditProfileFormModal: React.FC<IProps> = ({ openEdit, onCloseEdit }) => {
         <Modal
             open={openEdit}
             onClose={onCloseEdit}
-            title="Edit Profile"
+            // title="Edit Profile"
             className="!w-[637px]"
+            // closable={false}
             onOk={() => handleSubmit()}
+            okText="Save changes"
         >
+            <div className="flex justify-between mt-[-4px]">
+                <Typography.Text>
+                    <span className="font-bold text-lg">Edit Profile</span>
+                </Typography.Text>
+                <div>
+                    {identityActive && (
+                        <div className="flex mb-6 mr-[55px]">
+                            <div className="bg-[#F8DCE3] py-[5px] px-[10px] rounded-[100px] space-x-1 flex items-center">
+                                <Progress
+                                    type="circle"
+                                    percent={40}
+                                    size={20}
+                                    strokeColor={'#F04438'}
+                                    trailColor="#ffffff"
+                                />
+                                <Typography.Text className="text-sm font-medium">
+                                    Verification Incomplete
+                                </Typography.Text>
+                            </div>
+                        </div>
+                    )}
+                </div>
+            </div>
+            {/* <hr className="w-[637px] my-[12px] pr-3" /> */}
             {/* imported from settings modal */}
-            {identityActive && (
+            {/* {identityActive && (
                 <div className="flex justify-end mb-6">
                     <div className="bg-[#F8DCE3] py-[5px] px-[10px] rounded-[100px] space-x-1 flex items-center">
                         <Progress type="circle" percent={40} size={20} strokeColor={'#F04438'} trailColor="#ffffff" />
                         <Typography.Text className="text-sm font-medium">Verification Incomplete</Typography.Text>
                     </div>
                 </div>
-            )}
+            )} */}
             {/* imported from settings modal */}
 
             {/* imported from settings modal the tab component */}
-            <div className="bg-novelgray-60 p-[6px] rounded-[100px] w-full flex mb-6">
+            <div className="bg-novelgray-60 p-[6px] rounded-[100px] w-full flex mb-6 mt-[30px]">
                 <div
                     onClick={handleProfileActive}
                     className={`${
@@ -288,15 +314,18 @@ const EditProfileFormModal: React.FC<IProps> = ({ openEdit, onCloseEdit }) => {
                         <span className="font-bold text-base">Profile Photo</span>
                     </Typography.Text>
                     <Typography.Text>
-                        <span className="font-normal text-sm">Change display picture</span>
+                        <span className="font-normal text-sm text-[#26272B]">Change display picture</span>
                     </Typography.Text>
 
                     <div className="flex py-5 space-x-4">
-                        <Avatar size={105} src={userData?.data?.users?.profile_picture} />
+                        {/* <Avatar size={108} src={userData?.data?.users?.profile_picture} /> */}
+                        <div>
+                            <Avatar size={100} src="/svgs/userAvatar.svg" />
+                        </div>
                         <Upload
                             name="photo"
                             customRequest={customRequest}
-                            listType="picture-card"
+                            listType="picture-circle"
                             className="profile-picture-upload"
                             showUploadList={false}
                             onChange={handleUploadChange}

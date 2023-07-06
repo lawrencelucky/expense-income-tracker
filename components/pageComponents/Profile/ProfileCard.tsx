@@ -55,7 +55,7 @@ const ProfileCard: React.FC = () => {
     // console.log(userObj.name, 'user name join');
     return (
         <>
-            <Card className="gradient-card !rounded-lg h-[218px]" style={{ height: cardHeight }}>
+            <Card className="gradient-card !rounded-lg h-[218px] shadow-70" style={{ height: cardHeight }}>
                 <div className="flex justify-between">
                     <div className="flex flex-col">
                         <ProfilePicture

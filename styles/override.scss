@@ -11,3 +11,30 @@
 .ant-typography {
     font-family: 'satoshi' !important;
 }
+.ant-pagination-slash {
+    display: none;
+}
+
+.ant-pagination.ant-pagination-simple .ant-pagination-simple-pager input {
+    border: none;
+}
+
+.ant-pagination.ant-pagination-simple .ant-pagination-simple-pager input:focus {
+    border: none;
+    box-shadow: none;
+}
+
+.ant-table-wrapper .ant-table-pagination.ant-pagination {
+    margin: 16px 50px;
+}
+
+.ant-pagination.ant-pagination-simple .ant-pagination-prev,
+.ant-pagination.ant-pagination-simple .ant-pagination-next {
+    margin-top: -2px;
+}
+
+.ant-pagination .ant-pagination-prev,
+.ant-pagination .ant-pagination-jump-prev,
+.ant-pagination .ant-pagination-jump-next {
+    margin: 0;
+}

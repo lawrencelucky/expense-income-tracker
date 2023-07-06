@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Typography } from 'antd';
 import icons from '@/icons';
 import { create } from 'zustand';
@@ -30,6 +30,7 @@ const useStore = create<Store>((set) => ({
 
 const CardsDesktop = () => {
     const { userData, farmsData, setFarmsData, setUserData } = useStore();
+    const [pagination, setPagination] = useState({ limit: 10, page: 1 });
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -46,7 +47,7 @@ const CardsDesktop = () => {
     useEffect(() => {
         const fetchFarmData = async () => {
             try {
-                const response: UserData = await farms.getFarmDetails();
+                const response: UserData = await farms.getFarmDetails({ ...pagination });
                 setFarmsData(response);
             } catch (error) {
                 console.log(error);
@@ -81,7 +82,11 @@ const CardsDesktop = () => {
                     <span>{icons.moreIcon()}</span>
                 </div>
                 <div className="px-6 py-1 space-y-1">
-                    <Typography.Text className="text-lg">{farmsData?.data?.totalRows}</Typography.Text>
+                    {farmsData?.data?.farms?.length == 0 ? (
+                        <Typography.Text className="text-lg">0</Typography.Text>
+                    ) : (
+                        <Typography.Text className="text-lg">{farmsData?.data?.farms?.length}</Typography.Text>
+                    )}
                     <div className="flex justify-end">
                         {/* <Typography.Text>In total</Typography.Text> */}
                         {farmsData?.data?.totalRows == 0 ? (
@@ -98,7 +103,11 @@ const CardsDesktop = () => {
                     <span>{icons.moreIcon()}</span>
                 </div>
                 <div className="px-6 py-1 space-y-1">
-                    <Typography.Text className="text-lg">{farmsData?.data?.totalCropsCount}</Typography.Text>
+                    {farmsData?.data?.totalCropsCount ? (
+                        <Typography.Text className="text-lg">0</Typography.Text>
+                    ) : (
+                        <Typography.Text className="text-lg">{farmsData?.data?.totalCropsCount}</Typography.Text>
+                    )}
                     <div className="flex justify-end">
                         {/* <Typography.Text>In total</Typography.Text> */}
                         {farmsData?.data?.totalCropsCount == 0 ? (
