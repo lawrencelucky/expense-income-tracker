@@ -6,6 +6,9 @@ import useUser from '@/hooks/useUser';
 import Select from '@/components/common/components/Select';
 import useGetBankAccoutns from '@/hooks/banks/useGetBankAccounts';
 import icons from '@/icons';
+import { useFormik } from 'formik';
+import logger from '@/logger.config';
+import VerifyOTPModal from './VerifyOTPModal';
 
 interface IProps {
     open: boolean;
@@ -36,8 +39,38 @@ const WithdrawModal: React.FC<IProps> = ({ open, onClose }) => {
         is_primary: '',
         updated_at: new Date(),
     });
+    const [openVerifyOTPModal, setOpenVerifyOTPModal] = useState(false);
 
     const walletData = data?.data?.user?.wallet;
+
+    const formik = useFormik({
+        enableReinitialize: true,
+        initialValues: {
+            amount: '',
+        },
+        onSubmit: async ({ amount }, { setSubmitting, resetForm }) => {
+            const payload = { amount };
+
+            try {
+                // const response = await banks.createBankAccount(payload);
+                // if (!response.success) {
+                //     return helpers.openNotification({ message: response.message, type: 'error' });
+                // }
+                // helpers.openNotification({ message: response.message, type: 'success' });
+                // resetForm();
+                // mutate();
+                // setUserInfoActive(true);
+                // setBankInfoActive(false);
+                onClose();
+            } catch (error) {
+                return logger(error);
+            } finally {
+                setSubmitting(false);
+            }
+        },
+    });
+
+    const { touched, errors, setFieldValue, isSubmitting, handleSubmit, values, handleChange } = formik;
 
     const menu = (
         <>
@@ -92,7 +125,7 @@ const WithdrawModal: React.FC<IProps> = ({ open, onClose }) => {
                             }}
                             className="novel-white-btn w-full md:w-fit"
                         >
-                            {step1 ? 'Cancel' : step2 ? 'Previous' : step3 ? 'Previous' : 'Cancel'}
+                            {step1 ? 'Cancel' : step2 ? 'Back' : step3 ? 'Back' : 'Cancel'}
                         </Button>
                         <Button
                             onClick={() => {
@@ -102,11 +135,17 @@ const WithdrawModal: React.FC<IProps> = ({ open, onClose }) => {
                                 } else if (step2) {
                                     setStep2(false);
                                     setStep3(true);
+                                } else {
+                                    onClose();
+                                    setStep1(true);
+                                    setStep2(false);
+                                    setStep3(false);
+                                    setOpenVerifyOTPModal(true);
                                 }
                             }}
                             className="novel-btn md:w-fit"
                         >
-                            Next
+                            {step3 ? 'Yes, Proceed' : 'Next'}
                         </Button>
                     </div>
                 }
@@ -122,7 +161,14 @@ const WithdrawModal: React.FC<IProps> = ({ open, onClose }) => {
 
                         <div className="sm:flex justify-between items-center">
                             <Typography.Text className="text-base hidden lg:block">Amount</Typography.Text>
-                            <Input type="text" placeholder="Enter amount" className="w-full lg:w-[320px]" />
+                            <Input
+                                type="text"
+                                value={values.amount}
+                                name={'amount'}
+                                onChange={handleChange}
+                                placeholder="Enter amount"
+                                className="w-full lg:w-[320px]"
+                            />
                         </div>
                     </>
                 )}
@@ -186,16 +232,17 @@ const WithdrawModal: React.FC<IProps> = ({ open, onClose }) => {
                             <span>{icons.greenBankXLIcon()}</span>
                         </div>
                         <Typography.Text className="text-base md:text-lg font-bold block mb-2">
-                            Garba Felix Onoja
+                            {selectedBank.account_name}
                         </Typography.Text>
                         <Typography.Text className="text-base md:text-lg font-bold text-novelgray-30 block mb-8">
-                            GUARANTY TRUST BANK • <span className="text-novelgray-40">54648872625</span>
+                            {selectedBank.banks.data.map((bank) => bank.name)} •{' '}
+                            <span className="text-novelgray-40">{selectedBank.account_number}</span>
                         </Typography.Text>
 
                         <div className="border-t border-b border-novelgray-20">
                             <div className="flex items-center justify-between py-3 border-b border-novelgray-20">
                                 <Typography.Text className="text-base font-medium">Amount</Typography.Text>
-                                <Typography.Text className="text-base font-medium">₦0</Typography.Text>
+                                <Typography.Text className="text-base font-medium">₦{values.amount}</Typography.Text>
                             </div>
                             <div className="flex items-center justify-between py-3 border-b border-novelgray-20">
                                 <Typography.Text className="text-base font-medium">Processing Fee</Typography.Text>
@@ -203,16 +250,22 @@ const WithdrawModal: React.FC<IProps> = ({ open, onClose }) => {
                             </div>
                             <div className="flex items-center justify-between py-3 border-b border-novelgray-20">
                                 <Typography.Text className="text-base font-medium">Receiving Account</Typography.Text>
-                                <Typography.Text className="text-base font-medium">54648872625</Typography.Text>
+                                <Typography.Text className="text-base font-medium">
+                                    {selectedBank.account_number}
+                                </Typography.Text>
                             </div>
                             <div className="flex items-center justify-between py-3">
                                 <Typography.Text className="text-base font-medium">Account Name</Typography.Text>
-                                <Typography.Text className="text-base font-medium"></Typography.Text>
+                                <Typography.Text className="text-base font-medium">
+                                    {selectedBank.account_name}
+                                </Typography.Text>
                             </div>
                         </div>
                     </>
                 )}
             </Modal>
+
+            <VerifyOTPModal open={openVerifyOTPModal} onClose={() => setOpenVerifyOTPModal(false)} />
         </>
     );
 };

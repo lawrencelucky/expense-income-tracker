@@ -14,6 +14,8 @@ export default function Home() {
     useEffect(() => {
         if (data) {
             router.replace('/dashboard');
+        } else {
+            router.replace('/auth/login');
         }
     }, [router, data]);
 
