@@ -162,7 +162,7 @@ const WareHouseTable = () => {
                 <AntdTable
                     columns={columns}
                     dataSource={data}
-                    scroll={{ x: 'max-content', y: 'max-content' }}
+                    scroll={{ x: 'max-content' }}
                     pagination={false}
                     className="no-scrollbar"
                 />

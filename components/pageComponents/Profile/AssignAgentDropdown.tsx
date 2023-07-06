@@ -12,7 +12,7 @@ const AssignAgentDropdown = (user: any) => {
         name: agentData?.user?.data?.primary_agent?.last_name + ' ' + agentData?.user?.data?.primary_agent?.first_name,
     });
     const agentMenu = (
-        <Menu className="border border-novelgray-60 rounded-[18px] shadow-20 w-[258px] h-[180px] p-3 space-y-3">
+        <Menu className="border border-novelgray-60 rounded-[18px] shadow-20 w-[298px] h-[200px] p-3 space-y-3">
             <div className="mx-[12px]">
                 <div className="flex items-start justify-between mb-[8px]">
                     <div className="mt-[1px]">
@@ -35,16 +35,16 @@ const AssignAgentDropdown = (user: any) => {
                         {agentData?.user?.data?.primary_agent?.last_name}{' '}
                         {agentData?.user?.data?.primary_agent?.first_name}
                     </Typography.Text>
-                    <div className="space-x-2 flex">
+                    <div className="space-x-2 flex justify-between">
                         <a href={`tel:${agentData?.user?.data?.primary_agent?.phone}`}>
-                            <div className="flex-1 bg-white shadow-50 rounded-lg py-2 flex justify-center items-center space-x-2 cursor-pointer px-1">
+                            <div className="flex-1 bg-white shadow-50 rounded-lg py-2 flex justify-center items-center space-x-2 cursor-pointer px-1 w-[101px]">
                                 <span>{icons.phoneIcon()}</span>
                                 <Typography.Text className="text-novelgray-40 text-sm">Call Agent</Typography.Text>
                             </div>
                         </a>
 
                         <a href={`mailto:${agentData?.user?.data?.primary_agent?.email}`}>
-                            <div className="flex-1 bg-white shadow-50 rounded-lg py-2 flex justify-center items-center space-x-2 cursor-pointer px-[1px]">
+                            <div className="flex-1 bg-white shadow-50 rounded-lg py-2 flex justify-center items-center space-x-2 cursor-pointer px-[1px] w-[101px]">
                                 <span>{icons.mailIcon()}</span>
                                 <Typography.Text className="text-novelgray-40 text-sm">Send email</Typography.Text>
                             </div>

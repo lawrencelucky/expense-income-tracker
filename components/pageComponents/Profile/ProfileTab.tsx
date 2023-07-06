@@ -41,11 +41,11 @@ const Tab: React.FC<TabProps> = ({ label, active, onClick }) => {
 
 const TabComponent: React.FC = () => {
     const { farmsData, setFarmsData } = useStore();
-
+    const [pagination, setPagination] = useState({ limit: 10, page: 1 });
     useEffect(() => {
         const fetchFarmData = async () => {
             try {
-                const response: DataType = await farms.getFarmDetails();
+                const response: DataType = await farms.getFarmDetails({ ...pagination });
                 setFarmsData(response || { data: [] });
             } catch (error) {
                 console.log(error);
