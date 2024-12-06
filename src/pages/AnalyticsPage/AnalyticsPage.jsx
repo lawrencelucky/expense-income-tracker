@@ -1,10 +1,11 @@
 /* eslint-disable no-unused-vars */
 import { Bar } from "react-chartjs-2";
-import Footer from "../components/Footer/Footer";
-import Header from "../components/Header/Header";
+import Footer from "../../components/Footer/Footer";
+import Header from "../../components/Header/Header";
 import { useEffect, useState } from "react";
 import { Chart as ChartJS } from "chart.js/auto";
 import { Chart } from "react-chartjs-2";
+import "./analytics.css";
 
 const AnalyticsPage = () => {
   const [transactions, setTransactions] = useState([]);
@@ -69,16 +70,8 @@ const AnalyticsPage = () => {
   return (
     <div>
       <Header />
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          marginTop: "100px",
-          marginBottom: "100px",
-        }}
-      >
-        <div style={{ width: "800px", height: "400px" }}>
+      <div className="analytics-section">
+        <div className="chart-container">
           <Bar
             data={chartData}
             options={{

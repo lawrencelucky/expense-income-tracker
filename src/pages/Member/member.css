@@ -1,0 +1,13 @@
+.profile-section {
+  padding: 50px 250px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 60px;
+}
+
+@media screen and (max-width: 500px) {
+  .profile-section {
+    padding: 50px 25px;
+  }
+}

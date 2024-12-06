@@ -21,3 +21,9 @@ body {
   text-align: center;
   height: 25vh;
 }
+
+@media screen and (max-width: 500px) {
+  .no-transaction {
+    font-size: 1.6rem;
+  }
+}

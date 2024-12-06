@@ -60,3 +60,39 @@
   font-size: 2.4rem;
   cursor: pointer;
 }
+
+.trash-icon-mobile {
+  display: none;
+  color: #f24e1e;
+  font-size: 2.4rem;
+  cursor: pointer;
+}
+
+.currency-date-trash {
+  display: flex;
+}
+
+@media screen and (max-width: 500px) {
+  .transaction-container {
+    flex-direction: column;
+    align-items: start;
+    gap: 20px;
+  }
+
+  .trash-icon {
+    display: none;
+  }
+
+  .trash-icon-mobile {
+    display: flex;
+  }
+
+  .transaction-description-container {
+    margin-left: 0;
+  }
+
+  .currency-date-trash {
+    width: 100%;
+    justify-content: space-between;
+  }
+}

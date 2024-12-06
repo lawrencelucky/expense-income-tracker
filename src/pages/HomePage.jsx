@@ -18,8 +18,6 @@ function Home() {
       setTransactions(storedTransactions);
     }
 
-    console.log(storedTransactions);
-
     if (storedBalance) {
       setBalance(storedBalance);
     }

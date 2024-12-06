@@ -8,20 +8,26 @@ import moment from "moment";
 const Transaction = (props) => {
   return (
     <div className="transaction-container">
-      <div>
-        <CurrencyFormat
-          value={props.amount}
-          displayType={"text"}
-          thousandSeparator={true}
-          prefix={"₦"}
-          renderText={(amount) => (
-            <p className="transaction-amount">{amount}</p>
-          )}
+      <div className="currency-date-trash">
+        <div>
+          <CurrencyFormat
+            value={props.amount}
+            displayType={"text"}
+            thousandSeparator={true}
+            prefix={"₦"}
+            renderText={(amount) => (
+              <p className="transaction-amount">{amount}</p>
+            )}
+          />
+          <p className="transaction-date">
+            {moment(props.transaction.date).format("MMM Do YY, h:mm a")}
+            {/* {new Date(props.transaction.date).toLocaleDateString()} */}
+          </p>
+        </div>
+        <BsTrash
+          className="trash-icon-mobile"
+          onClick={() => props.handleDelete(props.transaction)}
         />
-        <p className="transaction-date">
-          {moment(props.transaction.date).format("MMM Do YY, h:mm a")}
-          {/* {new Date(props.transaction.date).toLocaleDateString()} */}
-        </p>
       </div>
       <div className="transaction-description-container">
         <p

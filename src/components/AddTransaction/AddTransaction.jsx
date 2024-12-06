@@ -15,6 +15,10 @@ const AddTransaction = (props) => {
   const submitTransaction = (evt) => {
     evt.preventDefault();
 
+    if (amount === undefined && description === "") {
+      return;
+    }
+
     const trans = new Transaction(transactionType, amount, description);
 
     if (transactionType === "expense") {
@@ -55,7 +59,7 @@ const AddTransaction = (props) => {
           placeholder="Transaction Description"
           value={description}
         />
-        <button>Add Transaction</button>
+        <button onClick={submitTransaction}>Add Transaction</button>
       </form>
     </div>
   );

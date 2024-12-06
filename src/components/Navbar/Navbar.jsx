@@ -23,6 +23,14 @@ const Navbar = () => {
             Analytics
           </NavLink>
         </li>
+        <li className={location.pathname == "/members" ? "active-list" : ""}>
+          <NavLink
+            className={location.pathname == "/members" ? "active-link" : ""}
+            to="/members"
+          >
+            Team
+          </NavLink>
+        </li>
       </ul>
     </nav>
   );

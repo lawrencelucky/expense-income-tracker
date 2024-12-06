@@ -21,11 +21,11 @@ input {
   font-size: 1.6rem;
 }
 
-input[type='number'] {
+input[type="number"] {
   width: 12rem;
 }
 
-input[type='text'] {
+input[type="text"] {
   width: 35rem;
 }
 
@@ -38,4 +38,33 @@ button {
   border: 0;
   border-radius: 10px;
   cursor: pointer;
+}
+
+@media screen and (max-width: 500px) {
+  .add-transaction-container {
+    margin-left: 24px;
+    margin-right: 24px;
+  }
+  .add-transaction-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+  }
+
+  select {
+    width: 100%;
+  }
+
+  input[type="number"] {
+    width: 100%;
+  }
+
+  input[type="text"] {
+    width: 100%;
+  }
+
+  button {
+    width: 100%;
+  }
 }
