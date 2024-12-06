@@ -1,0 +1,40 @@
+nav {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+nav > ul {
+  display: flex;
+  justify-content: center;
+  background-color: #8ab9bf;
+  padding: 4px;
+  border-radius: 16px;
+  width: fit-content;
+}
+
+li {
+  list-style: none;
+  padding: 14px 24px;
+  background-color: #8ab9bf;
+}
+
+li.active-list {
+  background-color: #ffffff;
+  border-radius: 14px;
+}
+
+li:first-child {
+  margin-right: 10px;
+}
+
+a {
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 18px;
+}
+
+a.active-link {
+  color: #8ab9bf;
+  font-weight: 600;
+}
