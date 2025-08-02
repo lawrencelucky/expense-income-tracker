@@ -34,7 +34,7 @@ const openNotification = ({ type, message }: INotification): void => {
         pauseOnHover: true,
         position: 'top-right',
         progress: undefined,
-        theme: 'light',
+        theme: 'dark',
         transition: Flip,
     });
 };
@@ -64,8 +64,10 @@ const formatNumber = ({ number, isCurrency = false, currency = 'USD', notation =
         : new Intl.NumberFormat(locale, { notation }).format(numberToFormat);
 };
 
-const thousandSeparator = function (x) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+const thousandSeparator = (value: number | string, separator: string = ','): string => {
+    const [integerPart, decimalPart] = value.toString().split('.');
+    const formattedInteger = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, separator);
+    return decimalPart ? `${formattedInteger}.${decimalPart}` : formattedInteger;
 };
 
 const replaceItemInArray = <T>(arr: T[], index: number, newItem: T): T[] => [

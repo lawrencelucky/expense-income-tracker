@@ -15,8 +15,6 @@ interface IProps {
 const { Header: AntdHeader, Content, Sider } = Layout;
 
 const MainLayout: React.FC<IProps> = ({ children, title, hasButton, btnText, handleClick }) => {
-    useAuth();
-
     const [visible, setVisible] = useState(false);
 
     return (
@@ -34,7 +32,7 @@ const MainLayout: React.FC<IProps> = ({ children, title, hasButton, btnText, han
             <main className="font-primary antialiased min-w-full bg-white">
                 <section className="w-full overflow-hidden bg-white">
                     <div className="lg:flex lg:h-screen">
-                        <Sider width={230} className="!bg-[#FAFAF9] hidden lg:block border-r border-[#F5F5F4]">
+                        <Sider width={250} className="!bg-[#FAFAF9] hidden lg:block border-r border-[#F5F5F4]">
                             <Menu />
                         </Sider>
                         <Layout>

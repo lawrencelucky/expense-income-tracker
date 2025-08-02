@@ -25,18 +25,8 @@ export default function App({ Component, pageProps }: AppProps) {
 
     return (
         <>
-            {!loading ? (
-                <>
-                    <Component {...pageProps} />
-                    <ToastContainer />
-                </>
-            ) : (
-                <div className="w-full min-h-screen grid place-items-center">
-                    <div className="w-[150px] h-[150px] relative">
-                        <Image src="/gif/novel-loader.gif" alt="loader" fill />
-                    </div>
-                </div>
-            )}
+            <Component {...pageProps} />
+            <ToastContainer />
         </>
     );
 }

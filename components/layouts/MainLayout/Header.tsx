@@ -1,8 +1,8 @@
+import Button from '@/components/common/components/Button';
 import icons from '@/icons';
-import { Input, Typography, Dropdown, Avatar, Menu, Button } from 'antd';
+import { Input, Typography, Dropdown, Avatar, Menu } from 'antd';
 import Link from 'next/link';
 import React from 'react';
-import ProfileDropdown from '@/pageComponents/Dashboard/ProfileDropdown';
 
 interface IProps {
     title: string;
@@ -12,7 +12,7 @@ interface IProps {
     handleClick?: () => void;
 }
 
-const Header: React.FC<IProps> = ({ title, setVisible }) => {
+const Header: React.FC<IProps> = ({ title, setVisible, hasButton, btnText, handleClick }) => {
     return (
         <div className="flex justify-between items-center">
             <div className="flex flex-1 items-center space-x-5">
@@ -22,13 +22,15 @@ const Header: React.FC<IProps> = ({ title, setVisible }) => {
                     </span>
                     <Typography.Text className="text-lg font-bold">{title}</Typography.Text>
                 </div>
-                <Input
-                    prefix={icons.searchIcon()}
-                    placeholder="Search for farms, farmers & stock informations..."
-                    className="py-2 w-2/4 border-0  hover:!border-0 hidden lg:flex font-medium text-sm"
-                />
             </div>
-            <ProfileDropdown />
+
+            {hasButton && (
+                <Button
+                    name={btnText}
+                    className="bg-novelgreen-10 text-white hover:!text-white border-0"
+                    onClick={handleClick}
+                />
+            )}
         </div>
     );
 };

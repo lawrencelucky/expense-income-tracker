@@ -44,7 +44,7 @@ novelag.interceptors.response.use(
                     'Access denied. No token provided.'.toLocaleLowerCase())
         ) {
             nookies.destroy(null, COOKIES.key, { path: CLIENT_ROUTES.home });
-            window.location.pathname = CLIENT_ROUTES.auth.login;
+            // window.location.pathname = CLIENT_ROUTES.auth.login;
         }
         return Promise.reject(error);
     },

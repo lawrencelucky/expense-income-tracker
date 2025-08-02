@@ -1,12 +1,10 @@
 @import '../components/layouts/MainLayout/mainlayout.module.scss';
-@import '../components/pageComponents/Dashboard/dashboard.module.scss';
+@import '../components/pageComponents/Tracker/tracker.module.scss';
 @import '../components/common/components/Modal/modal.module.scss';
 @import '../components/common/components/MultiSelect/multiselect.module.scss';
 @import '../components/common/components/Input/input.module.scss';
 @import '../components/common/components/Select/select.module.scss';
 @import '../components/common/components/SelectWithInnerDropdown/selectwithinnerdropdown.module.scss';
-@import '../components/pageComponents/Profile/profile.module.scss';
-@import '../components/pageComponents/Auth/auth.module.scss';
 
 .ant-typography {
     font-family: 'satoshi' !important;
@@ -37,4 +35,8 @@
 .ant-pagination .ant-pagination-jump-prev,
 .ant-pagination .ant-pagination-jump-next {
     margin: 0;
+}
+
+.ant-drawer .ant-drawer-close {
+    display: none;
 }

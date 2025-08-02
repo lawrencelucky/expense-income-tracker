@@ -1,0 +1,200 @@
+.ant-table-wrapper .ant-table-thead > tr > td {
+    background-color: transparent;
+}
+
+.ant-table-wrapper .ant-table-thead > tr > th {
+    background-color: #fafaf9;
+}
+
+.ant-table-wrapper .ant-table-tbody > tr > th,
+.ant-table-wrapper .ant-table-tbody > tr > td {
+    padding-top: 24px;
+    padding-bottom: 24px;
+}
+
+.ant-table-wrapper
+    .ant-table-thead
+    > tr
+    > th:not(:last-child):not(.ant-table-selection-column):not(.ant-table-row-expand-icon-cell):not([colspan])::before,
+.ant-table-wrapper
+    .ant-table-thead
+    > tr
+    > td:not(:last-child):not(.ant-table-selection-column):not(.ant-table-row-expand-icon-cell):not([colspan])::before {
+    display: none;
+}
+
+.profile-dropdown {
+    background-image: url('/svgs/profileGradient.svg');
+    background-repeat: no-repeat;
+    background-position: top right;
+}
+
+.add-transaction-container {
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0;
+}
+
+select {
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
+    font-weight: 700;
+    margin-right: 2rem;
+    border: 1px solid #c4c4c4;
+}
+
+input {
+    padding: 1rem 1.5rem;
+    margin-right: 2rem;
+    border-radius: 10px;
+    border: 1px solid #c4c4c4;
+    outline: 0;
+    font-size: 1.6rem;
+}
+
+input[type='number'] {
+    width: 12rem;
+}
+
+input[type='text'] {
+    width: 35rem;
+}
+
+button {
+    color: #f9f9f9;
+    background: #60acb7;
+    font-weight: 700;
+    font-size: 1.6rem;
+    padding: 1rem 2.4rem;
+    border: 0;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 500px) {
+    .add-transaction-container {
+        margin-left: 24px;
+        margin-right: 24px;
+    }
+    .add-transaction-container form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        width: 100%;
+    }
+
+    select {
+        width: 100%;
+    }
+
+    input[type='number'] {
+        width: 100%;
+    }
+
+    input[type='text'] {
+        width: 100%;
+    }
+
+    button {
+        width: 100%;
+    }
+}
+
+.transaction-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background-color: #f0f0f0;
+    border: 1px solid #8ab9bf;
+    border-radius: 10px;
+    padding: 1rem 2rem;
+    margin-bottom: 2rem;
+}
+
+.transaction-description-container {
+    flex: 1;
+    display: flex;
+    margin-left: 24px;
+    align-items: center;
+}
+
+.transaction-amount,
+.transaction-type,
+.transaction-description,
+.transaction-date {
+    font-size: 1.6rem;
+    font-weight: bold;
+}
+
+.transaction-amount {
+    width: 10rem;
+    font-size: 2rem;
+    margin-bottom: 8px;
+}
+
+.transaction-date {
+    color: #9b9898;
+    font-size: 1.2rem;
+}
+
+.transaction-type {
+    margin-right: 8px;
+}
+
+.transaction-description {
+    margin-left: 8px;
+}
+
+.expense {
+    color: #f24e1e;
+}
+
+.income {
+    color: #75d05e;
+}
+
+.transaction-description p {
+    font-size: 1.6rem;
+}
+
+.trash-icon {
+    color: #f24e1e;
+    font-size: 2.4rem;
+    cursor: pointer;
+}
+
+.trash-icon-mobile {
+    display: none;
+    color: #f24e1e;
+    font-size: 2.4rem;
+    cursor: pointer;
+}
+
+.currency-date-trash {
+    display: flex;
+}
+
+@media screen and (max-width: 500px) {
+    .transaction-container {
+        flex-direction: column;
+        align-items: start;
+        gap: 20px;
+    }
+
+    .trash-icon {
+        display: none;
+    }
+
+    .trash-icon-mobile {
+        display: flex;
+    }
+
+    .transaction-description-container {
+        margin-left: 0;
+    }
+
+    .currency-date-trash {
+        width: 100%;
+        justify-content: space-between;
+    }
+}
